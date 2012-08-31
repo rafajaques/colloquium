@@ -1,0 +1,72 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<!-- Content -->
+		<div class="span9 content">
+			<div class="page-header">
+				<h1>&nbsp;<i class="big-icon-calendar"></i> <?php echo $this->translate('Conferences'); ?> <small><?php echo $this->translate('Check out what\'s coming'); ?></small></h1>
+			</div>
+			
+			<div>
+				<!-- Calender placeholder -->
+				<div id="calendar"></div>
+			</div>
+		</div>
+		<!-- Sidebar -->
+		<div class="span3">
+			<div class="well well-small">
+			<h4><?php echo $this->translate('Upcoming events'); ?></h4>
+			
+			<ul class="nav nav-list nav-no-padding">
+				<?php
+				$this->conferences = $conferences->toArray();
+					if ($this->conferences):
+						foreach ($this->conferences as $conf):?>
+					
+					<li><a href="<?php echo $this->url('conferences/inner', array('action' => 'view', 'id' => $conf['conference_id'])); ?>"><i class="icon-calendar"></i>
+							(<?php
+								$first_day = $this->extractDate($conf['first_day']);
+								$last_day = $this->extractDate($conf['last_day']);
+								echo $first_day['day'] . '/' . $first_day['month'];
+								if ($conf['first_day'] != $conf['last_day'])
+									echo '-' . $last_day['day'] . '/' . $last_day['month'];
+							?>)
+							<?php echo $conf['short_name']; ?>
+					</a></li>
+					
+					<?php
+						endforeach;
+					else:
+						echo $this->translate('No upcoming events.');
+					endif;
+				?>
+			</ul>
+			</div>
+			<div class="well well-small">
+			<h4><?php echo $this->translate('Call for papers'); ?></h4>
+			<ul class="nav nav-list nav-no-padding">
+				<?php
+					if ($this->conferences):
+						foreach ($this->conferences as $conf):?>
+					
+					<li><a href="<?php echo $this->url('cfp/inner', array('action' => 'submit', 'id' => $conf['conference_id'])); ?>"><i class="icon-calendar"></i>
+							(<?php
+								$first_day = $this->extractDate($conf['cfp_opened']);
+								$last_day = $this->extractDate($conf['cfp_closed']);
+								echo $first_day['day'] . '/' . $first_day['month'];
+								if ($conf['cfp_opened'] != $conf['cfp_closed'])
+									echo ' - ' . $last_day['day'] . '/' . $last_day['month'];
+							?>)
+							<?php echo $conf['short_name']; ?>
+					</a></li>
+					
+					<?php
+						endforeach;
+					else:
+						echo $this->translate('No call for papers.');
+					endif;
+				?>
+			</ul>
+			</div>
+		</div>
+	</div>
+</div>

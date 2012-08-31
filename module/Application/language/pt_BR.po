@@ -1,0 +1,435 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Colloquium\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-31 16:47-0300\n"
+"PO-Revision-Date: 2012-08-31 16:48-0300\n"
+"Last-Translator: rafajaques <rafael@phpit.com.br>\n"
+"Language-Team: rafajaques <rafael@phpit.com.br>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ../..\n"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:34
+msgid "Conference name"
+msgstr "Nome do evento"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:45
+msgid "Conference name (short)"
+msgstr "Nome do evento (curto)"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:56
+msgid "Description"
+msgstr "Descrição"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:67
+msgid "Location"
+msgstr "Localização"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:78
+msgid "Address"
+msgstr "Endereço"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:89
+msgid "City"
+msgstr "Cidade"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:100
+msgid "State"
+msgstr "Estado"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:111
+msgid "Country"
+msgstr "País"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:115
+msgid "GMT"
+msgstr "GMT"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:160
+msgid "Show alert when conference is running"
+msgstr "Mostrar alerta quando o evento estiver ocorrendo"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:169
+msgid "Active"
+msgstr "Ativo"
+
+#: ../../Admin/src/Admin/Form/ConferenceForm.php:179
+msgid "Save"
+msgstr "Salvar"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:25
+msgid "Title"
+msgstr "Título"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:29
+msgid "Track"
+msgstr "Trilha"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:46
+msgid "Abstract"
+msgstr "Resumo"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:58
+msgid "Mini-curriculo do palestrante"
+msgstr "Mini-curriculo do palestrante"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:62
+msgid "Duration"
+msgstr "Duração"
+
+#: ../../Cfp/src/Cfp/Form/SubmissionForm.php:83
+#: ../../ZfcUser/view/zfc-user/user/changeemail.phtml:36
+msgid "Submit"
+msgstr "Enviar"
+
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:48
+#: ../../Application/view/layout/layout.phtml:116
+#: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
+#: ../../Cfp/view/cfp/index/submit.phtml:6
+msgid "Call for Papers"
+msgstr "Call for Papers"
+
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:55
+msgid "Registration"
+msgstr "Inscrição"
+
+#: ../../Admin/view/admin/conferences/add.phtml:5
+#: ../../Admin/view/admin/conferences/index.phtml:5
+#: ../../Application/view/layout/layout.phtml:92
+msgid "Conferences management"
+msgstr "Gerenciamento de eventos"
+
+#: ../../Admin/view/admin/conferences/add.phtml:6
+msgid "Add conference"
+msgstr "Adicionar evento"
+
+#: ../../Admin/view/admin/conferences/index.phtml:14
+msgid "Name"
+msgstr "Nome"
+
+#: ../../Admin/view/admin/conferences/index.phtml:15
+msgid "Created by"
+msgstr "Criado por"
+
+#: ../../Admin/view/admin/conferences/index.phtml:16
+msgid "Manage"
+msgstr "Gerenciar"
+
+#: ../../Admin/view/admin/conferences/index.phtml:26
+msgid "Schedule"
+msgstr "Cronograma"
+
+#: ../../Admin/view/admin/conferences/index.phtml:27
+msgid "Tracks"
+msgstr "Trilhas"
+
+#: ../../Admin/view/admin/conferences/index.phtml:28
+msgid "Staff"
+msgstr "Equipe de apoio"
+
+#: ../../Admin/view/admin/conferences/index.phtml:29
+msgid "Attendees"
+msgstr "Participantes"
+
+#: ../../Admin/view/admin/conferences/index.phtml:30
+msgid "Edit"
+msgstr "Editar"
+
+#: ../../Admin/view/admin/index/index.phtml:5
+#: ../../Application/view/layout/layout.phtml:91
+msgid "Administration panel"
+msgstr "Painel de administração"
+
+#: ../../Application/view/application/index/index.phtml:13
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:15
+msgid "Sign In"
+msgstr "Acessar"
+
+#: ../../Application/view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr "Ocorreu um erro 404"
+
+#: ../../Application/view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr "O controlador selecionado não pôde responder à requisição."
+
+#: ../../Application/view/error/404.phtml:13
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr ""
+"O controlador solicitado não pôde ser mapeado para uma classe de controlador "
+"existente."
+
+#: ../../Application/view/error/404.phtml:16
+msgid "The requested controller was not dispatchable."
+msgstr "O controlador solicitado não é executável."
+
+#: ../../Application/view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr "O roteador não encontrou a URL solicitada."
+
+#: ../../Application/view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr "Não foi possível determinar o porquê do erro 404 ser gerado."
+
+#: ../../Application/view/error/404.phtml:34
+msgid "Controller"
+msgstr "Controller"
+
+#: ../../Application/view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr "resolve a %s"
+
+#: ../../Application/view/error/404.phtml:51
+msgid "Exception"
+msgstr "Exceção"
+
+#: ../../Application/view/error/404.phtml:55
+#: ../../Application/view/error/index.phtml:19
+#: ../../Application/view/error/index.phtml:43
+msgid "Stack trace"
+msgstr "Rastreamento de pilha (stack trace)"
+
+#: ../../Application/view/error/index.phtml:1
+msgid "An error occurred"
+msgstr "Ocorreu um erro"
+
+#: ../../Application/view/error/index.phtml:8
+msgid "Additional information"
+msgstr "Informação adicional"
+
+#: ../../Application/view/error/index.phtml:11
+#: ../../Application/view/error/index.phtml:35
+msgid "File"
+msgstr "Arquivo"
+
+#: ../../Application/view/error/index.phtml:15
+#: ../../Application/view/error/index.phtml:39
+msgid "Message"
+msgstr "Mensagem"
+
+#: ../../Application/view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr "Exceções anteriores"
+
+#: ../../Application/view/error/index.phtml:58
+msgid "No Exception available"
+msgstr "Não há exceção disponível"
+
+#: ../../Application/view/layout/layout.phtml:77
+msgid "My profile"
+msgstr "Meu perfil"
+
+#: ../../Application/view/layout/layout.phtml:78
+msgid "My conferences"
+msgstr "Meus eventos"
+
+#: ../../Application/view/layout/layout.phtml:83
+msgid "Conference tools"
+msgstr "Ferramentas do evento"
+
+#: ../../Application/view/layout/layout.phtml:93
+msgid "Users management"
+msgstr "Gerenciamento de usuários"
+
+#: ../../Application/view/layout/layout.phtml:94
+msgid "Import/export data"
+msgstr "Importar/exportar dados"
+
+#: ../../Application/view/layout/layout.phtml:95
+msgid "Reports"
+msgstr "Relatórios"
+
+#: ../../Application/view/layout/layout.phtml:96
+msgid "System settings"
+msgstr "Configuração do sistema"
+
+#: ../../Application/view/layout/layout.phtml:101
+msgid "Logoff"
+msgstr "Sair"
+
+#: ../../Application/view/layout/layout.phtml:104
+msgid "Login"
+msgstr "Login"
+
+#: ../../Application/view/layout/layout.phtml:110
+msgid "Home"
+msgstr "Início"
+
+#: ../../Application/view/layout/layout.phtml:113
+#: ../../Conferences/view/conferences/index/index.phtml:6
+msgid "Conferences"
+msgstr "Eventos"
+
+#: ../../Application/view/layout/layout.phtml:119
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../../Application/view/layout/layout.phtml:128
+#, php-format
+msgid "<strong>%s</strong> is running. Check the programming "
+msgstr "O evento <strong>%s</strong> está ocorrendo. Veja a programação"
+
+#: ../../BjyAuthorize/view/error/403.phtml:1
+msgid "You need to be authenticated to access this page."
+msgstr "Você precisa estar autenticado para acessar esta página."
+
+#: ../../BjyAuthorize/view/error/403.phtml:3
+msgid "Click here to log in."
+msgstr "Clique aqui para se autenticar."
+
+#: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
+#: ../../Cfp/view/cfp/index/submit.phtml:6
+msgid "Submit your proposal"
+msgstr "Submeta a sua proposta"
+
+#: ../../Cfp/view/cfp/index/index.phtml:29
+#: ../../Conferences/view/conferences/index/index.phtml:65
+msgid "No call for papers."
+msgstr "Sem call for papers."
+
+#: ../../Cfp/view/cfp/index/ok.phtml:10
+msgid ""
+"Your proposal has been submitted successfully. Wait for the evaluation "
+"period and you will be contacted if your proposal is approved."
+msgstr ""
+"Sua proposta foi submetida com sucesso. Aguarde o período de avaliação e "
+"você será contactado caso sua proposta seja aprovada."
+
+#: ../../Cfp/view/cfp/index/ok.phtml:12
+msgid "If you want to submit another proposal,"
+msgstr "Se quiser submeter outra proposta,"
+
+#: ../../Cfp/view/cfp/index/ok.phtml:12
+msgid "click here"
+msgstr "clique aqui"
+
+#: ../../Conferences/view/conferences/index/index.phtml:6
+msgid "Check out what's coming"
+msgstr "Confira o que está por vir"
+
+#: ../../Conferences/view/conferences/index/index.phtml:17
+msgid "Upcoming events"
+msgstr "Próximos eventos"
+
+#: ../../Conferences/view/conferences/index/index.phtml:39
+msgid "No upcoming events."
+msgstr "Sem eventos próximos."
+
+#: ../../Conferences/view/conferences/index/index.phtml:45
+msgid "Call for papers"
+msgstr "Call for papers"
+
+#: ../../ZfcUser/view/zfc-user/user/changeemail.phtml:3
+msgid "Email address changed successfully."
+msgstr "Email alterado com sucesso."
+
+#: ../../ZfcUser/view/zfc-user/user/changeemail.phtml:5
+msgid "Unable to update your email address. Please try again."
+msgstr ""
+"Impossível de atualizar seu endereço de email. Por favor, tente novamente."
+
+#: ../../ZfcUser/view/zfc-user/user/index.phtml:2
+#, php-format
+msgid "Hello, %s!"
+msgstr "Olá, %s!"
+
+#: ../../ZfcUser/view/zfc-user/user/index.phtml:3
+msgid "Change password"
+msgstr "Alterar senha"
+
+#: ../../ZfcUser/view/zfc-user/user/index.phtml:4
+msgid "Change email"
+msgstr "Alterar email"
+
+#: ../../ZfcUser/view/zfc-user/user/index.phtml:5
+msgid "Sign out"
+msgstr "Sair"
+
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:8
+msgid "Username or Email"
+msgstr "Nome de usuário ou Email"
+
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:9
+msgid "Password"
+msgstr "Senha"
+
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:39
+msgid "Not registered?"
+msgstr "Não registrado?"
+
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:39
+msgid "Sign up!"
+msgstr "Cadastre-se!"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:3
+msgid "Registration is disabled"
+msgstr "Os registros estão desabilitados"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:12
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:13
+msgid "Email"
+msgstr "Email"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:14
+msgid "Display Name"
+msgstr "Nome de Exibição"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:15
+msgid "Password Verify"
+msgstr "Confirme a Senha"
+
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:22
+msgid "Register"
+msgstr "Registro"
+
+#~ msgid "Access"
+#~ msgstr "Acesso"
+
+#~ msgid "You need only one account to attend to all conferences."
+#~ msgstr ""
+#~ "Você precisa de apenas uma conta para participar de todos os eventos."
+
+#~ msgid "Short conference name"
+#~ msgstr "Nome do evento (curto)"
+
+#~ msgid "Here you can manage and change system settings."
+#~ msgstr "Aqui você pode gerenciar e alterar as preferências do sistema."
+
+#~ msgid "Administration Panel"
+#~ msgstr "Painel de Administração"
+
+#~ msgid "Almost done!"
+#~ msgstr "Quase pronto!"
+
+#~ msgid "Just a little more to activate your account."
+#~ msgstr "Falta só mais um pouco para ativar o seu cadastro."
+
+#~ msgid ""
+#~ "An e-mail has been sent to you containing a link and a code to activate "
+#~ "your account. This is important because we can verify the integrity of "
+#~ "your registration and avoid unwanted messages."
+#~ msgstr ""
+#~ "Foi enviado um e-mail para você contendo um link e um código para ativar "
+#~ "o seu cadastro. Isso é importante para que possamos verificar a "
+#~ "integridade do seu cadastro e evitar mensagens indesejadas."
+
+#~ msgid ""
+#~ "If you are having difficulty activating your account, contact support via "
+#~ "help."
+#~ msgstr ""
+#~ "Se você estiver tendo dificuldade para ativar o seu cadastro, entre em "
+#~ "contato com o suporte através do link de ajuda."
+
+#~ msgid "Back to home"
+#~ msgstr "Voltar à página inicial"

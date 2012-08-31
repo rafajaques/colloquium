@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="content">
+	
+	<div class="page-header">
+		<h1 class="catch"><?php echo $this->translate('Conferences management'); ?></h1>
+	</div>
+
+	<div class="row margin-adjust">
+		<a href="<?php echo $this->url('admin/conferences', array('action' => 'add')); ?>">-Add</a>
+	</div>
+		<div class="row margin-adjust">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<th><?php echo $this->translate('Name'); ?></th>
+					<th><?php echo $this->translate('Created by'); ?></th>
+					<th><?php echo $this->translate('Manage'); ?></th>
+				</tr>
+				<?php foreach ($conferences as $conference): ?>
+				<tr>
+					<td class="span8"><?php echo $conference->name; ?></td>
+					<td><?php echo $conference->user_id; ?></td>
+					<td class="span1">
+						<div class="btn-group">
+							<?php
+								// Get translations
+								$schedule	= $this->translate('Schedule');
+								$tracks		= $this->translate('Tracks');
+								$staff		= $this->translate('Staff');
+								$atendees	= $this->translate('Attendees');
+								$edit		= $this->translate('Edit');
+							?>
+							<!-- Schedule -->
+							<a class="btn btn-small" href="#" alt="<?php echo $schedule; ?>" title="<?php echo $schedule; ?>"><i class="icon-calendar"></i></a>
+							<!-- Tracks -->
+							<a class="btn btn-small" href="#" alt="<?php echo $tracks; ?>" title="<?php echo $tracks; ?>"><i class="icon-road"></i></a>
+							<!-- Staff -->
+							<a class="btn btn-small" href="#" alt="<?php echo $staff; ?>" title="<?php echo $staff; ?>"><i class="icon-eye-open"></i></a>
+							<!-- Atendees -->
+							<a class="btn btn-small" href="#" alt="<?php echo $atendees; ?>" title="<?php echo $atendees; ?>"><i class="icon-user"></i></a>
+							<!-- Edit -->
+							<a class="btn btn-small" href="#" alt="<?php echo $edit; ?>" title="<?php echo $edit; ?>"><i class="icon-wrench"></i></a>
+						</div>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
+	</div>
+	
+</div>

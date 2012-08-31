@@ -1,0 +1,419 @@
+/**
+ * Titles and tipography
+ */
+
+/**
+ * reduces size of titles at mobile devices
+ */
+@media (max-width: 979px) {
+	h1{
+		font-size:40px !important;
+		text-align:center;
+	}
+}
+
+h1.catch{
+	font-size:50px;
+	text-align:center;
+}
+
+p.byline{	
+	font-size:18px;
+	font-weight:300;
+	line-height:30px;
+	color:#999;
+	text-align:center;
+	margin:0;
+}
+
+.logo{
+	max-width:150px;
+	margin-right:10px;
+}
+
+@media (max-width: 979px) {
+	.logo{
+		text-align:center !important;
+		margin:0 auto !important;
+	}
+}
+
+.beta{
+	font-size:13px;
+	text-transform:lowercase;
+	vertical-align:top;
+	color:#fff;
+}
+
+/**
+ * positioning
+ */
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+.margin-adjust{
+	margin:0 !important;
+}
+.center-text{
+	text-align:center;
+}
+
+/**
+ * background and other styles
+ */
+body{
+	background:url('../img/bg.png');
+}
+
+/**
+ * structure
+ */
+.content{
+	background-color: #fff;
+	border:1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:10px;
+}
+
+.nav-no-padding{
+	padding:0;
+}
+
+/**
+ * forms
+ */
+
+
+/**
+ * custom icons (by glyphicons)
+ */
+[class^="big-icon-"],
+[class*=" big-icon-"] {
+background: url('../img/glyphicons-custom.png') no-repeat top left;
+width: 23px;
+height: 24px;
+display:inline-block;
+}
+.big-icon-adjust{ background-position: 0 0; width: 23px; height: 24px; } 
+.big-icon-adress-book{ background-position: 0 -54px; width: 22px; height: 24px; } 
+.big-icon-airplane{ background-position: 0 -108px; width: 24px; height: 25px; } 
+.big-icon-alarm{ background-position: 0 -163px; width: 28px; height: 26px; } 
+.big-icon-albums{ background-position: 0 -219px; width: 28px; height: 18px; } 
+.big-icon-align-center{ background-position: 0 -267px; width: 24px; height: 21px; } 
+.big-icon-align-left{ background-position: 0 -318px; width: 24px; height: 21px; } 
+.big-icon-align-right{ background-position: 0 -369px; width: 24px; height: 21px; } 
+.big-icon-anchor{ background-position: 0 -420px; width: 24px; height: 25px; } 
+.big-icon-announcement{ background-position: 0 -475px; width: 25px; height: 20px; } 
+.big-icon-attach{ background-position: 0 -525px; width: 26px; height: 24px; } 
+.big-icon-ban{ background-position: 0 -579px; width: 26px; height: 26px; } 
+.big-icon-bank{ background-position: 0 -635px; width: 24px; height: 24px; } 
+.big-icon-barcode{ background-position: 0 -689px; width: 24px; height: 24px; } 
+.big-icon-beach-umbrella{ background-position: 0 -743px; width: 25px; height: 25px; } 
+.big-icon-bell{ background-position: 0 -798px; width: 24px; height: 24px; } 
+.big-icon-bin{ background-position: 0 -852px; width: 20px; height: 28px; } 
+.big-icon-binoculars{ background-position: 0 -910px; width: 24px; height: 24px; } 
+.big-icon-birthday-cake{ background-position: 0 -964px; width: 26px; height: 29px; } 
+.big-icon-blog{ background-position: 0 -1023px; width: 21px; height: 23px; } 
+.big-icon-bluetooth{ background-position: 0 -1076px; width: 14px; height: 24px; } 
+.big-icon-boat{ background-position: 0 -1130px; width: 24px; height: 24px; } 
+.big-icon-bold{ background-position: 0 -1184px; width: 19px; height: 24px; } 
+.big-icon-bomb{ background-position: 0 -1238px; width: 27px; height: 26px; } 
+.big-icon-book{ background-position: 0 -1294px; width: 22px; height: 24px; } 
+.big-icon-book-open{ background-position: 0 -1348px; width: 25px; height: 23px; } 
+.big-icon-bookmark{ background-position: 0 -1401px; width: 16px; height: 24px; } 
+.big-icon-briefcase{ background-position: 0 -1455px; width: 24px; height: 21px; } 
+.big-icon-brightness-increase{ background-position: 0 -1506px; width: 24px; height: 24px; } 
+.big-icon-brightness-reduce{ background-position: 0 -1560px; width: 20px; height: 20px; } 
+.big-icon-brush{ background-position: 0 -1610px; width: 25px; height: 23px; } 
+.big-icon-bullets{ background-position: 0 -1663px; width: 27px; height: 23px; } 
+.big-icon-bus{ background-position: 0 -1716px; width: 32px; height: 25px; } 
+.big-icon-cake{ background-position: 0 -1771px; width: 22px; height: 24px; } 
+.big-icon-calculator{ background-position: 0 -1825px; width: 21px; height: 24px; } 
+.big-icon-calendar{ background-position: 0 -1879px; width: 23px; height: 25px;} 
+.big-icon-camera{ background-position: 0 -1934px; width: 26px; height: 20px; } 
+.big-icon-camera-small{ background-position: -62px 0; width: 22px; height: 24px; } 
+.big-icon-candle{ background-position: -62px -54px; width: 20px; height: 25px; } 
+.big-icon-car{ background-position: -62px -109px; width: 26px; height: 22px; } 
+.big-icon-cardio{ background-position: -62px -161px; width: 25px; height: 26px; } 
+.big-icon-cargo{ background-position: -62px -217px; width: 25px; height: 26px; } 
+.big-icon-cars{ background-position: -62px -273px; width: 36px; height: 25px; } 
+.big-icon-cart-in{ background-position: -62px -328px; width: 26px; height: 24px; } 
+.big-icon-cart-out{ background-position: -62px -382px; width: 26px; height: 25px; } 
+.big-icon-celebration{ background-position: -62px -437px; width: 24px; height: 25px; } 
+.big-icon-certificate{ background-position: -62px -492px; width: 17px; height: 25px; } 
+.big-icon-charts{ background-position: -62px -547px; width: 27px; height: 24px; } 
+.big-icon-chat{ background-position: -62px -601px; width: 24px; height: 19px; } 
+.big-icon-check{ background-position: -62px -650px; width: 22px; height: 18px; } 
+.big-icon-circle-arrow-down{ background-position: -62px -698px; width: 26px; height: 26px; } 
+.big-icon-circle-arrow-left{ background-position: -62px -754px; width: 26px; height: 26px; } 
+.big-icon-circle-arrow-right{ background-position: -62px -810px; width: 26px; height: 26px; } 
+.big-icon-circle-arrow-top{ background-position: -62px -866px; width: 26px; height: 26px; } 
+.big-icon-circle-exclamation-mark{ background-position: -62px -922px; width: 26px; height: 26px; } 
+.big-icon-circle-info{ background-position: -62px -978px; width: 26px; height: 26px; } 
+.big-icon-circle-minus{ background-position: -62px -1034px; width: 26px; height: 26px; } 
+.big-icon-circle-ok{ background-position: -62px -1090px; width: 26px; height: 26px; } 
+.big-icon-circle-plus{ background-position: -62px -1146px; width: 26px; height: 26px; } 
+.big-icon-circle-question-mark{ background-position: -62px -1202px; width: 26px; height: 26px; } 
+.big-icon-circle-remove{ background-position: -62px -1258px; width: 26px; height: 26px; } 
+.big-icon-cleaning{ background-position: -62px -1314px; width: 24px; height: 25px; } 
+.big-icon-clock{ background-position: -62px -1369px; width: 24px; height: 24px; } 
+.big-icon-cloud{ background-position: -62px -1423px; width: 27px; height: 17px; } 
+.big-icon-coffe-cup{ background-position: -62px -1470px; width: 25px; height: 19px; } 
+.big-icon-cogwheel{ background-position: -62px -1519px; width: 24px; height: 24px; } 
+.big-icon-cogwheels{ background-position: -62px -1573px; width: 26px; height: 26px; } 
+.big-icon-comments{ background-position: -62px -1629px; width: 24px; height: 23px; } 
+.big-icon-compass{ background-position: -62px -1682px; width: 24px; height: 24px; } 
+.big-icon-conversation{ background-position: -62px -1736px; width: 25px; height: 18px; } 
+.big-icon-credit{ background-position: -62px -1784px; width: 26px; height: 24px; } 
+.big-icon-credit-card{ background-position: -62px -1838px; width: 26px; height: 19px; } 
+.big-icon-cup{ background-position: -62px -1887px; width: 22px; height: 24px; } 
+.big-icon-cutlery{ background-position: -62px -1941px; width: 13px; height: 24px; } 
+.big-icon-dashboard{ background-position: -128px 0; width: 24px; height: 24px; } 
+.big-icon-direction{ background-position: -128px -54px; width: 26px; height: 26px; } 
+.big-icon-display{ background-position: -128px -110px; width: 28px; height: 24px; } 
+.big-icon-down-arrow{ background-position: -128px -164px; width: 18px; height: 20px; } 
+.big-icon-download{ background-position: -128px -214px; width: 26px; height: 26px; } 
+.big-icon-download-alt{ background-position: -128px -270px; width: 24px; height: 24px; } 
+.big-icon-drink{ background-position: -128px -324px; width: 23px; height: 24px; } 
+.big-icon-ear-plugs{ background-position: -128px -378px; width: 20px; height: 24px; } 
+.big-icon-edit{ background-position: -128px -432px; width: 24px; height: 21px; } 
+.big-icon-eject{ background-position: -128px -483px; width: 18px; height: 17px; } 
+.big-icon-electrical-plug{ background-position: -128px -530px; width: 18px; height: 25px; } 
+.big-icon-electricity{ background-position: -128px -585px; width: 11px; height: 24px; } 
+.big-icon-embed{ background-position: -128px -639px; width: 30px; height: 14px; } 
+.big-icon-embed-close{ background-position: -128px -683px; width: 30px; height: 24px; } 
+.big-icon-envelope{ background-position: -128px -737px; width: 24px; height: 16px; } 
+.big-icon-eye-close{ background-position: -128px -783px; width: 31px; height: 24px; } 
+.big-icon-eye-open{ background-position: -128px -837px; width: 31px; height: 17px; } 
+.big-icon-fabric{ background-position: -128px -884px; width: 27px; height: 22px; } 
+.big-icon-facetime-video{ background-position: -128px -936px; width: 24px; height: 16px; } 
+.big-icon-fast-backward{ background-position: -128px -982px; width: 25px; height: 18px; } 
+.big-icon-fast-food{ background-position: -128px -1030px; width: 28px; height: 24px; } 
+.big-icon-fast-forward{ background-position: -128px -1084px; width: 25px; height: 18px; } 
+.big-icon-female{ background-position: -128px -1132px; width: 16px; height: 27px; } 
+.big-icon-file{ background-position: -128px -1189px; width: 19px; height: 24px; } 
+.big-icon-file-export{ background-position: -128px -1243px; width: 23px; height: 24px; } 
+.big-icon-file-import{ background-position: -128px -1297px; width: 22px; height: 24px; } 
+.big-icon-film{ background-position: -128px -1351px; width: 22px; height: 26px; } 
+.big-icon-filter{ background-position: -128px -1407px; width: 20px; height: 24px; } 
+.big-icon-fins{ background-position: -128px -1461px; width: 31px; height: 27px; } 
+.big-icon-fire{ background-position: -128px -1518px; width: 20px; height: 26px; } 
+.big-icon-fishes{ background-position: -128px -1574px; width: 28px; height: 30px; } 
+.big-icon-flag{ background-position: -128px -1634px; width: 21px; height: 26px; } 
+.big-icon-folder-flag{ background-position: -128px -1690px; width: 27px; height: 25px; } 
+.big-icon-folder-lock{ background-position: -128px -1745px; width: 28px; height: 26px; } 
+.big-icon-folder-minus{ background-position: -128px -1801px; width: 29px; height: 25px; } 
+.big-icon-folder-new{ background-position: -128px -1856px; width: 28px; height: 24px; } 
+.big-icon-folder-open{ background-position: -128px -1910px; width: 30px; height: 22px; } 
+.big-icon-folder-plus{ background-position: -128px -1962px; width: 29px; height: 25px; } 
+.big-icon-font{ background-position: -194px 0; width: 27px; height: 23px; } 
+.big-icon-forward{ background-position: -194px -53px; width: 23px; height: 18px; } 
+.big-icon-fullscreen{ background-position: -194px -101px; width: 24px; height: 24px; } 
+.big-icon-gamepad{ background-position: -194px -155px; width: 27px; height: 19px; } 
+.big-icon-gift{ background-position: -194px -204px; width: 24px; height: 25px; } 
+.big-icon-girl{ background-position: -194px -259px; width: 22px; height: 22px; } 
+.big-icon-glass{ background-position: -194px -311px; width: 24px; height: 24px; } 
+.big-icon-globe{ background-position: -194px -365px; width: 24px; height: 24px; } 
+.big-icon-google-maps{ background-position: -194px -419px; width: 15px; height: 24px; } 
+.big-icon-group{ background-position: -194px -473px; width: 35px; height: 22px; } 
+.big-icon-hdd{ background-position: -194px -525px; width: 24px; height: 21px; } 
+.big-icon-headphones{ background-position: -194px -576px; width: 24px; height: 24px; } 
+.big-icon-headset{ background-position: -194px -630px; width: 24px; height: 28px; } 
+.big-icon-heart{ background-position: -194px -688px; width: 24px; height: 22px; } 
+.big-icon-heat{ background-position: -194px -740px; width: 29px; height: 25px; } 
+.big-icon-history{ background-position: -194px -795px; width: 25px; height: 26px; } 
+.big-icon-home{ background-position: -194px -851px; width: 27px; height: 26px; } 
+.big-icon-hospital{ background-position: -194px -907px; width: 24px; height: 24px; } 
+.big-icon-hospital-h{ background-position: -194px -961px; width: 24px; height: 24px; } 
+.big-icon-imac{ background-position: -194px -1015px; width: 26px; height: 22px; } 
+.big-icon-inbox{ background-position: -194px -1067px; width: 24px; height: 23px; } 
+.big-icon-inbox-in{ background-position: -194px -1120px; width: 24px; height: 26px; } 
+.big-icon-inbox-lock{ background-position: -194px -1176px; width: 26px; height: 28px; } 
+.big-icon-inbox-minus{ background-position: -194px -1234px; width: 27px; height: 27px; } 
+.big-icon-inbox-out{ background-position: -194px -1291px; width: 24px; height: 26px; } 
+.big-icon-inbox-plus{ background-position: -194px -1347px; width: 27px; height: 27px; } 
+.big-icon-ipad{ background-position: -194px -1404px; width: 20px; height: 27px; } 
+.big-icon-iphone{ background-position: -194px -1461px; width: 14px; height: 24px; } 
+.big-icon-iphone-exchange{ background-position: -194px -1515px; width: 29px; height: 24px; } 
+.big-icon-iphone-shake{ background-position: -194px -1569px; width: 24px; height: 24px; } 
+.big-icon-iphone-transfer{ background-position: -194px -1623px; width: 29px; height: 24px; } 
+.big-icon-ipod{ background-position: -194px -1677px; width: 14px; height: 22px; } 
+.big-icon-ipod-shuffle{ background-position: -194px -1729px; width: 15px; height: 13px; } 
+.big-icon-italic{ background-position: -194px -1772px; width: 14px; height: 24px; } 
+.big-icon-justify{ background-position: -194px -1826px; width: 24px; height: 21px; } 
+.big-icon-kettle{ background-position: -194px -1877px; width: 23px; height: 24px; } 
+.big-icon-keyboard-wired{ background-position: -194px -1931px; width: 27px; height: 25px; } 
+.big-icon-keyboard-wireless{ background-position: -260px 0; width: 27px; height: 19px; } 
+.big-icon-keynote{ background-position: -260px -49px; width: 20px; height: 30px; } 
+.big-icon-keys{ background-position: -260px -109px; width: 24px; height: 26px; } 
+.big-icon-leaf{ background-position: -260px -165px; width: 24px; height: 25px; } 
+.big-icon-leather{ background-position: -260px -220px; width: 23px; height: 24px; } 
+.big-icon-left-arrow{ background-position: -260px -274px; width: 20px; height: 18px; } 
+.big-icon-left-indent{ background-position: -260px -322px; width: 24px; height: 22px; } 
+.big-icon-lightbulb{ background-position: -260px -374px; width: 20px; height: 26px; } 
+.big-icon-link{ background-position: -260px -430px; width: 21px; height: 23px; } 
+.big-icon-list{ background-position: -260px -483px; width: 24px; height: 21px; } 
+.big-icon-lock{ background-position: -260px -534px; width: 21px; height: 26px; } 
+.big-icon-log-book{ background-position: -260px -590px; width: 22px; height: 24px; } 
+.big-icon-luggage{ background-position: -260px -644px; width: 20px; height: 27px; } 
+.big-icon-macbook{ background-position: -260px -701px; width: 28px; height: 15px; } 
+.big-icon-magic{ background-position: -260px -746px; width: 24px; height: 24px; } 
+.big-icon-magnet{ background-position: -260px -800px; width: 21px; height: 23px; } 
+.big-icon-male{ background-position: -260px -853px; width: 22px; height: 22px; } 
+.big-icon-message-ban{ background-position: -260px -905px; width: 29px; height: 23px; } 
+.big-icon-message-empty{ background-position: -260px -958px; width: 24px; height: 28px; } 
+.big-icon-message-flag{ background-position: -260px -1016px; width: 27px; height: 23px; } 
+.big-icon-message-full{ background-position: -260px -1069px; width: 24px; height: 28px; } 
+.big-icon-message-in{ background-position: -260px -1127px; width: 24px; height: 28px; } 
+.big-icon-message-lock{ background-position: -260px -1185px; width: 28px; height: 24px; } 
+.big-icon-message-minus{ background-position: -260px -1239px; width: 29px; height: 23px; } 
+.big-icon-message-new{ background-position: -260px -1292px; width: 28px; height: 22px; } 
+.big-icon-message-out{ background-position: -260px -1344px; width: 24px; height: 28px; } 
+.big-icon-message-plus{ background-position: -260px -1402px; width: 29px; height: 23px; } 
+.big-icon-microphone{ background-position: -260px -1455px; width: 17px; height: 24px; } 
+.big-icon-moon{ background-position: -260px -1509px; width: 22px; height: 25px; } 
+.big-icon-more-items{ background-position: -260px -1564px; width: 21px; height: 24px; } 
+.big-icon-more{ background-position: -260px -1618px; width: 22px; height: 7px; } 
+.big-icon-more-windows{ background-position: -260px -1655px; width: 23px; height: 23px; } 
+.big-icon-move{ background-position: -260px -1708px; width: 24px; height: 24px; } 
+.big-icon-music{ background-position: -260px -1762px; width: 21px; height: 25px; } 
+.big-icon-mute{ background-position: -260px -1817px; width: 22px; height: 16px; } 
+.big-icon-nameplate{ background-position: -260px -1863px; width: 24px; height: 21px; } 
+.big-icon-nameplate-alt{ background-position: -260px -1914px; width: 24px; height: 22px; } 
+.big-icon-new-window{ background-position: -260px -1966px; width: 26px; height: 22px; } 
+.big-icon-note{ background-position: -326px 0; width: 18px; height: 25px; } 
+.big-icon-notes{ background-position: -326px -55px; width: 20px; height: 25px; } 
+.big-icon-notes-2{ background-position: -326px -110px; width: 20px; height: 27px; } 
+.big-icon-ok{ background-position: -326px -167px; width: 26px; height: 26px; } 
+.big-icon-ok-2{ background-position: -326px -223px; width: 25px; height: 19px; } 
+.big-icon-old-man{ background-position: -326px -272px; width: 23px; height: 24px; } 
+.big-icon-oxygen-bottle{ background-position: -326px -326px; width: 22px; height: 27px; } 
+.big-icon-pants{ background-position: -326px -383px; width: 19px; height: 24px; } 
+.big-icon-parents{ background-position: -326px -437px; width: 32px; height: 22px; } 
+.big-icon-pause{ background-position: -326px -489px; width: 10px; height: 16px; } 
+.big-icon-pen{ background-position: -326px -535px; width: 24px; height: 24px; } 
+.big-icon-pencil{ background-position: -326px -589px; width: 25px; height: 25px; } 
+.big-icon-phone{ background-position: -326px -644px; width: 15px; height: 25px; } 
+.big-icon-piano{ background-position: -326px -699px; width: 23px; height: 24px; } 
+.big-icon-picture{ background-position: -326px -753px; width: 24px; height: 20px; } 
+.big-icon-pie-chart{ background-position: -326px -803px; width: 26px; height: 25px; } 
+.big-icon-pin{ background-position: -326px -858px; width: 10px; height: 25px; } 
+.big-icon-pin-classic{ background-position: -326px -913px; width: 24px; height: 24px; } 
+.big-icon-pin-flag{ background-position: -326px -967px; width: 30px; height: 22px; } 
+.big-icon-pizza{ background-position: -326px -1019px; width: 26px; height: 29px; } 
+.big-icon-play{ background-position: -326px -1078px; width: 16px; height: 18px; } 
+.big-icon-play-button{ background-position: -326px -1126px; width: 26px; height: 26px; } 
+.big-icon-playing-dices{ background-position: -326px -1182px; width: 27px; height: 23px; } 
+.big-icon-playlist{ background-position: -326px -1235px; width: 29px; height: 24px; } 
+.big-icon-podium{ background-position: -326px -1289px; width: 28px; height: 21px; } 
+.big-icon-pool{ background-position: -326px -1340px; width: 24px; height: 24px; } 
+.big-icon-pot{ background-position: -326px -1394px; width: 27px; height: 22px; } 
+.big-icon-power{ background-position: -326px -1446px; width: 22px; height: 24px; } 
+.big-icon-print{ background-position: -326px -1500px; width: 24px; height: 24px; } 
+.big-icon-projector{ background-position: -326px -1554px; width: 28px; height: 25px; } 
+.big-icon-qrcode{ background-position: -326px -1609px; width: 24px; height: 24px; } 
+.big-icon-rabbit{ background-position: -326px -1663px; width: 26px; height: 22px; } 
+.big-icon-random{ background-position: -326px -1715px; width: 28px; height: 20px; } 
+.big-icon-read-it-later{ background-position: -326px -1765px; width: 24px; height: 24px; } 
+.big-icon-refresh{ background-position: -326px -1819px; width: 25px; height: 26px; } 
+.big-icon-remove{ background-position: -326px -1875px; width: 26px; height: 26px; } 
+.big-icon-remove-2{ background-position: -326px -1931px; width: 18px; height: 18px; } 
+.big-icon-repeat{ background-position: -392px 0; width: 24px; height: 26px; } 
+.big-icon-resize-full{ background-position: -392px -56px; width: 24px; height: 24px; } 
+.big-icon-resize-small{ background-position: -392px -110px; width: 24px; height: 24px; } 
+.big-icon-retweet{ background-position: -392px -164px; width: 30px; height: 15px; } 
+.big-icon-retweet-2{ background-position: -392px -209px; width: 33px; height: 21px; } 
+.big-icon-rewind{ background-position: -392px -260px; width: 23px; height: 18px; } 
+.big-icon-riflescope{ background-position: -392px -308px; width: 25px; height: 25px; } 
+.big-icon-right-arrow{ background-position: -392px -363px; width: 20px; height: 18px; } 
+.big-icon-right-indent{ background-position: -392px -411px; width: 24px; height: 22px; } 
+.big-icon-ring{ background-position: -392px -463px; width: 21px; height: 24px; } 
+.big-icon-road{ background-position: -392px -517px; width: 28px; height: 24px; } 
+.big-icon-rotation-lock{ background-position: -392px -571px; width: 27px; height: 24px; } 
+.big-icon-roundabout{ background-position: -392px -625px; width: 27px; height: 27px; } 
+.big-icon-router{ background-position: -392px -682px; width: 27px; height: 26px; } 
+.big-icon-rss{ background-position: -392px -738px; width: 24px; height: 24px; } 
+.big-icon-rugby{ background-position: -392px -792px; width: 23px; height: 24px; } 
+.big-icon-ruller{ background-position: -392px -846px; width: 27px; height: 14px; } 
+.big-icon-sampler{ background-position: -392px -890px; width: 27px; height: 22px; } 
+.big-icon-scissors{ background-position: -392px -942px; width: 24px; height: 27px; } 
+.big-icon-screenshot{ background-position: -392px -999px; width: 27px; height: 27px; } 
+.big-icon-scuba-diving{ background-position: -392px -1056px; width: 27px; height: 24px; } 
+.big-icon-search{ background-position: -392px -1110px; width: 24px; height: 24px; } 
+.big-icon-settings{ background-position: -392px -1164px; width: 24px; height: 24px; } 
+.big-icon-share{ background-position: -392px -1218px; width: 22px; height: 22px; } 
+.big-icon-sheriffs--star{ background-position: -392px -1270px; width: 24px; height: 26px; } 
+.big-icon-shield{ background-position: -392px -1326px; width: 22px; height: 24px; } 
+.big-icon-shopping-bag{ background-position: -392px -1380px; width: 23px; height: 26px; } 
+.big-icon-shopping-cart{ background-position: -392px -1436px; width: 26px; height: 23px; } 
+.big-icon-show-big-thumbnails{ background-position: -392px -1489px; width: 22px; height: 22px; } 
+.big-icon-show-lines{ background-position: -392px -1541px; width: 24px; height: 15px; } 
+.big-icon-show-thumbnails{ background-position: -392px -1586px; width: 22px; height: 22px; } 
+.big-icon-show-thumbnails-with-lines{ background-position: -392px -1638px; width: 24px; height: 15px; } 
+.big-icon-signal{ background-position: -392px -1683px; width: 24px; height: 24px; } 
+.big-icon-skull{ background-position: -392px -1737px; width: 22px; height: 24px; } 
+.big-icon-snorkel-diving{ background-position: -392px -1791px; width: 27px; height: 25px; } 
+.big-icon-snowflake{ background-position: -392px -1846px; width: 28px; height: 28px; } 
+.big-icon-sort{ background-position: -392px -1904px; width: 25px; height: 25px; } 
+.big-icon-spade{ background-position: -392px -1959px; width: 24px; height: 24px; } 
+.big-icon-star{ background-position: -458px 0; width: 25px; height: 24px; } 
+.big-icon-stats{ background-position: -458px -54px; width: 26px; height: 25px; } 
+.big-icon-step-backward{ background-position: -458px -109px; width: 14px; height: 18px; } 
+.big-icon-step-forward{ background-position: -458px -157px; width: 14px; height: 18px; } 
+.big-icon-stop{ background-position: -458px -205px; width: 14px; height: 14px; } 
+.big-icon-stopwatch{ background-position: -458px -249px; width: 23px; height: 27px; } 
+.big-icon-stroller{ background-position: -458px -306px; width: 25px; height: 26px; } 
+.big-icon-suitcase{ background-position: -458px -362px; width: 24px; height: 22px; } 
+.big-icon-sun{ background-position: -458px -414px; width: 24px; height: 24px; } 
+.big-icon-sweater{ background-position: -458px -468px; width: 29px; height: 24px; } 
+.big-icon-t-shirt{ background-position: -458px -522px; width: 28px; height: 23px; } 
+.big-icon-table{ background-position: -458px -575px; width: 24px; height: 24px; } 
+.big-icon-table-tennis{ background-position: -458px -629px; width: 24px; height: 24px; } 
+.big-icon-tablet{ background-position: -458px -683px; width: 25px; height: 25px; } 
+.big-icon-tag{ background-position: -458px -738px; width: 24px; height: 24px; } 
+.big-icon-tags{ background-position: -458px -792px; width: 30px; height: 24px; } 
+.big-icon-temple-hindu{ background-position: -458px -846px; width: 24px; height: 24px; } 
+.big-icon-text-bigger{ background-position: -458px -900px; width: 24px; height: 22px; } 
+.big-icon-text-height{ background-position: -458px -952px; width: 26px; height: 24px; } 
+.big-icon-text-resize{ background-position: -458px -1006px; width: 26px; height: 26px; } 
+.big-icon-text-smaller{ background-position: -458px -1062px; width: 22px; height: 16px; } 
+.big-icon-text-strike{ background-position: -458px -1108px; width: 20px; height: 22px; } 
+.big-icon-text-underline{ background-position: -458px -1160px; width: 20px; height: 24px; } 
+.big-icon-text-width{ background-position: -458px -1214px; width: 22px; height: 24px; } 
+.big-icon-thin-arrow-left{ background-position: -458px -1268px; width: 15px; height: 22px; } 
+.big-icon-thin-right-arrow{ background-position: -458px -1320px; width: 15px; height: 22px; } 
+.big-icon-thumbs-down{ background-position: -458px -1372px; width: 24px; height: 21px; } 
+.big-icon-thumbs-up{ background-position: -458px -1423px; width: 24px; height: 21px; } 
+.big-icon-tie{ background-position: -458px -1474px; width: 11px; height: 26px; } 
+.big-icon-tint{ background-position: -458px -1530px; width: 23px; height: 26px; } 
+.big-icon-train{ background-position: -458px -1586px; width: 20px; height: 27px; } 
+.big-icon-tree-conifer{ background-position: -458px -1643px; width: 21px; height: 24px; } 
+.big-icon-truck{ background-position: -458px -1697px; width: 32px; height: 27px; } 
+.big-icon-turtle{ background-position: -458px -1754px; width: 28px; height: 16px; } 
+.big-icon-umbrella{ background-position: -458px -1800px; width: 26px; height: 28px; } 
+.big-icon-unlock{ background-position: -458px -1858px; width: 21px; height: 26px; } 
+.big-icon-unshare{ background-position: -458px -1914px; width: 24px; height: 18px; } 
+.big-icon-up-arrow{ background-position: -458px -1962px; width: 18px; height: 20px; } 
+.big-icon-upload{ background-position: -524px 0; width: 26px; height: 26px; } 
+.big-icon-user{ background-position: -524px -56px; width: 23px; height: 22px; } 
+.big-icon-user-add{ background-position: -524px -108px; width: 28px; height: 22px; } 
+.big-icon-user-remove{ background-position: -524px -160px; width: 26px; height: 22px; } 
+.big-icon-vases{ background-position: -524px -212px; width: 24px; height: 24px; } 
+.big-icon-vcard{ background-position: -524px -266px; width: 22px; height: 24px; } 
+.big-icon-volume-down{ background-position: -524px -320px; width: 16px; height: 16px; } 
+.big-icon-volume-up{ background-position: -524px -366px; width: 24px; height: 26px; } 
+.big-icon-wallet{ background-position: -524px -422px; width: 25px; height: 20px; } 
+.big-icon-warning-sign{ background-position: -524px -472px; width: 29px; height: 24px; } 
+.big-icon-web-browser{ background-position: -524px -526px; width: 24px; height: 22px; } 
+.big-icon-webcam{ background-position: -524px -578px; width: 19px; height: 24px; } 
+.big-icon-wifi-alt{ background-position: -524px -632px; width: 26px; height: 26px; } 
+.big-icon-woman{ background-position: -524px -688px; width: 22px; height: 22px; } 
+.big-icon-zoom-in{ background-position: -524px -740px; width: 25px; height: 25px; } 
+.big-icon-zoom-out{ background-position: -524px -795px; width: 25px; height: 25px; }

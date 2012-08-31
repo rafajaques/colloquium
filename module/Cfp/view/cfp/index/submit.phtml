@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<!-- Content -->
+		<div class="content">
+			<div class="page-header">
+				<h1>&nbsp;<i class="big-icon-notes-2"></i> <?php echo $this->translate('Call for Papers'); ?> <small><?php echo $this->translate('Submit your proposal'); ?></small></h1>
+			</div>
+			
+			<div class="row-fluid">
+				<?php
+					$form->setAttribute('action', $this->url('cfp/inner', array('action' => 'submit', 'id' => $this->conference_id)));
+					echo $this->formRenderer($this->form);
+				?>
+			</div>
+		</div>
+	</div>
+</div>

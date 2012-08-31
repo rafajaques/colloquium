@@ -1,0 +1,207 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-11 09:49-0300\n"
+"PO-Revision-Date: 2012-08-11 09:49-0300\n"
+"Last-Translator: \n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../view/application/index/index.phtml:9
+#: ../view/application/register/index.phtml:6
+msgid "Registration"
+msgstr ""
+
+#: ../view/application/login/index.phtml:6
+msgid "Authenticate"
+msgstr ""
+
+#: ../view/application/login/index.phtml:7
+msgid "Input your username and password in order to access the system."
+msgstr ""
+
+#: ../view/application/login/index.phtml:31
+#: ../view/application/register/index.phtml:43
+msgid "Username"
+msgstr ""
+
+#: ../view/application/login/index.phtml:37
+#: ../view/application/register/index.phtml:49
+msgid "Password"
+msgstr ""
+
+#: ../view/application/login/index.phtml:42
+msgid "Login"
+msgstr ""
+
+#: ../view/application/register/done.phtml:5
+msgid "Almost done!"
+msgstr ""
+
+#: ../view/application/register/done.phtml:6
+msgid "Just a little more to activate your account."
+msgstr ""
+
+#: ../view/application/register/done.phtml:10
+msgid ""
+"An e-mail has been sent to you containing a link and a code to activate your "
+"account. This is important because we can verify the integrity of your "
+"registration and avoid unwanted messages."
+msgstr ""
+
+#: ../view/application/register/done.phtml:14
+msgid ""
+"If you are having difficulty activating your account, contact support via "
+"help."
+msgstr ""
+
+#: ../view/application/register/done.phtml:18
+msgid "Back to home"
+msgstr ""
+
+#: ../view/application/register/index.phtml:7
+msgid "You need only one account to attend to all conferences."
+msgstr ""
+
+#: ../view/application/register/index.phtml:31
+msgid "Complete name"
+msgstr ""
+
+#: ../view/application/register/index.phtml:37
+msgid "E-mail"
+msgstr ""
+
+#: ../view/application/register/index.phtml:54
+msgid "Register"
+msgstr ""
+
+#: ../view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr ""
+
+#: ../view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr ""
+
+#: ../view/error/404.phtml:13
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr ""
+
+#: ../view/error/404.phtml:16
+msgid "The requested controller was not dispatchable."
+msgstr ""
+
+#: ../view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr ""
+
+#: ../view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr ""
+
+#: ../view/error/404.phtml:34
+msgid "Controller"
+msgstr ""
+
+#: ../view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr ""
+
+#: ../view/error/404.phtml:51
+msgid "Exception"
+msgstr ""
+
+#: ../view/error/404.phtml:55 ../view/error/index.phtml:19
+#: ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr ""
+
+#: ../view/error/index.phtml:1
+msgid "An error occurred"
+msgstr ""
+
+#: ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr ""
+
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr ""
+
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr ""
+
+#: ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr ""
+
+#: ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr ""
+
+#: ../view/layout/layout.phtml:35
+msgid "My profile"
+msgstr ""
+
+#: ../view/layout/layout.phtml:36
+msgid "My conferences"
+msgstr ""
+
+#: ../view/layout/layout.phtml:42
+msgid "Conference tools"
+msgstr ""
+
+#: ../view/layout/layout.phtml:51
+msgid "Conferences management"
+msgstr ""
+
+#: ../view/layout/layout.phtml:52
+msgid "Users management"
+msgstr ""
+
+#: ../view/layout/layout.phtml:53
+msgid "Import/export data"
+msgstr ""
+
+#: ../view/layout/layout.phtml:54
+msgid "Reports"
+msgstr ""
+
+#: ../view/layout/layout.phtml:55
+msgid "System settings"
+msgstr ""
+
+#: ../view/layout/layout.phtml:60
+msgid "Logoff"
+msgstr ""
+
+#: ../view/layout/layout.phtml:66
+msgid "Home"
+msgstr ""
+
+#: ../view/layout/layout.phtml:68
+msgid "Conferences"
+msgstr ""
+
+#: ../view/layout/layout.phtml:69
+msgid "Call for Papers"
+msgstr ""
+
+#: ../view/layout/layout.phtml:70
+msgid "Help"
+msgstr ""
+
+#: ../view/layout/layout.phtml:78
+#, php-format
+msgid "<strong>%s</strong> is running. Check the programming "
+msgstr ""

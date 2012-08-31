@@ -1,0 +1,18 @@
+<h1><?php echo $this->translate('You need to be authenticated to access this page.'); ?></h1>
+<p>
+	<a href="<?php echo $this->url('zfcuser/login'); ?>"><?php echo $this->translate('Click here to log in.'); ?></a>
+</p>
+<p>
+<h3>Debug info</h3>
+    <?php if ($error == 'error-unauthorized-controller') : ?>
+        You are not authorized to access <?=$controller;?>
+        <?php if ($action) : ?>
+        ::<?=$action;?>Action()
+        <?php endif;?>
+        .
+    <?php elseif ($error == 'error-unauthorized-route') : ?>
+        You are not authorized to access <?php echo $route;?>.
+    <?php else : ?>
+    An unknown error occured.
+    <?php endif;?>
+</p>

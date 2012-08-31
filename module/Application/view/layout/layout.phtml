@@ -1,0 +1,147 @@
+<?php
+/**
+ * Layout page
+ *
+ * @TODO move most of the configurations from here to somewhere else
+ */
+
+// Prepare HeadLink
+$headLink = $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+				->appendStylesheet($this->basePath() . '/css/bootstrap.css')
+				->appendStylesheet($this->basePath() . '/css/colloquium.css')
+				->appendStylesheet($this->basePath() . '/css/bootstrap-responsive.css');
+	
+$headScript = $this->headScript()
+				->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+				->appendFile($this->basePath() . '/js/jquery.js')
+				->appendFile($this->basePath() . '/js/bootstrap-transition.js')
+				->appendFile($this->basePath() . '/js/bootstrap-alert.js')
+				->appendFile($this->basePath() . '/js/bootstrap-modal.js')
+				->appendFile($this->basePath() . '/js/bootstrap-dropdown.js')
+				->appendFile($this->basePath() . '/js/bootstrap-scrollspy.js')
+				->appendFile($this->basePath() . '/js/bootstrap-tab.js')
+				->appendFile($this->basePath() . '/js/bootstrap-tooltip.js')
+				->appendFile($this->basePath() . '/js/bootstrap-popover.js')
+				->appendFile($this->basePath() . '/js/bootstrap-button.js')
+				->appendFile($this->basePath() . '/js/bootstrap-collapse.js')
+				->appendFile($this->basePath() . '/js/bootstrap-carousel.js')
+				->appendFile($this->basePath() . '/js/bootstrap-typeahead.js');
+
+	// Append page specific css and js
+	switch ($this->url())
+	{
+		case $this->url('conferences'):
+			$headLink
+				->appendStylesheet($this->basePath() . '/plugins/fullcalendar/fullcalendar.css');
+			$headScript
+				->appendFile($this->basePath() . '/plugins/fullcalendar/fullcalendar.js')
+				->appendFile($this->basePath() . '/plugins/fullcalendar/colloquium-conferences.js');
+			break;
+	}
+				
+// Get user credentials
+$user = $this->zfcUserIdentity();
+			
+// Print the doctype and we're ready to go!
+echo $this->doctype();
+?>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>Colloquium</title>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+    <!-- Le styles -->
+    <?php echo $headLink ?>
+  </head>
+
+  <body>
+	
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="<?php echo $this->url('home'); ?>">Colloquium <span class="beta">alpha</span></a>
+				<div class="btn-group pull-right">
+					<?php if ($user): ?>
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i> <?php echo $user->getUsername(); ?>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="<?php echo $this->url('zfcuser'); ?>"><i class="icon-user"></i> <?php echo $this->translate('My profile') ?></a></li>
+						<li><a href="#"><i class="icon-list-alt"></i> <?php echo $this->translate('My conferences') ?></a></li>
+						<li class="divider"></li>
+						<?php
+							if ($this->isAllowed('staff')):
+							?>
+						<li><a href="#"><i class="icon-wrench"></i> <?php echo $this->translate('Conference tools') ?></a></li>
+						<li class="divider"></li>
+							<?php
+							endif;
+						?>
+						<?php
+							if ($this->isAllowed('admin')):
+							?>
+						<li><a href="<?php echo $this->url('admin'); ?>"><i class="icon-briefcase"></i> <?php echo $this->translate('Administration panel') ?></a></li>
+						<li><a href="<?php echo $this->url('admin/conferences'); ?>"><i class="icon-bullhorn"></i> <?php echo $this->translate('Conferences management') ?></a></li>
+						<li><a href="#"><i class="icon-book"></i> <?php echo $this->translate('Users management') ?></a></li>
+						<li><a href="#"><i class="icon-download-alt"></i> <?php echo $this->translate('Import/export data') ?></a></li>
+						<li><a href="#"><i class="icon-print"></i> <?php echo $this->translate('Reports') ?></a></li>
+						<li><a href="#"><i class="icon-cog"></i> <?php echo $this->translate('System settings') ?></a></li>
+						<li class="divider"></li>
+							<?php
+							endif;
+						?>
+						<li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><i class="icon-remove"></i> <?php echo $this->translate('Logoff') ?></a></li>
+					</ul>
+					<?php /* is auth */ else: ?>
+						<a href="<?php echo $this->url('zfcuser/login'); ?>" class="btn btn-inverse span1"><?php echo $this->translate('Login'); ?></a>
+					<?php endif; ?>
+				</div>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li<?php if ($this->url() == $this->url('home')) echo ' class="active"'; ?>>
+							<a href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('Home') ?></a>
+						</li>
+						<li<?php if ($this->url() == $this->url('conferences')) echo ' class="active"'; ?>>
+							<a href="<?php echo $this->url('conferences'); ?>"><?php echo $this->translate('Conferences') ?></a>
+						</li>
+						<li<?php if ($this->url() == $this->url('cfp')) echo ' class="active"'; ?>>
+							<a href="<?php echo $this->url('cfp'); ?>"><?php echo $this->translate('Call for Papers') ?></a>
+						</li>
+						<li<?php if ($this->url() != $this->url()) echo ' class="active"'; ?>>
+							<a href="#"><?php echo $this->translate('Help') ?></a>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<!--div class="alert alert-info span12">
+	<?php echo sprintf($this->translate('<strong>%s</strong> is running. Check the programming '), 'TcheLinux Bento Gon&ccedil;alves') . ' &raquo;' ?>
+	</div-->
+
+<div class="container-fluid">
+
+<?php echo $this->content; ?>
+
+<hr>
+
+<footer>
+	<p>Powered by Colloquium</p>
+</footer>
+
+</div> <!-- /container -->
+
+    <!-- Scripts -->
+	<?php echo $headScript; ?>
+	
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<?php
+
+namespace Application;
+
+use Zend\Mvc\ModuleRouteListener;
+
+class Module
+{
+    public function onBootstrap($e)
+    {
+		$app = $e->getApplication();
+
+		$app->getServiceManager()->get('translator');
+		$eventManager	= $app->getEventManager();
+		$serviceManager = $app->getServiceManager();
+		$moduleRouteListener = new ModuleRouteListener();
+		$moduleRouteListener->attach($eventManager);
+		
+		/**
+		 * Assign 'user' role when registering
+		 */
+		$em = \Zend\EventManager\StaticEventManager::getInstance();
+		$em->attach('ZfcUser\Service\User', 'register.post', function($e) use ($serviceManager) {
+		    $user_id = $e->getParam('user')->getId();
+			$linker = $serviceManager->get('UserRolerLinkerTable');
+			$linker->saveLink(array('user_id' => $user_id, 'role_id' => 'user'));
+		});
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ),
+            ),
+        );
+    }
+
+	public function getServiceConfig()
+	{
+		return array(
+			'factories' => array(
+				'UserRolerLinkerTable' => function($sm) {
+					$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+					$table = new \Admin\Model\UserRoleLinkerTable($dbAdapter);
+					return $table;
+				},
+			),
+		);
+	}
+}
