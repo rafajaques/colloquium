@@ -7,15 +7,15 @@ use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Sql;
 
-class SubmissionTable extends AbstractTableGateway
+class SubmissionUserTable extends AbstractTableGateway
 {
-	protected $table = 'submission';
+	protected $table = 'submission_user';
 	
     public function __construct(Adapter $adapter)
     {
         $this->adapter = $adapter;
         $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype->setArrayObjectPrototype(new Submission());
+        $this->resultSetPrototype->setArrayObjectPrototype(new SubmissionUser());
         $this->initialize();
     }
 
@@ -36,13 +36,21 @@ class SubmissionTable extends AbstractTableGateway
         return $row;
     }
 
-	public function saveSubmission(Submission $submission)
+	public function getSubmissionsByUser($id)
+    {
+        $id  = (int) $id;
+        $rowset = $this->select(array('user_id' => $id));
+        $row = $rowset->current();
+        if (!$row) {
+            throw new \Exception("Could not find row $id");
+        }
+        return $row;
+    }
+
+	public function saveSubmissionUser(SubmissionUser $submission)
 	{
 		$extract = array(
-			'submission_id', 'conference_id', 'track_id', 'title', 'abstract',
-			'duration', 'accepted',
-			// @TODO remove this
-			'minicurriculo',
+			'submission_id', 'user_id', 'main',
 		);
 		
 		$data = array();
@@ -50,24 +58,10 @@ class SubmissionTable extends AbstractTableGateway
 		foreach ($extract as $ext)
 			$data[$ext] = $submission->$ext;
 
-		$id = (int) $submission->submission_id;
-
-		if ($id == 0) {
-			$this->insert($data);
-			$id = $this->getLastInsertValue();
-		} else {
-			if ($this->getSubmission($id)) {
-				$this->update($data, array('submission_id' => $id));
-			} else {
-				throw new \Exception('Form id does not exist');
-			}
-		}
-		
-		// Returns the last insert ID :)
-		return $id;
+		$this->insert($data);
 	}
 	
-	public function deleteSubmission($id)
+	public function deleteSubmissionUser($id)
 	{
 		$this->delete(array('submission_id' => $id));
 	}

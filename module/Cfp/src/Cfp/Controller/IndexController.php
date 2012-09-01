@@ -6,12 +6,14 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Cfp\Form\SubmissionForm;
 use Admin\Model\TrackTable;
 use Cfp\Model\Submission;
+use Cfp\Model\SubmissionUser;
 
 class IndexController extends AbstractActionController
 {
 	protected $conferenceTable;
 	protected $trackTable;
 	protected $submissionTable;
+	protected $submissionUserTable;
 		
     public function indexAction()
     {
@@ -44,11 +46,20 @@ class IndexController extends AbstractActionController
 
 			if ($form->isValid()) {
 				$formData = $form->getData();
-				$formData['conference_id'] = $conference_id;
+				$formData['conference_id'] = $conference_id;	
 
 				$submission->exchangeArray($formData);
-				$this->getSubmissionTable()->saveSubmission($submission);
+				$submission_id = $this->getSubmissionTable()->saveSubmission($submission);	
 
+				$submissionUser = new SubmissionUser();
+				$submissionUser->exchangeArray(array(
+					'submission_id'	=> $submission_id,
+					'user_id'		=> $this->zfcUserAuthentication()->getIdentity()->getId(),
+					'main'			=> 1,
+				));
+				
+				$this->getSubmissionUserTable()->saveSubmissionUser($submissionUser);
+				
 				return $this->redirect()->toRoute('cfp/ok');
 			}
 		}
@@ -83,5 +94,12 @@ class IndexController extends AbstractActionController
 		if (!$this->submissionTable)
 			$this->submissionTable = $this->getServiceLocator()->get('Cfp\Model\SubmissionTable');
 		return $this->submissionTable;
+	}
+	
+	protected function getSubmissionUserTable()
+	{
+		if (!$this->submissionUserTable)
+			$this->submissionUserTable = $this->getServiceLocator()->get('Cfp\Model\SubmissionUserTable');
+		return $this->submissionUserTable;
 	}
 }
