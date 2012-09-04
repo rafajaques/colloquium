@@ -17,6 +17,7 @@ class Submission implements InputFilterAwareInterface
 	public $title;
 	public $abstract;
 	public $duration;
+	public $date_sent;
 	public $accepted;
 	/**
 	 * @TODO remove this
@@ -30,7 +31,7 @@ class Submission implements InputFilterAwareInterface
 		 */
 		$extract = array(
 			'submission_id', 'conference_id', 'track_id', 'title', 'abstract',
-			'duration', 'accepted',
+			'duration', 'date_sent', 'accepted',
 			// @TODO remove this
 			'minicurriculo',
 		);

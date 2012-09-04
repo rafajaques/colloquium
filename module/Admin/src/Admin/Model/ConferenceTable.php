@@ -36,21 +36,8 @@ class ConferenceTable extends AbstractTableGateway
 		$select = $sql->select();
 		$select->from($this->table);
 		$select->join($this->table_schedule,  sprintf('%s.conference_id = %s.conference_id', $this->table, $this->table_schedule));
-		$select->where(array('active' => 1, /*'date' => '> NOW()'*/));
-		
-		/*$selectString = 'SELECT
-							*,
-							DATE_FORMAT(first_day, "%d/%m") first_day_format, 
-							DATE_FORMAT(last_day, "%d/%m") last_day_format,
-							DATE_FORMAT(cfp_opened, "%d/%m") cfp_opened_format,
-							DATE_FORMAT(cfp_closed, "%d/%m") cfp_closed_format,
-							DATE_FORMAT(first_day, "%d/%m") first_day_js, 
-							DATE_FORMAT(last_day, "%Y, %m, %d") last_day_js,
-							DATE_FORMAT(cfp_opened, "%Y, %m, %d") cfp_opened_js,
-							DATE_FORMAT(cfp_closed, "%Y, %m, %d") cfp_closed_js
-							FROM ' . $this->table . ' JOIN ' . $this->table_schedule . '
-							USING(conference_id) WHERE active = 1';*/
-		
+		$select->where(array('active' => 1));
+
 		$selectString = $sql->getSqlStringForSqlObject($select);
 		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
 	

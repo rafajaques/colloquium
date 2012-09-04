@@ -49,6 +49,9 @@ return array(
 				// Home
 				array('controller' => 'Application\Controller\Index', 'roles' => array('guest', 'user')),
 				
+				// "My" pages
+				array('controller' => 'Application\Controller\MySubmissions', 'roles' => array('user')),
+				
 				// Login
 				array('controller' => 'zfcuser', 'roles' => array(/* Everybody! \o/ */)),
 				

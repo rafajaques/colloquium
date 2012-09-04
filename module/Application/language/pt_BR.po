@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-31 16:47-0300\n"
-"PO-Revision-Date: 2012-08-31 16:48-0300\n"
+"POT-Creation-Date: 2012-09-04 11:10-0300\n"
+"PO-Revision-Date: 2012-09-04 11:11-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -64,6 +64,7 @@ msgid "Save"
 msgstr "Salvar"
 
 #: ../../Cfp/src/Cfp/Form/SubmissionForm.php:25
+#: ../../Application/view/application/my-submissions/index.phtml:11
 msgid "Title"
 msgstr "Título"
 
@@ -88,20 +89,20 @@ msgstr "Duração"
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../../Conferences/src/Conferences/Controller/IndexController.php:48
-#: ../../Application/view/layout/layout.phtml:116
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:67
+#: ../../Application/view/layout/layout.phtml:117
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
 #: ../../Cfp/view/cfp/index/submit.phtml:6
 msgid "Call for Papers"
 msgstr "Call for Papers"
 
-#: ../../Conferences/src/Conferences/Controller/IndexController.php:55
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:74
 msgid "Registration"
 msgstr "Inscrição"
 
 #: ../../Admin/view/admin/conferences/add.phtml:5
 #: ../../Admin/view/admin/conferences/index.phtml:5
-#: ../../Application/view/layout/layout.phtml:92
+#: ../../Application/view/layout/layout.phtml:93
 msgid "Conferences management"
 msgstr "Gerenciamento de eventos"
 
@@ -142,7 +143,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: ../../Admin/view/admin/index/index.phtml:5
-#: ../../Application/view/layout/layout.phtml:91
+#: ../../Application/view/layout/layout.phtml:92
 msgid "Administration panel"
 msgstr "Painel de administração"
 
@@ -150,6 +151,39 @@ msgstr "Painel de administração"
 #: ../../ZfcUser/view/zfc-user/user/login.phtml:15
 msgid "Sign In"
 msgstr "Acessar"
+
+#: ../../Application/view/application/my-submissions/index.phtml:4
+#: ../../Application/view/layout/layout.phtml:79
+msgid "My submissions"
+msgstr "Minhas submissões"
+
+#: ../../Application/view/application/my-submissions/index.phtml:12
+msgid "Conference"
+msgstr "Evento"
+
+#: ../../Application/view/application/my-submissions/index.phtml:13
+msgid "Date sent"
+msgstr "Data de envio"
+
+#: ../../Application/view/application/my-submissions/index.phtml:14
+msgid "Accepted"
+msgstr "Aceito"
+
+#: ../../Application/view/application/my-submissions/index.phtml:26
+msgid "Yes"
+msgstr "Sim"
+
+#: ../../Application/view/application/my-submissions/index.phtml:26
+msgid "No"
+msgstr "Não"
+
+#: ../../Application/view/application/my-submissions/index.phtml:31
+msgid "No submissions found."
+msgstr "Nenhuma submissão encontrada."
+
+#: ../../Application/view/application/my-submissions/index.phtml:32
+msgid "Click here to see open call for papers"
+msgstr "Clique aqui para ver call for papers abertos"
 
 #: ../../Application/view/error/404.phtml:1
 msgid "A 404 error occurred"
@@ -231,48 +265,48 @@ msgstr "Meu perfil"
 msgid "My conferences"
 msgstr "Meus eventos"
 
-#: ../../Application/view/layout/layout.phtml:83
+#: ../../Application/view/layout/layout.phtml:84
 msgid "Conference tools"
 msgstr "Ferramentas do evento"
 
-#: ../../Application/view/layout/layout.phtml:93
+#: ../../Application/view/layout/layout.phtml:94
 msgid "Users management"
 msgstr "Gerenciamento de usuários"
 
-#: ../../Application/view/layout/layout.phtml:94
+#: ../../Application/view/layout/layout.phtml:95
 msgid "Import/export data"
 msgstr "Importar/exportar dados"
 
-#: ../../Application/view/layout/layout.phtml:95
+#: ../../Application/view/layout/layout.phtml:96
 msgid "Reports"
 msgstr "Relatórios"
 
-#: ../../Application/view/layout/layout.phtml:96
+#: ../../Application/view/layout/layout.phtml:97
 msgid "System settings"
 msgstr "Configuração do sistema"
 
-#: ../../Application/view/layout/layout.phtml:101
+#: ../../Application/view/layout/layout.phtml:102
 msgid "Logoff"
 msgstr "Sair"
 
-#: ../../Application/view/layout/layout.phtml:104
+#: ../../Application/view/layout/layout.phtml:105
 msgid "Login"
 msgstr "Login"
 
-#: ../../Application/view/layout/layout.phtml:110
+#: ../../Application/view/layout/layout.phtml:111
 msgid "Home"
 msgstr "Início"
 
-#: ../../Application/view/layout/layout.phtml:113
+#: ../../Application/view/layout/layout.phtml:114
 #: ../../Conferences/view/conferences/index/index.phtml:6
 msgid "Conferences"
 msgstr "Eventos"
 
-#: ../../Application/view/layout/layout.phtml:119
+#: ../../Application/view/layout/layout.phtml:120
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../../Application/view/layout/layout.phtml:128
+#: ../../Application/view/layout/layout.phtml:129
 #, php-format
 msgid "<strong>%s</strong> is running. Check the programming "
 msgstr "O evento <strong>%s</strong> está ocorrendo. Veja a programação"
@@ -292,6 +326,7 @@ msgstr "Submeta a sua proposta"
 
 #: ../../Cfp/view/cfp/index/index.phtml:29
 #: ../../Conferences/view/conferences/index/index.phtml:65
+#: ../../Conferences/view/conferences/index/view.phtml:71
 msgid "No call for papers."
 msgstr "Sem call for papers."
 
@@ -316,14 +351,17 @@ msgid "Check out what's coming"
 msgstr "Confira o que está por vir"
 
 #: ../../Conferences/view/conferences/index/index.phtml:17
+#: ../../Conferences/view/conferences/index/view.phtml:23
 msgid "Upcoming events"
 msgstr "Próximos eventos"
 
 #: ../../Conferences/view/conferences/index/index.phtml:39
+#: ../../Conferences/view/conferences/index/view.phtml:45
 msgid "No upcoming events."
 msgstr "Sem eventos próximos."
 
 #: ../../Conferences/view/conferences/index/index.phtml:45
+#: ../../Conferences/view/conferences/index/view.phtml:51
 msgid "Call for papers"
 msgstr "Call for papers"
 

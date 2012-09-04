@@ -76,6 +76,7 @@ echo $this->doctype();
 					<ul class="dropdown-menu">
 						<li><a href="<?php echo $this->url('zfcuser'); ?>"><i class="icon-user"></i> <?php echo $this->translate('My profile') ?></a></li>
 						<li><a href="#"><i class="icon-list-alt"></i> <?php echo $this->translate('My conferences') ?></a></li>
+						<li><a href="<?php echo $this->url('my-submissions'); ?>"><i class="icon-pencil"></i> <?php echo $this->translate('My submissions') ?></a></li>
 						<li class="divider"></li>
 						<?php
 							if ($this->isAllowed('staff')):

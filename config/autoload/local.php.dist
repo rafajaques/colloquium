@@ -1,0 +1,8 @@
+<?php
+return array(
+	'db' => array(
+		'dsn'	   => 'mysql:host=localhost;dbname=colloquium',
+		'username' => 'root',
+		'password' => 'root',
+	),
+);
