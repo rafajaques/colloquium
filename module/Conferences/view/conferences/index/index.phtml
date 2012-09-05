@@ -1,3 +1,12 @@
+<?php
+	// Calls the specific JS/CSS files
+	$this->headScript()
+		->appendFile($this->basePath() . '/plugins/fullcalendar/fullcalendar.js')
+		->appendFile($this->basePath() . '/plugins/fullcalendar/colloquium-conferences.js');
+		
+	$this->headLink()
+		->appendStylesheet($this->basePath() . '/plugins/fullcalendar/fullcalendar.css');
+?>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<!-- Content -->

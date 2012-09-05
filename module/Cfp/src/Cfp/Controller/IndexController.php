@@ -55,6 +55,7 @@ class IndexController extends AbstractActionController
 				$submissionUser->exchangeArray(array(
 					'submission_id'	=> $submission_id,
 					'user_id'		=> $this->zfcUserAuthentication()->getIdentity()->getId(),
+					'status'		=> 'confirmed',
 					'main'			=> 1,
 				));
 				

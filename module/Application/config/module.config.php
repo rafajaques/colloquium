@@ -49,6 +49,9 @@ return array(
 			'Application\Controller\MySubmissions' => 'Application\Controller\MySubmissionsController',
         ),
     ),
+	'strategies' => array(
+		'ViewJsonStrategy',
+	),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

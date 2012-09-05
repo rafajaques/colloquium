@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Model;
+namespace Admin\Model;
 
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\Adapter\Adapter;
@@ -13,8 +13,7 @@ class UserTable extends AbstractTableGateway
     public function __construct(Adapter $adapter)
     {
         $this->adapter = $adapter;
-        $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype->setArrayObjectPrototype(new User());
+        //$this->resultSetPrototype = new ResultSet();
         $this->initialize();
     }
 
@@ -34,41 +33,22 @@ class UserTable extends AbstractTableGateway
         }
         return $row;
     }
-
-	public function saveUser(User $user)
+	
+	public function getUserByEmail($email)
 	{
-		$data = array(
-			'username'			=> $user->username,
-			'password'			=> $user->password,
-			'name'				=> $user->name,
-			'email'				=> $user->email,
-			'validation_key'	=> $user->validation_key,
-			'valid'				=> $user->valid,
-			);
+        $rowset = $this->select(array('email' => $email));
 
-		$id = (int) $user->id;
-
-		if (!$data['validation_key'])
-			$data['validation_key'] = $this->genValidationKey();
-
-		if ($id == 0) {
-			$this->insert($data);
-		} else {
-			if ($this->getUser($id)) {
-				$this->update($data, array('id' => $id));
-			} else {
-				throw new \Exception('Form id does not exist');
-			}
-		}
+        return (bool) $rowset->count();
 	}
 	
-	public function deleteUser($id)
+	public function getIdByEmail($email)
 	{
-		$this->delete(array('id' => $id));
-	}
-
-	private function genValidationKey()
-	{
-		return sha1(md5(uniqid(mt_rand())));
+        $rowset = $this->select(array('email' => $email));
+		if ($rowset->count())
+		{
+			$current = $rowset->current();
+			return $current['user_id'];
+		}
+        return 0;
 	}
 }

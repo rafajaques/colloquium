@@ -13,6 +13,7 @@ class SubmissionUser implements InputFilterAwareInterface
 	
 	public $submission_id;
 	public $user_id;
+	public $status;
 	public $main;
 	
 	public function exchangeArray($data)
@@ -21,7 +22,7 @@ class SubmissionUser implements InputFilterAwareInterface
 		 * @TODO make this better
 		 */
 		$extract = array(
-			'submission_id', 'user_id', 'main',
+			'submission_id', 'user_id', 'status', 'main',
 		);
 
 		foreach ($extract as $ext)

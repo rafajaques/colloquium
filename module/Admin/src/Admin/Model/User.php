@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Model;
+namespace Admin\Model;
 
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Factory as InputFactory;

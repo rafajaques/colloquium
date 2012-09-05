@@ -10,6 +10,7 @@ use Zend\Db\Sql\Sql;
 class SubmissionUserTable extends AbstractTableGateway
 {
 	protected $table = 'submission_user';
+	protected $table_user = 'user';
 	
     public function __construct(Adapter $adapter)
     {
@@ -27,7 +28,7 @@ class SubmissionUserTable extends AbstractTableGateway
 	
     public function getSubmission($id)
     {
-        $id  = (int) $id;
+        $id = (int) $id;
         $rowset = $this->select(array('submission_id' => $id));
         $row = $rowset->current();
         if (!$row) {
@@ -38,7 +39,7 @@ class SubmissionUserTable extends AbstractTableGateway
 
 	public function getSubmissionsByUser($id)
     {
-        $id  = (int) $id;
+        $id = (int) $id;
         $rowset = $this->select(array('user_id' => $id));
         $row = $rowset->current();
         if (!$row) {
@@ -46,17 +47,41 @@ class SubmissionUserTable extends AbstractTableGateway
         }
         return $row;
     }
+	
+	public function getUsersBySubmission($id)
+    {
+		$id = (int) $id;
+		$adapter = $this->adapter;
+		$sql = new Sql($adapter);
+
+		$select = $sql->select(array('t' => $this->table));
+		$select->columns(array('user_id', 'main', 'status'), 0);
+		$select->join(array('tu' => $this->table_user), 't.user_id = tu.user_id', array('display_name', 'email',));
+		$select->where(array('submission_id' => $id));
+		$selectString = $sql->getSqlStringForSqlObject($select);
+
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+		
+		return $results->count() ? $results->toArray() : array();
+    }
 
 	public function saveSubmissionUser(SubmissionUser $submission)
 	{
+
 		$extract = array(
-			'submission_id', 'user_id', 'main',
+			'submission_id', 'user_id', 'status', 'main',
 		);
 		
 		$data = array();
 		
 		foreach ($extract as $ext)
 			$data[$ext] = $submission->$ext;
+
+        $rowset = $this->select(array('user_id' => $data['user_id'], 'submission_id' => $data['submission_id']));
+
+		if ($rowset->count()) {
+			throw new \Exception("User already is a speaker");
+		}
 
 		$this->insert($data);
 	}

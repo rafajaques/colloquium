@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-04 11:10-0300\n"
-"PO-Revision-Date: 2012-09-04 11:11-0300\n"
+"POT-Creation-Date: 2012-09-05 00:30-0300\n"
+"PO-Revision-Date: 2012-09-05 00:30-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -64,7 +64,7 @@ msgid "Save"
 msgstr "Salvar"
 
 #: ../../Cfp/src/Cfp/Form/SubmissionForm.php:25
-#: ../../Application/view/application/my-submissions/index.phtml:11
+#: ../../Application/view/application/my-submissions/index.phtml:15
 msgid "Title"
 msgstr "Título"
 
@@ -90,7 +90,7 @@ msgid "Submit"
 msgstr "Enviar"
 
 #: ../../Conferences/src/Conferences/Controller/IndexController.php:67
-#: ../../Application/view/layout/layout.phtml:117
+#: ../../Application/view/layout/layout.phtml:105
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
 #: ../../Cfp/view/cfp/index/submit.phtml:6
 msgid "Call for Papers"
@@ -102,7 +102,7 @@ msgstr "Inscrição"
 
 #: ../../Admin/view/admin/conferences/add.phtml:5
 #: ../../Admin/view/admin/conferences/index.phtml:5
-#: ../../Application/view/layout/layout.phtml:93
+#: ../../Application/view/layout/layout.phtml:81
 msgid "Conferences management"
 msgstr "Gerenciamento de eventos"
 
@@ -119,6 +119,7 @@ msgid "Created by"
 msgstr "Criado por"
 
 #: ../../Admin/view/admin/conferences/index.phtml:16
+#: ../../Application/view/application/my-submissions/index.phtml:19
 msgid "Manage"
 msgstr "Gerenciar"
 
@@ -143,7 +144,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: ../../Admin/view/admin/index/index.phtml:5
-#: ../../Application/view/layout/layout.phtml:92
+#: ../../Application/view/layout/layout.phtml:80
 msgid "Administration panel"
 msgstr "Painel de administração"
 
@@ -152,38 +153,76 @@ msgstr "Painel de administração"
 msgid "Sign In"
 msgstr "Acessar"
 
-#: ../../Application/view/application/my-submissions/index.phtml:4
-#: ../../Application/view/layout/layout.phtml:79
+#: ../../Application/view/application/my-submissions/index.phtml:8
+#: ../../Application/view/layout/layout.phtml:67
 msgid "My submissions"
 msgstr "Minhas submissões"
 
-#: ../../Application/view/application/my-submissions/index.phtml:12
+#: ../../Application/view/application/my-submissions/index.phtml:16
 msgid "Conference"
 msgstr "Evento"
 
-#: ../../Application/view/application/my-submissions/index.phtml:13
+#: ../../Application/view/application/my-submissions/index.phtml:17
 msgid "Date sent"
 msgstr "Data de envio"
 
-#: ../../Application/view/application/my-submissions/index.phtml:14
+#: ../../Application/view/application/my-submissions/index.phtml:18
 msgid "Accepted"
 msgstr "Aceito"
 
-#: ../../Application/view/application/my-submissions/index.phtml:26
+#: ../../Application/view/application/my-submissions/index.phtml:31
 msgid "Yes"
 msgstr "Sim"
 
-#: ../../Application/view/application/my-submissions/index.phtml:26
+#: ../../Application/view/application/my-submissions/index.phtml:31
 msgid "No"
 msgstr "Não"
 
-#: ../../Application/view/application/my-submissions/index.phtml:31
+#: ../../Application/view/application/my-submissions/index.phtml:36
+msgid "Details"
+msgstr "Detalhes"
+
+#: ../../Application/view/application/my-submissions/index.phtml:37
+#: ../../Application/view/application/my-submissions/index.phtml:59
+msgid "Speakers"
+msgstr "Palestrantes"
+
+#: ../../Application/view/application/my-submissions/index.phtml:49
 msgid "No submissions found."
 msgstr "Nenhuma submissão encontrada."
 
-#: ../../Application/view/application/my-submissions/index.phtml:32
+#: ../../Application/view/application/my-submissions/index.phtml:50
 msgid "Click here to see open call for papers"
 msgstr "Clique aqui para ver call for papers abertos"
+
+#: ../../Application/view/application/my-submissions/index.phtml:67
+msgid "Speaker"
+msgstr "Palestrante"
+
+#: ../../Application/view/application/my-submissions/index.phtml:68
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:13
+msgid "Email"
+msgstr "Email"
+
+#: ../../Application/view/application/my-submissions/index.phtml:69
+msgid "Status"
+msgstr "Status"
+
+#: ../../Application/view/application/my-submissions/index.phtml:75
+msgid "Pending..."
+msgstr "Pendente..."
+
+#: ../../Application/view/application/my-submissions/index.phtml:82
+msgid "Speaker's Email"
+msgstr "Email do Palestrante"
+
+#: ../../Application/view/application/my-submissions/index.phtml:83
+msgid "Add speaker"
+msgstr "Adicionar palestrante"
+
+#: ../../Application/view/application/my-submissions/index.phtml:88
+msgid "Close"
+msgstr "Fechar"
 
 #: ../../Application/view/error/404.phtml:1
 msgid "A 404 error occurred"
@@ -257,56 +296,56 @@ msgstr "Exceções anteriores"
 msgid "No Exception available"
 msgstr "Não há exceção disponível"
 
-#: ../../Application/view/layout/layout.phtml:77
+#: ../../Application/view/layout/layout.phtml:65
 msgid "My profile"
 msgstr "Meu perfil"
 
-#: ../../Application/view/layout/layout.phtml:78
+#: ../../Application/view/layout/layout.phtml:66
 msgid "My conferences"
 msgstr "Meus eventos"
 
-#: ../../Application/view/layout/layout.phtml:84
+#: ../../Application/view/layout/layout.phtml:72
 msgid "Conference tools"
 msgstr "Ferramentas do evento"
 
-#: ../../Application/view/layout/layout.phtml:94
+#: ../../Application/view/layout/layout.phtml:82
 msgid "Users management"
 msgstr "Gerenciamento de usuários"
 
-#: ../../Application/view/layout/layout.phtml:95
+#: ../../Application/view/layout/layout.phtml:83
 msgid "Import/export data"
 msgstr "Importar/exportar dados"
 
-#: ../../Application/view/layout/layout.phtml:96
+#: ../../Application/view/layout/layout.phtml:84
 msgid "Reports"
 msgstr "Relatórios"
 
-#: ../../Application/view/layout/layout.phtml:97
+#: ../../Application/view/layout/layout.phtml:85
 msgid "System settings"
 msgstr "Configuração do sistema"
 
-#: ../../Application/view/layout/layout.phtml:102
+#: ../../Application/view/layout/layout.phtml:90
 msgid "Logoff"
 msgstr "Sair"
 
-#: ../../Application/view/layout/layout.phtml:105
+#: ../../Application/view/layout/layout.phtml:93
 msgid "Login"
 msgstr "Login"
 
-#: ../../Application/view/layout/layout.phtml:111
+#: ../../Application/view/layout/layout.phtml:99
 msgid "Home"
 msgstr "Início"
 
-#: ../../Application/view/layout/layout.phtml:114
-#: ../../Conferences/view/conferences/index/index.phtml:6
+#: ../../Application/view/layout/layout.phtml:102
+#: ../../Conferences/view/conferences/index/index.phtml:15
 msgid "Conferences"
 msgstr "Eventos"
 
-#: ../../Application/view/layout/layout.phtml:120
+#: ../../Application/view/layout/layout.phtml:108
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../../Application/view/layout/layout.phtml:129
+#: ../../Application/view/layout/layout.phtml:117
 #, php-format
 msgid "<strong>%s</strong> is running. Check the programming "
 msgstr "O evento <strong>%s</strong> está ocorrendo. Veja a programação"
@@ -325,7 +364,7 @@ msgid "Submit your proposal"
 msgstr "Submeta a sua proposta"
 
 #: ../../Cfp/view/cfp/index/index.phtml:29
-#: ../../Conferences/view/conferences/index/index.phtml:65
+#: ../../Conferences/view/conferences/index/index.phtml:74
 #: ../../Conferences/view/conferences/index/view.phtml:71
 msgid "No call for papers."
 msgstr "Sem call for papers."
@@ -346,21 +385,21 @@ msgstr "Se quiser submeter outra proposta,"
 msgid "click here"
 msgstr "clique aqui"
 
-#: ../../Conferences/view/conferences/index/index.phtml:6
+#: ../../Conferences/view/conferences/index/index.phtml:15
 msgid "Check out what's coming"
 msgstr "Confira o que está por vir"
 
-#: ../../Conferences/view/conferences/index/index.phtml:17
+#: ../../Conferences/view/conferences/index/index.phtml:26
 #: ../../Conferences/view/conferences/index/view.phtml:23
 msgid "Upcoming events"
 msgstr "Próximos eventos"
 
-#: ../../Conferences/view/conferences/index/index.phtml:39
+#: ../../Conferences/view/conferences/index/index.phtml:48
 #: ../../Conferences/view/conferences/index/view.phtml:45
 msgid "No upcoming events."
 msgstr "Sem eventos próximos."
 
-#: ../../Conferences/view/conferences/index/index.phtml:45
+#: ../../Conferences/view/conferences/index/index.phtml:54
 #: ../../Conferences/view/conferences/index/view.phtml:51
 msgid "Call for papers"
 msgstr "Call for papers"
@@ -415,10 +454,6 @@ msgstr "Os registros estão desabilitados"
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: ../../ZfcUser/view/zfc-user/user/register.phtml:13
-msgid "Email"
-msgstr "Email"
-
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:14
 msgid "Display Name"
 msgstr "Nome de Exibição"
@@ -430,44 +465,3 @@ msgstr "Confirme a Senha"
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:22
 msgid "Register"
 msgstr "Registro"
-
-#~ msgid "Access"
-#~ msgstr "Acesso"
-
-#~ msgid "You need only one account to attend to all conferences."
-#~ msgstr ""
-#~ "Você precisa de apenas uma conta para participar de todos os eventos."
-
-#~ msgid "Short conference name"
-#~ msgstr "Nome do evento (curto)"
-
-#~ msgid "Here you can manage and change system settings."
-#~ msgstr "Aqui você pode gerenciar e alterar as preferências do sistema."
-
-#~ msgid "Administration Panel"
-#~ msgstr "Painel de Administração"
-
-#~ msgid "Almost done!"
-#~ msgstr "Quase pronto!"
-
-#~ msgid "Just a little more to activate your account."
-#~ msgstr "Falta só mais um pouco para ativar o seu cadastro."
-
-#~ msgid ""
-#~ "An e-mail has been sent to you containing a link and a code to activate "
-#~ "your account. This is important because we can verify the integrity of "
-#~ "your registration and avoid unwanted messages."
-#~ msgstr ""
-#~ "Foi enviado um e-mail para você contendo um link e um código para ativar "
-#~ "o seu cadastro. Isso é importante para que possamos verificar a "
-#~ "integridade do seu cadastro e evitar mensagens indesejadas."
-
-#~ msgid ""
-#~ "If you are having difficulty activating your account, contact support via "
-#~ "help."
-#~ msgstr ""
-#~ "Se você estiver tendo dificuldade para ativar o seu cadastro, entre em "
-#~ "contato com o suporte através do link de ajuda."
-
-#~ msgid "Back to home"
-#~ msgstr "Voltar à página inicial"

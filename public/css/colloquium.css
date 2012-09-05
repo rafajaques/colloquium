@@ -60,7 +60,10 @@ body {
 	margin:0 !important;
 }
 .center-text{
-	text-align:center;
+	text-align:center !important;
+}
+.right-text{
+	text-align:right !important;
 }
 
 /**

@@ -7,37 +7,25 @@
 
 // Prepare HeadLink
 $headLink = $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-				->appendStylesheet($this->basePath() . '/css/bootstrap.css')
-				->appendStylesheet($this->basePath() . '/css/colloquium.css')
-				->appendStylesheet($this->basePath() . '/css/bootstrap-responsive.css');
+				->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.css')
+				->prependStylesheet($this->basePath() . '/css/colloquium.css')
+				->prependStylesheet($this->basePath() . '/css/bootstrap.css');
 	
 $headScript = $this->headScript()
-				->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-				->appendFile($this->basePath() . '/js/jquery.js')
-				->appendFile($this->basePath() . '/js/bootstrap-transition.js')
-				->appendFile($this->basePath() . '/js/bootstrap-alert.js')
-				->appendFile($this->basePath() . '/js/bootstrap-modal.js')
-				->appendFile($this->basePath() . '/js/bootstrap-dropdown.js')
-				->appendFile($this->basePath() . '/js/bootstrap-scrollspy.js')
-				->appendFile($this->basePath() . '/js/bootstrap-tab.js')
-				->appendFile($this->basePath() . '/js/bootstrap-tooltip.js')
-				->appendFile($this->basePath() . '/js/bootstrap-popover.js')
-				->appendFile($this->basePath() . '/js/bootstrap-button.js')
-				->appendFile($this->basePath() . '/js/bootstrap-collapse.js')
-				->appendFile($this->basePath() . '/js/bootstrap-carousel.js')
-				->appendFile($this->basePath() . '/js/bootstrap-typeahead.js');
-
-	// Append page specific css and js
-	switch ($this->url())
-	{
-		case $this->url('conferences'):
-			$headLink
-				->appendStylesheet($this->basePath() . '/plugins/fullcalendar/fullcalendar.css');
-			$headScript
-				->appendFile($this->basePath() . '/plugins/fullcalendar/fullcalendar.js')
-				->appendFile($this->basePath() . '/plugins/fullcalendar/colloquium-conferences.js');
-			break;
-	}
+					->prependFile($this->basePath() . '/js/bootstrap-typeahead.js')
+					->prependFile($this->basePath() . '/js/bootstrap-carousel.js')
+					->prependFile($this->basePath() . '/js/bootstrap-collapse.js')
+					->prependFile($this->basePath() . '/js/bootstrap-button.js')
+					->prependFile($this->basePath() . '/js/bootstrap-popover.js')
+					->prependFile($this->basePath() . '/js/bootstrap-tooltip.js')
+					->prependFile($this->basePath() . '/js/bootstrap-tab.js')
+					->prependFile($this->basePath() . '/js/bootstrap-scrollspy.js')
+					->prependFile($this->basePath() . '/js/bootstrap-dropdown.js')
+					->prependFile($this->basePath() . '/js/bootstrap-modal.js')
+					->prependFile($this->basePath() . '/js/bootstrap-alert.js')
+					->prependFile($this->basePath() . '/js/bootstrap-transition.js')
+					->prependFile($this->basePath() . '/js/jquery.js')
+					->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',));
 				
 // Get user credentials
 $user = $this->zfcUserIdentity();
@@ -53,7 +41,7 @@ echo $this->doctype();
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
     <!-- Le styles -->
-    <?php echo $headLink ?>
+	<?php echo $headLink ?>
   </head>
 
   <body>
@@ -142,7 +130,7 @@ echo $this->doctype();
 </div> <!-- /container -->
 
     <!-- Scripts -->
-	<?php echo $headScript; ?>
+	<?php echo $this->headScript(); ?>
 	
   </body>
 </html>
