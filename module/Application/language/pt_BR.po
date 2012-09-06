@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-05 00:30-0300\n"
-"PO-Revision-Date: 2012-09-05 00:30-0300\n"
+"PO-Revision-Date: 2012-09-06 10:03-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -94,7 +94,7 @@ msgstr "Enviar"
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
 #: ../../Cfp/view/cfp/index/submit.phtml:6
 msgid "Call for Papers"
-msgstr "Call for Papers"
+msgstr "Chamada de Trabalhos"
 
 #: ../../Conferences/src/Conferences/Controller/IndexController.php:74
 msgid "Registration"
@@ -193,7 +193,7 @@ msgstr "Nenhuma submissão encontrada."
 
 #: ../../Application/view/application/my-submissions/index.phtml:50
 msgid "Click here to see open call for papers"
-msgstr "Clique aqui para ver call for papers abertos"
+msgstr "Clique aqui para ver chamada de trabalhos abertas"
 
 #: ../../Application/view/application/my-submissions/index.phtml:67
 msgid "Speaker"
@@ -367,7 +367,7 @@ msgstr "Submeta a sua proposta"
 #: ../../Conferences/view/conferences/index/index.phtml:74
 #: ../../Conferences/view/conferences/index/view.phtml:71
 msgid "No call for papers."
-msgstr "Sem call for papers."
+msgstr "Sem chamada de trabalhos."
 
 #: ../../Cfp/view/cfp/index/ok.phtml:10
 msgid ""
@@ -402,7 +402,7 @@ msgstr "Sem eventos próximos."
 #: ../../Conferences/view/conferences/index/index.phtml:54
 #: ../../Conferences/view/conferences/index/view.phtml:51
 msgid "Call for papers"
-msgstr "Call for papers"
+msgstr "Chamada de trabalhos"
 
 #: ../../ZfcUser/view/zfc-user/user/changeemail.phtml:3
 msgid "Email address changed successfully."

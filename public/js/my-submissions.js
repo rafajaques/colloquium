@@ -80,6 +80,7 @@ function refreshSpeakersList()
 				$("#speakers_table").append(append);
 			}
 			
+			// Cleanup email
 			$("#speaker_email").val("");
 		}
 		else
