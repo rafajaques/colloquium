@@ -17,7 +17,7 @@ class Conference implements InputFilterAwareInterface
 		 * @TODO make this better
 		 */
 		$extract = array(
-			'conference_id', 'user_id', 'name', 'short_name', 'description', 'location',
+			'conference_id', 'user_id', 'name', 'short_name', 'description', 'registration_fee', 'location',
 			'address', 'city', 'state', 'country', 'gmt', 'show_running', 'active'
 		);
 
@@ -84,6 +84,15 @@ class Conference implements InputFilterAwareInterface
 			
 			$inputFilter->add($factory->createInput(array(
 				'name'     => 'description',
+				'required' => true,
+				'filters'  => array(
+					array('name' => 'StripTags'),
+					array('name' => 'StringTrim'),
+				),
+			)));
+			
+			$inputFilter->add($factory->createInput(array(
+				'name'     => 'registration_fee',
 				'required' => true,
 				'filters'  => array(
 					array('name' => 'StripTags'),

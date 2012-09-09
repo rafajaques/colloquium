@@ -14,6 +14,7 @@ class ConferencesController extends AbstractActionController
 {
 	
 	protected $conferenceTable;
+	protected $submissionTable;
 	
 	public function indexAction()
 	{
@@ -46,6 +47,18 @@ class ConferencesController extends AbstractActionController
 		return(array('form' => $form));
 	}
 	
+	public function submissionsAction()
+	{
+		$id = (int) $this->params()->fromRoute('id');
+		
+		$confName = $this->getConferencesTable()->getConference($id);
+		
+		$subsTable = $this->getSubmissionTable();
+		$subs = $subsTable->getSubmissionsByConference($id);
+		
+		return array('submissions' => $subs, 'conference' => $confName);
+	}
+	
 	protected function getConferencesTable()
 	{
 		if (!$this->conferenceTable)
@@ -54,5 +67,15 @@ class ConferencesController extends AbstractActionController
 			$this->conferenceTable = $sm->get('Admin\Model\ConferenceTable');
 		}
 		return $this->conferenceTable;
+	}
+	
+	protected function getSubmissionTable()
+	{
+		if (!$this->submissionTable)
+		{
+			$sm = $this->getServiceLocator();
+			$this->submissionTable = $sm->get('Cfp\Model\SubmissionTable');
+		}
+		return $this->submissionTable;
 	}
 }

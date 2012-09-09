@@ -17,6 +17,10 @@ h1.catch{
 	text-align:center;
 }
 
+h1,h2,h3,h4,h4{
+	text-shadow: 1px 1px 2px #ccc;
+}
+
 p.byline{	
 	font-size:18px;
 	font-weight:300;
@@ -64,6 +68,20 @@ body {
 }
 .right-text{
 	text-align:right !important;
+}
+.justify{
+	text-align:justify !important;
+}
+.down-space{
+	margin-bottom:15px !important;
+}
+.btn-largest{
+	height:70px;
+	padding-top:25px;
+	font-size:20px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
 }
 
 /**

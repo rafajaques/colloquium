@@ -39,10 +39,11 @@ return array(
                     'inner' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '[:action[/:id]][/]',
+                            'route'    => '[:action[/:id][/:done]][/]',
                             'constraints' => array(
                                 'action'	=> '[a-zA-Z][a-zA-Z0-9_-]*',
 								'id'		=> '[0-9]*',
+								'done'		=> '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                         ),
                     ),

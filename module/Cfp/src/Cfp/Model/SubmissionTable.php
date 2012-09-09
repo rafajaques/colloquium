@@ -9,9 +9,11 @@ use Zend\Db\Sql\Sql;
 
 class SubmissionTable extends AbstractTableGateway
 {
-	protected $table     = 'submission';
-	protected $tableRel  = 'submission_user';
-	protected $tableConf = 'conference';
+	protected $table      = 'submission';
+	protected $tableRel   = 'submission_user';
+	protected $tableConf  = 'conference';
+	protected $tableUser  = 'user';
+	protected $tableTrack = 'conference_track';
 	
     public function __construct(Adapter $adapter)
     {
@@ -52,6 +54,31 @@ class SubmissionTable extends AbstractTableGateway
 
 		$select->where(array('tr.user_id' => $user_id));
 
+		$select->order('date_sent DESC');
+					
+		$selectString = $sql->getSqlStringForSqlObject($select);
+
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+
+        return $results->count() ? $results->toArray() : array();
+
+	}
+	
+	public function getSubmissionsByConference($conference_id)
+	{
+		$adapter = $this->adapter;
+		$sql = new Sql($adapter);
+		$select = $sql->select();
+        $conference_id = (int) $conference_id;
+		
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('tr' => $this->tableRel), 't.submission_id = tr.submission_id');
+		$select->join(array('tu' => $this->tableUser), 'tr.user_id = tu.user_id', array('user' => 'display_name', 'email'));
+		$select->join(array('tt' => $this->tableTrack), 'tt.track_id = t.track_id', array('track_name' => 'name'));
+
+		$select->where(array('t.conference_id' => $conference_id, 'main' => 1));
+		
 		$select->order('date_sent DESC');
 					
 		$selectString = $sql->getSqlStringForSqlObject($select);

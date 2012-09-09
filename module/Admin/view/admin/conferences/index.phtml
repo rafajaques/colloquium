@@ -5,10 +5,10 @@
 		<h1 class="catch"><?php echo $this->translate('Conferences management'); ?></h1>
 	</div>
 
-	<div class="row margin-adjust">
+	<div class="row-fluid">
 		<a href="<?php echo $this->url('admin/conferences', array('action' => 'add')); ?>">-Add</a>
 	</div>
-		<div class="row margin-adjust">
+		<div class="row-fluid">
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th><?php echo $this->translate('Name'); ?></th>
@@ -25,23 +25,23 @@
 								// Get translations
 								$schedule		= $this->translate('Schedule');
 								$tracks			= $this->translate('Tracks');
-								$submissions	= $this->translate('Submissions');
+								$submissions	= $this->translate('Submissions'); 
 								$staff			= $this->translate('Staff');
 								$atendees		= $this->translate('Attendees');
 								$edit			= $this->translate('Edit');
 							?>
 							<!-- Schedule -->
-							<a class="btn btn-small" href="#" rel="tooltip" alt="<?php echo $schedule; ?>" title="<?php echo $schedule; ?>"><i class="icon-calendar"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'schedule', 'id' => $conference->conference_id)); ?>" rel="tooltip" alt="<?php echo $schedule; ?>" title="<?php echo $schedule; ?>"><i class="icon-calendar"></i></a>
 							<!-- Tracks -->
-							<a class="btn btn-small" href="#" alt="<?php echo $tracks; ?>" title="<?php echo $tracks; ?>"><i class="icon-road"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'tracks', 'id' => $conference->conference_id)); ?>" alt="<?php echo $tracks; ?>" title="<?php echo $tracks; ?>"><i class="icon-road"></i></a>
 							<!-- Submissions -->
-							<a class="btn btn-small" href="#" alt="<?php echo $submissions; ?>" title="<?php echo $submissions; ?>"><i class="icon-pencil"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'submissions', 'id' => $conference->conference_id)); ?>" alt="<?php echo $submissions; ?>" title="<?php echo $submissions; ?>"><i class="icon-file"></i></a>
 							<!-- Staff -->
-							<a class="btn btn-small" href="#" alt="<?php echo $staff; ?>" title="<?php echo $staff; ?>"><i class="icon-eye-open"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'staff', 'id' => $conference->conference_id)); ?>" alt="<?php echo $staff; ?>" title="<?php echo $staff; ?>"><i class="icon-eye-open"></i></a>
 							<!-- Atendees -->
-							<a class="btn btn-small" href="#" alt="<?php echo $atendees; ?>" title="<?php echo $atendees; ?>"><i class="icon-user"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'attendees', 'id' => $conference->conference_id)); ?>" alt="<?php echo $atendees; ?>" title="<?php echo $atendees; ?>"><i class="icon-user"></i></a>
 							<!-- Edit -->
-							<a class="btn btn-small" href="#" alt="<?php echo $edit; ?>" title="<?php echo $edit; ?>"><i class="icon-wrench"></i></a>
+							<a class="btn btn-small" href="<?php echo $this->url('admin/conferences', array('action' => 'edit', 'id' => $conference->conference_id)); ?>" alt="<?php echo $edit; ?>" title="<?php echo $edit; ?>"><i class="icon-wrench"></i></a>
 						</div>
 					</td>
 				</tr>

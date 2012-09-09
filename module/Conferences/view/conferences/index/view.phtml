@@ -1,21 +1,119 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 		<!-- Content -->
-		<div class="span9 content">
+		<div class="span9 content down-space">
 			<div class="page-header">
 				<h1>&nbsp;<i class="big-icon-announcement"></i> <?php echo $conference->name; ?></h1>
 			</div>
 			
-			<div class="alert alert-error">
-			  <strong>Atenção!</strong> Página provisória / Motivo: debug
+			<div class="row-fluid">
+				<?php if ($this->registered): ?>
+				<div class="alert alert-info">
+					<?php echo $this->translate('You registered to this conference in '); ?>
+					<strong><?php
+						$reg = $this->extractDate($this->registered['register']);
+						vprintf('%s/%s/%s', array($reg['day'], $reg['month'], $reg['year']));
+					?></strong>.
+				</div>
+				<?php elseif ($this->zfcUserIdentity()): ?>
+				<a href="#myModal" role="button" data-toggle="modal" class="btn down-space btn-primary btn-largest offset1 span10"><?php echo $this->translate('Register me at this event!'); ?></a>
+				<?php else: ?>
+				<div class="alert">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<?php echo $this->translate('<strong>Remember!</strong> You can\'t attend the conference without being registered.'); ?>
+					<a href="<?php echo $this->url('zfcuser'); ?>"><?php echo $this->translate('Click here to login'); ?></a>.
+				</div>
+				<?php endif; ?>
 			</div>
 			
-			<div>
-				<?php
-					foreach ($conference as $a => $b)
-						printf('<p><strong>%s:</strong> %s</p>', $a, $b);
-				?>
+			<div class="row-fluid">
+				<div class="span6 well">
+					<h3><?php echo $this->translate('About the conference'); ?></h3>
+					<p><?php
+						/**
+						 * @TODO this should be changed, since there will be a WYSIWYG
+						 */
+						echo nl2br($conference->description);
+					?></p>
+				</div>
+				
+				<div class="span6">
+					<h3><?php echo $this->translate('Information'); ?></h3>
+					<p><?php
+						// Tons of things to do here!
+						$starting_time = $this->extractDate($conference->starting_time);
+						
+						$first_day = $this->extractDate($conference->first_day);
+						$last_day = $conference->first_day != $conference->last_day ? $this->extractDate($conference->last_day) : null;
+						
+						$cfp_opened = $this->extractDate($conference->cfp_opened);
+						$cfp_closed = $conference->cfp_opened != $conference->cfp_closed ? $this->extractDate($conference->cfp_closed) : null;
+						
+						$registration_opened = $this->extractDate($conference->registration_opened);
+						$registration_closed = $conference->registration_opened != $conference->registration_closed ? $this->extractDate($conference->registration_closed) : null;
+						
+						// Date (two cases)
+						if ($last_day)
+						{
+							printf(
+								'<strong>%s:</strong> %s - %s',
+								$this->translate('Date'),
+								sprintf('%s/%s/%s', $first_day['day'], $first_day['month'], $first_day['short_year']),
+								sprintf('%s/%s/%s', $last_day['day'], $last_day['month'], $last_day['short_year'])
+							);
+							echo '<br>';
+							printf(
+								'<strong>%s:</strong> %s',
+								$this->translate('Starting time'),
+								sprintf('%s:%s', $starting_time['hour'], $starting_time['minute'])
+							);
+						}
+						else
+						{
+							printf(
+								$this->translate('<strong>Date:</strong> %s at %s'),
+								sprintf('%s/%s/%s', $first_day['day'], $first_day['month'], $first_day['year']),
+								sprintf('%s:%s', $starting_time['hour'], $starting_time['minute'])
+							);
+						}
+						
+						// Call for papers
+						echo '<br>';
+						printf('<strong>%s:</strong> ', $this->translate('Call for papers'));
+						printf('%s/%s/%s', $cfp_opened['day'], $cfp_opened['month'], $cfp_opened['short_year']);
+						if ($cfp_closed)
+							printf(' - %s/%s/%s', $cfp_closed['day'], $cfp_closed['month'], $cfp_closed['short_year']);
+							
+						// Registration
+						echo '<br>';
+						printf('<strong>%s:</strong> ', $this->translate('Registrations'));
+						printf('%s/%s/%s', $registration_opened['day'], $registration_opened['month'], $registration_opened['short_year']);
+						if ($registration_closed)
+							printf(' - %s/%s/%s', $registration_closed['day'], $registration_closed['month'], $registration_closed['short_year']);
+					?></p>
+					
+					<h3><?php echo $this->translate('Registration fee'); ?></h3>
+					<p><?php echo $conference->registration_fee; ?></p>
+					
+					<h4><?php echo $this->translate('Location'); ?></h4>
+					<?php
+						echo '<p><strong>' . $conference->location . '</strong><br>';
+						echo $conference->address . '<br>';
+						echo $conference->city . '<br>';
+						echo $conference->state . '</p>';
+						
+						$addr_maps = urlencode(sprintf('%s - %s - %s - %s - %s', $conference->location, $conference->address, $conference->city, $conference->state, $conference->country));
+					?>
+					<!--iframe height="350px" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?f=q&amp;source=s_q&amp;hl=pt-BR&amp;geocode=&amp;q=<?php echo $addr_maps; ?>&amp;aq=0&amp;oq=&amp;sll=&amp;sspn=&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=<?php echo $addr_maps; ?>&amp;z=14&amp;output=embed&amp;iwloc=near"></iframe-->
+				</div>
 			</div>
+			
+			<!--div>
+				<?php
+					/*foreach ($conference as $a => $b)
+						printf('<p><strong>%s:</strong> %s</p>', $a, $b);*/
+				?>
+			</div-->
 		</div>
 		<!-- Sidebar -->
 		<div class="span3">
@@ -75,4 +173,31 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><?php echo $this->translate('Conference registration'); ?></h3>
+  </div>
+  <div class="modal-body">
+    <p class="justify"><?php echo $this->translate('Some conferences have sponsors. You can choose to help the organization and allow access to your email for sending advertising. However, you are not required to disclose this information. Check the box below if you want to disclose your email to potential sponsors.'); ?></p>
+	<form action="<?php echo $this->url('conferences/inner', array('action' => 'register')); ?>" method="post">
+		<p>
+			<label class="checkbox">
+				<input type="hidden" name="conference_id" value="<?php echo $conference->conference_id; ?>">
+				<input type="hidden" name="disclose_email" value="0">
+				<input type="checkbox" name="disclose_email" value="1" checked="checked">
+				<strong><?php echo $this->translate('I accept that my email address may be passed on to third parties.'); ?></strong>
+			</label>
+		</p>
+		<div class="row-fluid">
+			<button type="submit" class="btn btn-large btn-success offset3 span6"><i class="icon-check icon-white"></i> <?php echo $this->translate('Join this conference'); ?></button>
+		</div>
+	</form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-white"></i> <?php echo $this->translate('Close without registering'); ?></button>
+  </div>
 </div>

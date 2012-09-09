@@ -29,14 +29,20 @@ class ConferenceTable extends AbstractTableGateway
 	/**
 	 * Used to get full data of conferences, including date and stuff
 	 */
-    public function fetchFullData()
+    public function fetchFullData($id = null)
     {
 		$adapter = $this->adapter;
         $sql = new Sql($adapter);
 		$select = $sql->select();
-		$select->from($this->table);
-		$select->join($this->table_schedule,  sprintf('%s.conference_id = %s.conference_id', $this->table, $this->table_schedule));
-		$select->where(array('active' => 1));
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('ts' => $this->table_schedule), 't.conference_id = ts.conference_id');
+
+		$where = array('active' => 1);
+		if ($id)
+			$where['t.conference_id'] = $id;
+		$select->where($where);
 
 		$selectString = $sql->getSqlStringForSqlObject($select);
 		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
@@ -58,7 +64,7 @@ class ConferenceTable extends AbstractTableGateway
 	public function saveConference(Conference $conference)
 	{
 		$extract = array(
-			'conference_id', 'user_id', 'name', 'short_name', 'description', 'location',
+			'conference_id', 'user_id', 'name', 'short_name', 'description', 'registration_fee', 'location',
 			'address', 'city', 'state', 'country', 'gmt', 'show_running', 'active'
 		);
 		

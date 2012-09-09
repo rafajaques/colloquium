@@ -12,6 +12,7 @@ class IndexController extends AbstractActionController
 {
 	
 	protected $conferenceTable;
+	protected $conferenceAttendeeTable;
 	
     public function indexAction()
     {
@@ -25,18 +26,38 @@ class IndexController extends AbstractActionController
 		if (!$conference_id = $this->params()->fromRoute('id', 0))
 			return $this->redirect()->toRoute('conferences');
 		
-		try
-		{
-			$conference = $this->getConferencesTable()->getConference($conference_id);
-		} catch (\Exception $e)
-		{
-			return $this->redirect()->toRoute('conferences');
-		}
+		$conference = $this->getConferencesTable()->fetchFullData($conference_id);
 		
+		if ($att = $this->getConferenceAttendeeTable()->userAttendingToConference($this->getUserId(), $conference_id))
+			$registered = $att;
+		else
+			$registered = false;
+
 		return array(
-			'conference'	=> $conference,
+			'conference'	=> $conference->current(),
+			'registered'	=> $registered,
 			'conferences'	=> $this->getConferencesTable()->fetchFullData(),
 		);
+	}
+	
+	public function registerAction()
+	{
+		$request = $this->getRequest();
+		if (!$request->isPost() || !$request->getPost('conference_id') || !($data['user_id'] = $this->getUserId()))
+			return $this->redirect()->toRoute('conferences');
+			
+		$data['conference_id']	= (int) $request->getPost('conference_id');
+		$data['disclose_email']	= (int) $request->getPost('disclose_email');
+
+		try {
+			$this->getConferenceAttendeeTable()->saveAttendee($data);
+		}
+		catch (\Exception $e)
+		{
+			return $this->redirect()->toRoute('conferences/inner', array('action' => 'view', 'id' => $data['conference_id'], 'done' => 'double'));	
+		}
+		
+		return $this->redirect()->toRoute('conferences/inner', array('action' => 'view', 'id' => $data['conference_id'], 'done' => 'done'));
 	}
 
 	public function jsCalendarAction()
@@ -61,6 +82,7 @@ class IndexController extends AbstractActionController
 				'title' => $conf['name'],
 				'start' => $conf['first_day'],
 				'end' => $conf['last_day'],
+				'url' => '/conferences/view/' . $conf['conference_id'],
 			);
 			
 			$output[] = array(
@@ -68,6 +90,7 @@ class IndexController extends AbstractActionController
 				'start' => $conf['cfp_opened'],
 				'end' => $conf['cfp_closed'],
 				'color' => 'green',
+				'url' => '/cfp/submit/' . $conf['conference_id'],
 			);
 			
 			$output[] = array(
@@ -75,10 +98,19 @@ class IndexController extends AbstractActionController
 				'start' => $conf['registration_opened'],
 				'end' => $conf['registration_closed'],
 				'color' => '#c00000',
+				'url' => '/conferences/view/' . $conf['conference_id'],
 			);
 		}
 
 		return new JsonModel($output);
+	}
+	
+	protected function getUserId()
+	{
+		if (!$this->zfcUserAuthentication()->getIdentity())
+			return false;
+		
+		return $this->zfcUserAuthentication()->getIdentity()->getId();
 	}
 	
 	protected function getConferencesTable()
@@ -89,6 +121,16 @@ class IndexController extends AbstractActionController
 			$this->conferenceTable = $sm->get('Admin\Model\ConferenceTable');
 		}
 		return $this->conferenceTable;
+	}
+	
+	protected function getConferenceAttendeeTable()
+	{
+		if (!$this->conferenceAttendeeTable)
+		{
+			$sm = $this->getServiceLocator();
+			$this->conferenceAttendeeTable = $sm->get('Admin\Model\ConferenceAttendeeTable');
+		}
+		return $this->conferenceAttendeeTable;
 	}
 	
 }

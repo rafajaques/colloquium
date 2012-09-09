@@ -58,6 +58,17 @@ class ConferenceForm extends Form
 		));
 		
 		$this->add(array(
+			'name' => 'registration_fee',
+			'attributes' => array(
+				'type'  => 'textarea',
+				'class'	=> 'span5',
+			),
+			'options' => array(
+				'label' => _('Registration fee'),
+			),
+		));
+		
+		$this->add(array(
 			'name' => 'location',
 			'attributes' => array(
 				'type'  => 'text',
