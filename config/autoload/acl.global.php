@@ -52,7 +52,7 @@ return array(
 				// "My" pages
 				array('controller' => 'Application\Controller\MySubmissions', 'roles' => array('user')),
 				
-				// Login
+				// Login & Register
 				array('controller' => 'zfcuser', 'roles' => array(/* Everybody! \o/ */)),
 				
 				// Conferences

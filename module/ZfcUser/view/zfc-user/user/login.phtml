@@ -1,4 +1,19 @@
 <?php
+
+if (!$this->redirect)
+{
+	/**
+	 * Check if needs auto-redirect
+	 */
+	$http_referer = parse_url($_SERVER['HTTP_REFERER']);
+	$referer = $http_referer['host'];
+	if (isset($http_referer['port']))
+		$referer .= ':' . $http_referer['port'];
+		
+	if ($referer == $_SERVER['HTTP_HOST'])
+		$this->redirect = $_SERVER['HTTP_REFERER'];
+}
+
 $form = $this->loginForm;
 $form->prepare();
 $form->setAttribute('action', $this->url('zfcuser/login'));
