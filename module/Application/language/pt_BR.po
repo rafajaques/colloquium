@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-11 14:07-0300\n"
-"PO-Revision-Date: 2012-09-11 14:07-0300\n"
+"POT-Creation-Date: 2012-09-11 14:39-0300\n"
+"PO-Revision-Date: 2012-09-11 14:42-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -28,12 +28,12 @@ msgid "Description"
 msgstr "Descrição"
 
 #: ../../Admin/src/Admin/Form/ConferenceForm.php:67
-#: ../../Conferences/view/conferences/index/view.phtml:98
+#: ../../Conferences/view/conferences/index/view.phtml:105
 msgid "Registration fee"
 msgstr "Taxa de inscrição"
 
 #: ../../Admin/src/Admin/Form/ConferenceForm.php:78
-#: ../../Conferences/view/conferences/index/view.phtml:101
+#: ../../Conferences/view/conferences/index/view.phtml:108
 msgid "Location"
 msgstr "Localização"
 
@@ -423,7 +423,7 @@ msgstr "Submeta a sua proposta"
 
 #: ../../Cfp/view/cfp/index/index.phtml:29
 #: ../../Conferences/view/conferences/index/index.phtml:74
-#: ../../Conferences/view/conferences/index/view.phtml:172
+#: ../../Conferences/view/conferences/index/view.phtml:179
 msgid "No call for papers."
 msgstr "Sem chamada de trabalhos."
 
@@ -448,18 +448,18 @@ msgid "Check out what's coming"
 msgstr "Confira o que está por vir"
 
 #: ../../Conferences/view/conferences/index/index.phtml:26
-#: ../../Conferences/view/conferences/index/view.phtml:124
+#: ../../Conferences/view/conferences/index/view.phtml:131
 msgid "Upcoming events"
 msgstr "Próximos eventos"
 
 #: ../../Conferences/view/conferences/index/index.phtml:48
-#: ../../Conferences/view/conferences/index/view.phtml:146
+#: ../../Conferences/view/conferences/index/view.phtml:153
 msgid "No upcoming events."
 msgstr "Sem eventos próximos."
 
 #: ../../Conferences/view/conferences/index/index.phtml:54
-#: ../../Conferences/view/conferences/index/view.phtml:85
-#: ../../Conferences/view/conferences/index/view.phtml:152
+#: ../../Conferences/view/conferences/index/view.phtml:92
+#: ../../Conferences/view/conferences/index/view.phtml:159
 msgid "Call for papers"
 msgstr "Chamada de trabalhos"
 
@@ -489,32 +489,32 @@ msgstr "Clique aqui para se autenticar"
 msgid "About the conference"
 msgstr "Sobre o evento"
 
-#: ../../Conferences/view/conferences/index/view.phtml:44
+#: ../../Conferences/view/conferences/index/view.phtml:51
 msgid "Information"
 msgstr "Informações"
 
-#: ../../Conferences/view/conferences/index/view.phtml:63
+#: ../../Conferences/view/conferences/index/view.phtml:70
 msgid "Date"
 msgstr "Data"
 
-#: ../../Conferences/view/conferences/index/view.phtml:70
+#: ../../Conferences/view/conferences/index/view.phtml:77
 msgid "Starting time"
 msgstr "Horário de início"
 
-#: ../../Conferences/view/conferences/index/view.phtml:77
+#: ../../Conferences/view/conferences/index/view.phtml:84
 #, php-format
 msgid "<strong>Date:</strong> %s at %s"
 msgstr "<strong>Data:</strong> %s às %s"
 
-#: ../../Conferences/view/conferences/index/view.phtml:92
+#: ../../Conferences/view/conferences/index/view.phtml:99
 msgid "Registrations"
 msgstr "Inscrições"
 
-#: ../../Conferences/view/conferences/index/view.phtml:185
+#: ../../Conferences/view/conferences/index/view.phtml:192
 msgid "Conference registration"
 msgstr "Inscrição no evento"
 
-#: ../../Conferences/view/conferences/index/view.phtml:188
+#: ../../Conferences/view/conferences/index/view.phtml:195
 msgid ""
 "Some conferences have sponsors. You can choose to help the organization and "
 "allow access to your email for sending advertising. However, you are not "
@@ -527,15 +527,15 @@ msgstr ""
 "Marque a opção abaixo caso deseje divulgar seu email a possíveis "
 "patrocinadores."
 
-#: ../../Conferences/view/conferences/index/view.phtml:195
+#: ../../Conferences/view/conferences/index/view.phtml:202
 msgid "I accept that my email address may be passed on to third parties."
 msgstr "Eu aceito que meu email possa ser passado a terceiros."
 
-#: ../../Conferences/view/conferences/index/view.phtml:199
+#: ../../Conferences/view/conferences/index/view.phtml:206
 msgid "Join this conference"
 msgstr "Participar deste evento"
 
-#: ../../Conferences/view/conferences/index/view.phtml:204
+#: ../../Conferences/view/conferences/index/view.phtml:211
 msgid "Close without registering"
 msgstr "Fechar sem se inscrever"
 

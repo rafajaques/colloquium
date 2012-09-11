@@ -51,7 +51,13 @@ _('Password');
 
 			<?php echo $this->form()->closeTag() ?>
 
-			<?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!'); ?></a>
+			<?php
+				/**
+				 * @TODO make this work!
+				 */
+				/*echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!');*/
+			?></a>
+			<?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register'); ?>"><?php echo $this->translate('Sign up!'); ?></a>
 		</div>
 	
 	</div>
