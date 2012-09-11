@@ -11,6 +11,7 @@ class ConferenceTable extends AbstractTableGateway
 {
     protected $table = 'conference';
 	protected $table_schedule = 'conference_schedule';
+	protected $table_attendee = 'conference_attendee';
 
     public function __construct(Adapter $adapter)
     {
@@ -43,6 +44,40 @@ class ConferenceTable extends AbstractTableGateway
 		if ($id)
 			$where['t.conference_id'] = $id;
 		$select->where($where);
+
+		$selectString = $sql->getSqlStringForSqlObject($select);
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+	
+		return $results;
+    }
+	/**
+	 * status	registered, accreditated, null (for everything)
+	 */
+    public function getConferencesByAttendee($id, $status = null)
+    {
+		$adapter = $this->adapter;
+        $sql = new Sql($adapter);
+		$select = $sql->select();
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('ta' => $this->table_attendee), 't.conference_id = ta.conference_id');
+
+		$where = array('ta.user_id' => $id);
+		
+		switch ($status)
+		{
+			case 'registered':
+				$where['accreditation'] = null;
+				break;
+				
+			case 'accreditated':
+				$where[] = new \Zend\Db\Sql\Predicate\IsNotNull('accreditation');
+		}
+		
+		$select->where($where);
+
+		$select->order('register DESC, accreditation DESC');
 
 		$selectString = $sql->getSqlStringForSqlObject($select);
 		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);

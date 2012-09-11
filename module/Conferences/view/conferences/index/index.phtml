@@ -37,7 +37,7 @@
 								$last_day = $this->extractDate($conf['last_day']);
 								echo $first_day['day'] . '/' . $first_day['month'];
 								if ($conf['first_day'] != $conf['last_day'])
-									echo '-' . $last_day['day'] . '/' . $last_day['month'];
+									echo ' - ' . $last_day['day'] . '/' . $last_day['month'];
 							?>)
 							<?php echo $conf['short_name']; ?>
 					</a></li>

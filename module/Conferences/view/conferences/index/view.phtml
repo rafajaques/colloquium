@@ -9,11 +9,14 @@
 			<div class="row-fluid">
 				<?php if ($this->registered): ?>
 				<div class="alert alert-info">
-					<?php echo $this->translate('You registered to this conference in '); ?>
-					<strong><?php
+					<?php
 						$reg = $this->extractDate($this->registered['register']);
-						vprintf('%s/%s/%s', array($reg['day'], $reg['month'], $reg['year']));
-					?></strong>.
+
+						echo sprintf($this->translate(
+								'You registered to this conference in <strong>%s</strong>. See you there!'
+							),vsprintf('%s/%s/%s', array($reg['day'], $reg['month'], $reg['year']))
+						);
+					?>
 				</div>
 				<?php elseif ($this->zfcUserIdentity()): ?>
 				<a href="#myModal" role="button" data-toggle="modal" class="btn down-space btn-primary btn-largest offset1 span10"><?php echo $this->translate('Register me at this event!'); ?></a>
@@ -32,8 +35,15 @@
 					<p><?php
 						/**
 						 * @TODO this should be changed, since there will be a WYSIWYG
+						 * @TODO also, this routine will be removed
 						 */
-						echo nl2br($conference->description);
+						$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+						$description = $conference->description;
+						preg_match($reg_exUrl, $description, $url);
+						if (preg_match($reg_exUrl, $description, $url))
+							$description = preg_replace($reg_exUrl, "<a href=\"{$url[0]}\" target=\"_blank\">{$url[0]}</a> ", $description);
+						echo nl2br($description);
 					?></p>
 				</div>
 				
@@ -102,7 +112,7 @@
 						echo $conference->city . '<br>';
 						echo $conference->state . '</p>';
 						
-						$addr_maps = urlencode(sprintf('%s - %s - %s - %s - %s', $conference->location, $conference->address, $conference->city, $conference->state, $conference->country));
+						$addr_maps = urlencode(sprintf('%s - %s - %s - %s', $conference->address, $conference->city, $conference->state, $conference->country));
 					?>
 					<iframe height="350px" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?f=q&amp;source=s_q&amp;hl=pt-BR&amp;geocode=&amp;q=<?php echo $addr_maps; ?>&amp;aq=0&amp;oq=&amp;sll=&amp;sspn=&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=<?php echo $addr_maps; ?>&amp;z=14&amp;output=embed&amp;iwloc=near"></iframe>
 				</div>
@@ -132,7 +142,7 @@
 								$last_day = $this->extractDate($conf['last_day']);
 								echo $first_day['day'] . '/' . $first_day['month'];
 								if ($conf['first_day'] != $conf['last_day'])
-									echo '-' . $last_day['day'] . '/' . $last_day['month'];
+									echo ' - ' . $last_day['day'] . '/' . $last_day['month'];
 							?>)
 							<?php echo $conf['short_name']; ?>
 					</a></li>

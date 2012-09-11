@@ -16,6 +16,16 @@ return array(
             ),
 			
 			/* "My" Stuff */
+			'my-conferences' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/my-conferences',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\MyConferences',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'my-submissions' => array(
                 'type' => 'literal',
                 'options' => array(
@@ -47,6 +57,7 @@ return array(
         'invokables' => array(
 			'Application\Controller\Index' => 'Application\Controller\IndexController',
 			'Application\Controller\MySubmissions' => 'Application\Controller\MySubmissionsController',
+			'Application\Controller\MyConferences' => 'Application\Controller\MyConferencesController',
         ),
     ),
 	'strategies' => array(

@@ -51,6 +51,7 @@ return array(
 				
 				// "My" pages
 				array('controller' => 'Application\Controller\MySubmissions', 'roles' => array('user')),
+				array('controller' => 'Application\Controller\MyConferences', 'roles' => array('user')),
 				
 				// Login & Register
 				array('controller' => 'zfcuser', 'roles' => array(/* Everybody! \o/ */)),
