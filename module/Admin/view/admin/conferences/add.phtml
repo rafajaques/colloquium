@@ -6,7 +6,7 @@
 		<p class="byline"><?php echo $this->translate('Add conference'); ?></p>
 	</div>
 
-	<div class="row margin-adjust">
+	<div class="row-fluid">
 		<?php
 			$form->setAttribute('action', $this->url('admin/conferences', array('action' => 'add')));
 			echo $this->formRenderer($form);

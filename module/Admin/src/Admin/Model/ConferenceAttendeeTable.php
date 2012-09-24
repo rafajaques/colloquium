@@ -10,6 +10,7 @@ use Zend\Db\Sql\Sql;
 class ConferenceAttendeeTable extends AbstractTableGateway
 {
 	protected $table = 'conference_attendee';
+	protected $table_users = 'user';
 
 	public function __construct(Adapter $adapter)
 	{
@@ -21,6 +22,26 @@ class ConferenceAttendeeTable extends AbstractTableGateway
 	{
 		$resultSet = $this->select();
 		return $resultSet;
+	}
+	
+	public function getAttendeesByConference($conference_id)
+	{
+		$adapter = $this->adapter;
+        $sql = new Sql($adapter);
+		$select = $sql->select();
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('tu' => $this->table_users), 't.user_id = tu.user_id');
+
+		$select->where(array('t.conference_id' => $conference_id));
+
+		$select->order('register DESC, accreditation DESC');
+
+		$selectString = $sql->getSqlStringForSqlObject($select);
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+
+		return $results;
 	}
 
 	public function userAttendingToConference($user_id, $conference_id)

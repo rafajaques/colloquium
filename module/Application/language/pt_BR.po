@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-11 14:39-0300\n"
-"PO-Revision-Date: 2012-09-11 14:42-0300\n"
+"POT-Creation-Date: 2012-09-24 19:30-0300\n"
+"PO-Revision-Date: 2012-09-24 19:30-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -13,6 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: translate\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.3\n"
 "X-Poedit-SearchPath-0: ../..\n"
 
 #: ../../Admin/src/Admin/Form/ConferenceForm.php:34
@@ -110,6 +111,7 @@ msgid "Registration"
 msgstr "Inscrição"
 
 #: ../../Admin/view/admin/conferences/add.phtml:5
+#: ../../Admin/view/admin/conferences/attendees.phtml:5
 #: ../../Admin/view/admin/conferences/index.phtml:5
 #: ../../Admin/view/admin/conferences/submissions.phtml:5
 #: ../../Application/view/layout/layout.phtml:81
@@ -120,9 +122,55 @@ msgstr "Gerenciamento de eventos"
 msgid "Add conference"
 msgstr "Adicionar evento"
 
+#: ../../Admin/view/admin/conferences/attendees.phtml:6
+#: ../../Admin/view/admin/conferences/index.phtml:30
+msgid "Attendees"
+msgstr "Participantes"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:9
+msgid "Number of attendees"
+msgstr "Número de participantes"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:15
 #: ../../Admin/view/admin/conferences/index.phtml:14
 msgid "Name"
 msgstr "Nome"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:16
+#: ../../Admin/view/admin/conferences/submissions.phtml:15
+#: ../../Application/view/application/my-conferences/index.phtml:96
+#: ../../Application/view/application/my-submissions/index.phtml:68
+#: ../../ZfcUser/view/zfc-user/user/register.phtml:13
+msgid "Email"
+msgstr "Email"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:17
+msgid "Registration date"
+msgstr "Data de inscrição"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:18
+msgid "Accreditation date"
+msgstr "Data de credenciamento"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:19
+msgid "Disclose email"
+msgstr "Divulgar email"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:27
+msgid "Not yet"
+msgstr "Ainda não"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:28
+#: ../../Admin/view/admin/conferences/submissions.phtml:29
+#: ../../Application/view/application/my-submissions/index.phtml:31
+msgid "Yes"
+msgstr "Sim"
+
+#: ../../Admin/view/admin/conferences/attendees.phtml:28
+#: ../../Admin/view/admin/conferences/submissions.phtml:29
+#: ../../Application/view/application/my-submissions/index.phtml:31
+msgid "No"
+msgstr "Não"
 
 #: ../../Admin/view/admin/conferences/index.phtml:15
 msgid "Created by"
@@ -150,10 +198,6 @@ msgstr "Submissões"
 msgid "Staff"
 msgstr "Equipe de apoio"
 
-#: ../../Admin/view/admin/conferences/index.phtml:30
-msgid "Attendees"
-msgstr "Participantes"
-
 #: ../../Admin/view/admin/conferences/index.phtml:31
 msgid "Edit"
 msgstr "Editar"
@@ -161,13 +205,6 @@ msgstr "Editar"
 #: ../../Admin/view/admin/conferences/submissions.phtml:14
 msgid "Submited by"
 msgstr "Enviado por"
-
-#: ../../Admin/view/admin/conferences/submissions.phtml:15
-#: ../../Application/view/application/my-conferences/index.phtml:96
-#: ../../Application/view/application/my-submissions/index.phtml:68
-#: ../../ZfcUser/view/zfc-user/user/register.phtml:13
-msgid "Email"
-msgstr "Email"
 
 #: ../../Admin/view/admin/conferences/submissions.phtml:17
 #: ../../Application/view/application/my-submissions/index.phtml:17
@@ -178,16 +215,6 @@ msgstr "Data de envio"
 #: ../../Application/view/application/my-submissions/index.phtml:18
 msgid "Accepted"
 msgstr "Aceito"
-
-#: ../../Admin/view/admin/conferences/submissions.phtml:29
-#: ../../Application/view/application/my-submissions/index.phtml:31
-msgid "Yes"
-msgstr "Sim"
-
-#: ../../Admin/view/admin/conferences/submissions.phtml:29
-#: ../../Application/view/application/my-submissions/index.phtml:31
-msgid "No"
-msgstr "Não"
 
 #: ../../Admin/view/admin/index/index.phtml:5
 #: ../../Application/view/layout/layout.phtml:80
@@ -573,11 +600,11 @@ msgstr "Nome de usuário ou Email"
 msgid "Password"
 msgstr "Senha"
 
-#: ../../ZfcUser/view/zfc-user/user/login.phtml:54
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:60
 msgid "Not registered?"
 msgstr "Não registrado?"
 
-#: ../../ZfcUser/view/zfc-user/user/login.phtml:54
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:60
 msgid "Sign up!"
 msgstr "Cadastre-se!"
 
