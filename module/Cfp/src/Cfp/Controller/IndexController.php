@@ -84,9 +84,18 @@ class IndexController extends AbstractActionController
 				}
 			} else {
 				$form->setData($request->getPost());
+				
+				// This is a sad workaround :(
+				$date_sent = $edit_subs->date_sent;
+				$accepted = $edit_subs->accepted;
 				if ($form->isValid()) {
+					/**
+					 * @TODO why this data set doesn't hold the values?
+					 */
 					$edit_subs->submission_id = $submission_id;
 					$edit_subs->conference_id = $conference_id;
+					$edit_subs->date_sent = $date_sent;
+					$edit_subs->accepted = $accepted;
 					$this->getSubmissionTable()->saveSubmission($edit_subs);
 				}
 				return $this->redirect()->toRoute('my-submissions');

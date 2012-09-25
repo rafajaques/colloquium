@@ -109,8 +109,8 @@ class SubmissionTable extends AbstractTableGateway
 		if ($id)
 			unset($data['conference_id']);
 		
-		// Includes today's date
-		if (!$data['date_sent'])
+		// Includes today's date if not editing
+		if (!$data['date_sent'] && !$id)
 			$data['date_sent'] = date('Y-m-d');
 
 		if ($id == 0) {
