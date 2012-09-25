@@ -99,11 +99,15 @@ class SubmissionTable extends AbstractTableGateway
 		);
 		
 		$data = array();
-		
+
 		foreach ($extract as $ext)
 			$data[$ext] = $submission->$ext;
 
-		$id = (int) $submission->submission_id;
+		$id = (int) $data['submission_id'];
+		
+		// If editing, remove conference_id that will probably be null
+		if ($id)
+			unset($data['conference_id']);
 		
 		// Includes today's date
 		if (!$data['date_sent'])

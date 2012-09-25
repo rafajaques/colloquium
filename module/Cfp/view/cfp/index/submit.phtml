@@ -3,12 +3,19 @@
 		<!-- Content -->
 		<div class="content">
 			<div class="page-header">
-				<h1>&nbsp;<i class="big-icon-notes-2"></i> <?php echo $this->translate('Call for Papers'); ?> <small><?php echo $this->translate('Submit your proposal'); ?></small></h1>
+				<h1>&nbsp;<i class="big-icon-notes-2"></i>
+					<?php echo $this->translate('Call for Papers'); ?>
+					<small><?php
+						echo !$this->edit ? $this->translate('Submit your proposal') : $this->translate('Edit your proposal');
+					?></small>
+				</h1>
 			</div>
 			
 			<div class="row-fluid">
 				<?php
-					$form->setAttribute('action', $this->url('cfp/inner', array('action' => 'submit', 'id' => $this->conference_id)));
+					$form->setAttribute('action', $this->url('cfp/inner', array('action' => 'submit', 'id' => $this->conference_id, 'edit' => $this->submission_id)));
+					if ($edit)
+						$form->get('submit')->setValue($this->translate('Edit submission'));
 					echo $this->formRenderer($this->form);
 				?>
 			</div>

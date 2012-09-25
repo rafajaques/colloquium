@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 19:30-0300\n"
-"PO-Revision-Date: 2012-09-24 19:30-0300\n"
+"POT-Creation-Date: 2012-09-25 16:15-0300\n"
+"PO-Revision-Date: 2012-09-25 16:15-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -102,7 +102,7 @@ msgstr "Enviar"
 #: ../../Conferences/src/Conferences/Controller/IndexController.php:89
 #: ../../Application/view/layout/layout.phtml:105
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
-#: ../../Cfp/view/cfp/index/submit.phtml:6
+#: ../../Cfp/view/cfp/index/submit.phtml:7
 msgid "Call for Papers"
 msgstr "Chamada de Trabalhos"
 
@@ -199,6 +199,7 @@ msgid "Staff"
 msgstr "Equipe de apoio"
 
 #: ../../Admin/view/admin/conferences/index.phtml:31
+#: ../../Application/view/application/my-submissions/index.phtml:36
 msgid "Edit"
 msgstr "Editar"
 
@@ -248,7 +249,6 @@ msgstr "Registrado em"
 
 #: ../../Application/view/application/my-conferences/index.phtml:18
 #: ../../Application/view/application/my-conferences/index.phtml:50
-#: ../../Application/view/application/my-submissions/index.phtml:36
 msgid "Details"
 msgstr "Detalhes"
 
@@ -444,7 +444,7 @@ msgid "Click here to log in."
 msgstr "Clique aqui para se autenticar."
 
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
-#: ../../Cfp/view/cfp/index/submit.phtml:6
+#: ../../Cfp/view/cfp/index/submit.phtml:9
 msgid "Submit your proposal"
 msgstr "Submeta a sua proposta"
 
@@ -469,6 +469,14 @@ msgstr "Se quiser submeter outra proposta,"
 #: ../../Cfp/view/cfp/index/ok.phtml:12
 msgid "click here"
 msgstr "clique aqui"
+
+#: ../../Cfp/view/cfp/index/submit.phtml:9
+msgid "Edit your proposal"
+msgstr "Edite sua proposta"
+
+#: ../../Cfp/view/cfp/index/submit.phtml:18
+msgid "Edit submission"
+msgstr "Editar submissão"
 
 #: ../../Conferences/view/conferences/index/index.phtml:15
 msgid "Check out what's coming"

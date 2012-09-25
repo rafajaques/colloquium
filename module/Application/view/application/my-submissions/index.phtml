@@ -33,11 +33,11 @@
 						<div class="btn-group">
 							<?php
 								// Get translations
-								$details = $this->translate('Details');
+								$edit = $this->translate('Edit');
 								$speakers = $this->translate('Speakers');
 							?>
-							<!-- Details -->
-							<a class="btn btn-small" href="#" alt="<?php echo $details; ?>" title="<?php echo $details; ?>"><i class="icon-eye-open"></i></a>
+							<!-- Edit -->
+							<a class="btn btn-small" href="<?php echo $this->url('cfp/inner', array('action' => 'submit', 'id' => $sub['conference_id'], 'edit' => $sub['submission_id'])); ?>" alt="<?php echo $edit; ?>" title="<?php echo $edit; ?>"><i class="icon-pencil"></i></a>
 							<!-- Speakers -->
 							<a class="btn btn-small" alt="<?php echo $speakers; ?>" title="<?php echo $speakers; ?>" rel="speakers" href="#<?php echo $sub['submission_id']; ?>"><i class="icon-user"></i></a>
 						</div>

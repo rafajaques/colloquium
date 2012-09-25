@@ -37,6 +37,24 @@ class SubmissionUserTable extends AbstractTableGateway
         return $row;
     }
 
+	public function validateUserSubmission($user_id, $submission_id)
+	{
+		$adapter = $this->adapter;
+		$sql = new Sql($adapter);
+		$select = $sql->select();
+        $user_id = (int) $user_id;
+		$submission_id = (int) $submission_id;
+		
+		$select->from($this->table);
+		$select->where(array('user_id' => $user_id, 'submission_id' => $submission_id, 'status' => 'confirmed'));
+		
+		$selectString = $sql->getSqlStringForSqlObject($select);
+
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+
+        return (bool) $results->count();
+	}
+
 	public function getSubmissionsByUser($id)
     {
         $id = (int) $id;
