@@ -50,6 +50,70 @@ class ConferenceTable extends AbstractTableGateway
 	
 		return $results;
     }
+
+	/**
+	 * Used to get full data of conferences with open calls, including date and stuff
+	 */
+    public function fetchOpenCalls()
+    {
+		$adapter = $this->adapter;
+        $sql = new Sql($adapter);
+		$select = $sql->select();
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('ts' => $this->table_schedule), 't.conference_id = ts.conference_id');
+
+		$select->where(function (\Zend\Db\Sql\Where $where) { $where->greaterThanOrEqualTo('ts.cfp_closed', date('Y-m-d H:i:s'));});
+
+		$selectString = $sql->getSqlStringForSqlObject($select);
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+	
+		return $results;
+    }
+
+	/**
+	 * Used to get full data of upcoming conferences, including date and stuff
+	 */
+    public function fetchUpcomingConferences()
+    {
+		$adapter = $this->adapter;
+        $sql = new Sql($adapter);
+		$select = $sql->select();
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('ts' => $this->table_schedule), 't.conference_id = ts.conference_id');
+
+		$select->where(function (\Zend\Db\Sql\Where $where) { $where->greaterThanOrEqualTo('ts.last_day', date('Y-m-d H:i:s'));});
+
+		$selectString = $sql->getSqlStringForSqlObject($select);
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+	
+		return $results;
+    }
+
+	/**
+	 * Check if call for this conference is open
+	 */
+	public function callIsOpen($conference_id)
+	{
+		$adapter = $this->adapter;
+        $sql = new Sql($adapter);
+		$select = $sql->select();
+
+		$select->from(array('t' => $this->table));
+
+		$select->join(array('ts' => $this->table_schedule), 't.conference_id = ts.conference_id');
+
+		$select->where(function (\Zend\Db\Sql\Where $where) { $where->greaterThanOrEqualTo('ts.cfp_closed', date('Y-m-d H:i:s'));});
+		$select->where(array('t.conference_id' => $conference_id));
+		
+		$selectString = $sql->getSqlStringForSqlObject($select);
+		$results = $adapter->query($selectString, $adapter::QUERY_MODE_EXECUTE);
+		
+		return (bool) $results->count();
+	}
 	/**
 	 * status	registered, accreditated, null (for everything)
 	 */

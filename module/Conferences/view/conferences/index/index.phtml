@@ -54,7 +54,7 @@
 			<h4><?php echo $this->translate('Call for papers'); ?></h4>
 			<ul class="nav nav-list nav-no-padding">
 				<?php
-					if ($this->conferences):
+					if ($this->calls->count()):
 						foreach ($this->conferences as $conf):?>
 					
 					<li><a href="<?php echo $this->url('cfp/inner', array('action' => 'submit', 'id' => $conf['conference_id'])); ?>"><i class="icon-calendar"></i>

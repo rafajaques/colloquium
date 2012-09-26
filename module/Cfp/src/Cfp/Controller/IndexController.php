@@ -18,7 +18,7 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
 		return array(
-			'conferences' => $this->getConferenceTable()->fetchFullData(),
+			'conferences' => $this->getConferenceTable()->fetchOpenCalls(),
 		);
     }
 	
@@ -27,6 +27,12 @@ class IndexController extends AbstractActionController
 		// Check if exists Conference ID
 		if (!$conference_id = $this->params()->fromRoute('id', 0)) {
 			return $this->redirect()->toRoute('cfp');
+		}
+		
+		// Check if CFP is open
+		// Submiting and editing is denied when cfp is closed
+		if (!$this->getConferenceTable()->callIsOpen($conference_id)) {
+			return $this->redirect()->toRoute('cfp/inner', array('action' => 'closed'));
 		}
 		
 		// Get User ID and Submission ID
@@ -38,9 +44,11 @@ class IndexController extends AbstractActionController
 			return $this->redirect()->toRoute('my-submissions');
 		}
 		
+		// Get tracks
 		$tracks_form = array();
 		$tracks = $this->getTrackTable()->getTracksByConference((int) $conference_id);
 
+		// Prepare tracks for the form
 		foreach ($tracks as $t)
 			$tracks_form[$t->track_id] = $t->name;
 
@@ -58,18 +66,24 @@ class IndexController extends AbstractActionController
 		if ($request->isPost()) {
 			// Insert or edit?
 			if (!$submission_id) {
+				/**
+				 * Inserting case
+				 */
 				$submission = new Submission();
 				$form->setInputFilter($submission->getInputFilter());
 				$form->setData($request->getPost());
-
+				
+				// Is this form ok?
 				if ($form->isValid()) {
 					$formData = $form->getData();
 					$formData['conference_id'] = $conference_id;	
-
+					
+					// Data gathering
 					$submission->exchangeArray($formData);
 
 					$submission_id = $this->getSubmissionTable()->saveSubmission($submission);	
 
+					// Link user to submission
 					$submissionUser = new SubmissionUser();
 					$submissionUser->exchangeArray(array(
 						'submission_id'	=> $submission_id,
@@ -83,6 +97,9 @@ class IndexController extends AbstractActionController
 					return $this->redirect()->toRoute('cfp/ok');
 				}
 			} else {
+				/**
+				 * Editing case
+				 */
 				$form->setData($request->getPost());
 				
 				// This is a sad workaround :(
@@ -111,6 +128,11 @@ class IndexController extends AbstractActionController
 	}
 	
 	public function okAction()
+	{
+		return array();
+	}
+	
+	public function closedAction()
 	{
 		return array();
 	}

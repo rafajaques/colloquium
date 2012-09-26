@@ -17,7 +17,8 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
 		return array(
-			'conferences' => $this->getConferencesTable()->fetchFullData(),
+			'conferences'	=> $this->getConferencesTable()->fetchUpcomingConferences(),
+			'calls'			=> $this->getConferencesTable()->fetchOpenCalls(),
 		);
     }
 	
@@ -36,7 +37,8 @@ class IndexController extends AbstractActionController
 		return array(
 			'conference'	=> $conference->current(),
 			'registered'	=> $registered,
-			'conferences'	=> $this->getConferencesTable()->fetchFullData(),
+			'conferences'	=> $this->getConferencesTable()->fetchUpcomingConferences(),
+			'calls'			=> $this->getConferencesTable()->fetchOpenCalls(),
 		);
 	}
 	

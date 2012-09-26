@@ -9,7 +9,7 @@
 			<div>
 				<ul class="nav nav-list nav-no-padding">
 					<?php
-						if ($this->conferences):
+						if ($this->conferences->count()):
 							foreach ($this->conferences as $conf):?>
 					
 						<li><a href="<?php echo $this->url('cfp/inner', array('action' => 'submit', 'id' => $conf['conference_id'])); ?>"><i class="icon-calendar"></i>
