@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 16:15-0300\n"
-"PO-Revision-Date: 2012-09-25 16:15-0300\n"
+"POT-Creation-Date: 2012-09-25 22:11-0300\n"
+"PO-Revision-Date: 2012-09-25 22:11-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -119,8 +119,9 @@ msgid "Conferences management"
 msgstr "Gerenciamento de eventos"
 
 #: ../../Admin/view/admin/conferences/add.phtml:6
-msgid "Add conference"
-msgstr "Adicionar evento"
+#: ../../Admin/view/admin/conferences/index.phtml:9
+msgid "Create conference"
+msgstr "Criar evento"
 
 #: ../../Admin/view/admin/conferences/attendees.phtml:6
 #: ../../Admin/view/admin/conferences/index.phtml:30
@@ -635,6 +636,9 @@ msgstr "Confirme a Senha"
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:22
 msgid "Register"
 msgstr "Registro"
+
+#~ msgid "Add conference"
+#~ msgstr "Adicionar evento"
 
 #~ msgid "Pending..."
 #~ msgstr "Pendente..."

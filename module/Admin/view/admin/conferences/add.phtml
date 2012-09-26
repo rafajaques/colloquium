@@ -3,10 +3,17 @@
 	
 	<div class="page-header">
 		<h1 class="catch"><?php echo $this->translate('Conferences management'); ?></h1>
-		<p class="byline"><?php echo $this->translate('Add conference'); ?></p>
+		<p class="byline"><?php echo $this->translate('Create conference'); ?></p>
 	</div>
 
-	<div class="row-fluid">
+	<?php
+	
+		/**
+		 * @TODO why row-fluid's not working here?
+		 */
+	
+	?>
+	<div class="row margin-adjust">
 		<?php
 			$form->setAttribute('action', $this->url('admin/conferences', array('action' => 'add')));
 			echo $this->formRenderer($form);
