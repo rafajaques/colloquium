@@ -22,7 +22,7 @@ class SetNewPassword extends ProvidesEventsForm
                 'label' => 'New password (at least 6 characters)',
             ),
             'attributes' => array(
-                'type' => 'text'
+                'type' => 'password'
             ),
         ));
 
