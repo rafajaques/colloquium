@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-28 02:22-0300\n"
-"PO-Revision-Date: 2012-09-28 02:22-0300\n"
+"PO-Revision-Date: 2012-09-28 02:34-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -673,7 +673,7 @@ msgstr "Nome de usuário"
 
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:14
 msgid "Display Name"
-msgstr "Nome de Exibição"
+msgstr "Nome real"
 
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:15
 msgid "Password Verify"
