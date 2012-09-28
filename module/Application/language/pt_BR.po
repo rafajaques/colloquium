@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Colloquium\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 22:11-0300\n"
-"PO-Revision-Date: 2012-09-25 22:11-0300\n"
+"POT-Creation-Date: 2012-09-28 02:22-0300\n"
+"PO-Revision-Date: 2012-09-28 02:22-0300\n"
 "Last-Translator: rafajaques <rafael@phpit.com.br>\n"
 "Language-Team: rafajaques <rafael@phpit.com.br>\n"
 "Language: pt_BR\n"
@@ -99,14 +99,15 @@ msgstr "Duração"
 msgid "Submit"
 msgstr "Enviar"
 
-#: ../../Conferences/src/Conferences/Controller/IndexController.php:89
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:91
 #: ../../Application/view/layout/layout.phtml:105
+#: ../../Cfp/view/cfp/index/closed.phtml:6
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
 #: ../../Cfp/view/cfp/index/submit.phtml:7
 msgid "Call for Papers"
 msgstr "Chamada de Trabalhos"
 
-#: ../../Conferences/src/Conferences/Controller/IndexController.php:97
+#: ../../Conferences/src/Conferences/Controller/IndexController.php:99
 msgid "Registration"
 msgstr "Inscrição"
 
@@ -444,6 +445,15 @@ msgstr "Você precisa estar autenticado para acessar esta página."
 msgid "Click here to log in."
 msgstr "Clique aqui para se autenticar."
 
+#: ../../Cfp/view/cfp/index/closed.phtml:10
+msgid "Sorry. This call is already closed."
+msgstr "Desculpe. Esta chamada já está fechada."
+
+#: ../../Cfp/view/cfp/index/closed.phtml:12
+#: ../../ZfcUser/view/zfc-user/user/recoverydone.phtml:12
+msgid "Click here to return to the main page"
+msgstr "Clique aqui para retornar à página inicial"
+
 #: ../../Cfp/view/cfp/index/index.phtml:6 ../../Cfp/view/cfp/index/ok.phtml:6
 #: ../../Cfp/view/cfp/index/submit.phtml:9
 msgid "Submit your proposal"
@@ -602,6 +612,7 @@ msgid "Sign out"
 msgstr "Sair"
 
 #: ../../ZfcUser/view/zfc-user/user/login.phtml:23
+#: ../../ZfcUser/view/zfc-user/user/recovery.phtml:9
 msgid "Username or Email"
 msgstr "Nome de usuário ou Email"
 
@@ -616,6 +627,41 @@ msgstr "Não registrado?"
 #: ../../ZfcUser/view/zfc-user/user/login.phtml:60
 msgid "Sign up!"
 msgstr "Cadastre-se!"
+
+#: ../../ZfcUser/view/zfc-user/user/login.phtml:61
+msgid "Forgot your password?"
+msgstr "Esqueceu sua senha?"
+
+#: ../../ZfcUser/view/zfc-user/user/recovery.phtml:10
+msgid "Recover password"
+msgstr "Recuperar senha"
+
+#: ../../ZfcUser/view/zfc-user/user/recovery.phtml:16
+#: ../../ZfcUser/view/zfc-user/user/recoverydone.phtml:6
+#: ../../ZfcUser/view/zfc-user/user/recoveryhash.phtml:16
+msgid "Password recovery"
+msgstr "Recuperação de senha"
+
+#: ../../ZfcUser/view/zfc-user/user/recoverydone.phtml:10
+msgid ""
+"An email has been sent to you containing a link to change your password. You "
+"should receive it shortly."
+msgstr ""
+"Um email lhe foi enviado contendo um link para alterar sua senha. Você deve "
+"recebê-lo em breve."
+
+#: ../../ZfcUser/view/zfc-user/user/recoverydone.phtml:11
+msgid "If you are having problems, contact a system administrator."
+msgstr ""
+"Se estiver tendo problemas, entre em contato com um administrador do sistema."
+
+#: ../../ZfcUser/view/zfc-user/user/recoveryhash.phtml:9
+msgid "New password (at least 6 characters)"
+msgstr "Nova senha (pelo menos 6 caracteres)"
+
+#: ../../ZfcUser/view/zfc-user/user/recoveryhash.phtml:10
+msgid "Set new password"
+msgstr "Gravar nova senha"
 
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:3
 msgid "Registration is disabled"
@@ -636,6 +682,9 @@ msgstr "Confirme a Senha"
 #: ../../ZfcUser/view/zfc-user/user/register.phtml:22
 msgid "Register"
 msgstr "Registro"
+
+#~ msgid "New password"
+#~ msgstr "Nova senha"
 
 #~ msgid "Add conference"
 #~ msgstr "Adicionar evento"

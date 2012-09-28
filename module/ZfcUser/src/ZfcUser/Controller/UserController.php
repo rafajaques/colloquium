@@ -9,6 +9,8 @@ use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 use ZfcUser\Service\User as UserService;
 use ZfcUser\Options\UserControllerOptionsInterface;
+use ZfcUser\Form\Recovery as RecoveryForm;
+use ZfcUser\Form\SetNewPassword as NewPasswordForm;
 
 class UserController extends AbstractActionController
 {
@@ -292,6 +294,104 @@ class UserController extends AbstractActionController
         $this->flashMessenger()->setNamespace('change-email')->addMessage(true);
         return $this->redirect()->toRoute('zfcuser/changeemail');
     }
+
+	/**
+	 * @author Colloquium - rafajaques
+	 * @todo this is SO UGLY! just some workarounds to put system in production! sorry about that! 
+	 */
+	public function recoveryAction()
+	{
+		$request = $this->getRequest();
+
+		// Time for changing :)
+		if ($request->isPost()) {
+			// My little workaround :)
+			$userTbl = $this->getServiceLocator()->get('Admin\Model\UserTable');
+
+			// Get credential
+			$credential = $request->getPost('identity');
+			if (!$credential)
+				$this->redirect()->toRoute('zfcuser');
+			
+			// Check if exists
+			$email = $userTbl->getEmailByCredential($credential);
+			if (!$email)
+				return $this->redirect()->toRoute('zfcuser/recovery');
+			
+			// Set recovery hash
+			$hash = $userTbl->setRecoveryHash($email);
+			
+			// Send mail
+			$url = $_SERVER['HTTP_ORIGIN'];
+			
+			$mail = new \Zend\Mail\Message();
+			$mail->setFrom('rafael@phpit.com.br', 'Colloquium');
+			$mail->addTo($email);
+			$mail->setEncoding('UTF-8');
+			
+			
+			// English message
+			//$mail->setSubject('Password recovery');
+			/*$msg = '<p>Hello,</p><p>It seems that you want to reset your password. To do so, click the link below. This link will send you to a place where you can create a new password.</p>';
+			$msg.= sprintf('<p><a href="%s">Reset your password</a>', $url . '/user/recovery/hash/' . $hash);
+			$msg.= '<p>If you weren\'t trying to do that, just ignore this email. Your account will not be changed.</p><p>Thanks,<br />Colloquium</p>';*/
+
+			$mail->setSubject('Recuperação de senha');
+			$msg = '<p>Olá,</p><p>Parece que você deseja redefinir sua senha. Para fazer isso, clique no link abaixo. Este link vai mandar você para um lugar onde pode criar uma nova senha.</p>';
+			$msg.= sprintf('<p><a href="%s">Redefina sua senha</a>', $url . '/user/recovery/hash/' . $hash);
+			$msg.= '<p>Se você não estava tentando fazer isso, apenas ignore este e-mail. Sua conta não será alterada.</p><p>Obrigado,<br />Colloquium</p>';
+
+			$html = new \Zend\Mime\Part($msg);
+			$html->type = "text/html";
+
+			$body = new \Zend\Mime\Message();
+			$body->addPart($html);
+			
+			$mail->setBody($body);
+
+			$transport = new \Zend\Mail\Transport\Sendmail();
+			$transport->send($mail);
+			
+			return $this->redirect()->toRoute('zfcuser/recovery/done');
+		}
+		
+		return array('form' => new RecoveryForm());
+	}
+	
+	public function recoveryDoneAction()
+	{
+		return array();
+	}
+	
+	public function recoveryHashAction()
+	{
+		$hash = $this->params()->fromRoute('hash');
+		$userTbl = $this->getServiceLocator()->get('Admin\Model\UserTable');
+		
+		if (!$hash || !$userTbl->hashExists($hash))
+			return $this->redirect()->toRoute('home');
+	
+		$request = $this->getRequest();
+
+		// Time for changing :)
+		if ($request->isPost()) {
+			//$this->getServiceManager()->get('zfcuser_module_options');
+			
+			$newPass = $request->getPost('pass');
+			if (!$newPass || empty($newPass))
+				return $this->redirect()->toRoute('zfcuser/recovery/hash', array('hash' => $hash));
+			
+			$bcrypt = new \Zend\Crypt\Password\Bcrypt;
+			$bcrypt->setCost($this->getOptions()->getPasswordCost());
+			$pass = $bcrypt->create($newPass);
+			
+			$userTbl->hardChangePassword($pass, $hash);
+			
+			return $this->redirect()->toRoute('zfcuser');
+		}
+		
+		return array('form' => new NewPasswordForm(), 'hash' => $hash);
+	}
 
     /**
      * Getters/setters for DI stuff

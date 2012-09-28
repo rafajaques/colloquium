@@ -106,6 +106,39 @@ return array(
                             ),
                         ),
                     ),
+					'recovery' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/recovery',
+                            'defaults' => array(
+                                'controller' => 'zfcuser',
+                                'action'     => 'recovery',
+                            ),
+                        ),
+						'may_terminate' => true,
+		                'child_routes' => array(
+		                    'done' => array(
+		                        'type' => 'Literal',
+		                        'options' => array(
+		                            'route' => '/done',
+		                            'defaults' => array(
+		                                'controller' => 'zfcuser',
+		                                'action'     => 'recoverydone',
+		                            ),
+		                        ),
+		                    ),
+							'hash' => array(
+		                        'type' => 'Segment',
+		                        'options' => array(
+		                            'route' => '/hash[/:hash][/]',
+		                            'defaults' => array(
+		                                'controller' => 'zfcuser',
+		                                'action'     => 'recoveryhash',
+		                            ),
+		                        ),
+		                    ),
+						),
+                    ),
                 ),
             ),
         ),
