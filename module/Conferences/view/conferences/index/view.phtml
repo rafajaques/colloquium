@@ -37,12 +37,13 @@
 						 * @TODO this should be changed, since there will be a WYSIWYG
 						 * @TODO also, this routine will be removed
 						 */
-						$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+						$host = "([a-z\d][-a-z\d]*[a-z\d]\.)+[a-z][-a-z\d]*[a-z]";
+						$port = "(:\d{1,})?";
+						$path = "(\/[^?<>\#\"\s]+)?";
+						$query = "(\?[^<>\#\"\s]+)?";
 
-						$description = $conference->description;
-						preg_match($reg_exUrl, $description, $url);
-						if (preg_match($reg_exUrl, $description, $url))
-							$description = preg_replace($reg_exUrl, "<a href=\"{$url[0]}\" target=\"_blank\">{$url[0]}</a> ", $description);
+						$description = preg_replace("#((ht|f)tps?:\/\/{$host}{$port}{$path}{$query})#i", "<a href=\"$1\">$1</a>", $conference->description);
+
 						echo nl2br($description);
 					?></p>
 				</div>
