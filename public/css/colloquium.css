@@ -35,6 +35,10 @@ p.byline{
 	margin-right:10px;
 }
 
+.alinhacenter {
+	text-align:center;
+}
+
 @media (max-width: 979px) {
 	.logo{
 		text-align:center !important;

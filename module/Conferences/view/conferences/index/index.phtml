@@ -8,9 +8,9 @@
 		->appendStylesheet($this->basePath() . '/plugins/fullcalendar/fullcalendar.css');
 ?>
 <div class="container-fluid">
-	<div class="row-fluid">
+	<div class="row">
 		<!-- Content -->
-		<div class="span9 content down-space">
+		<div class="col-sm-9 content down-space">
 			<div class="page-header">
 				<h1>&nbsp;<i class="big-icon-calendar"></i> <?php echo $this->translate('Conferences'); ?> <small><?php echo $this->translate('Check out what\'s coming'); ?></small></h1>
 			</div>
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<!-- Sidebar -->
-		<div class="span3">
+		<div class="col-sm-3">
 			<div class="well well-small">
 			<h4><?php echo $this->translate('Upcoming events'); ?></h4>
 			
