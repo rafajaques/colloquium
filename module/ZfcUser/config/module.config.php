@@ -10,11 +10,6 @@ return array(
             'zfcuser' => 'ZfcUser\Controller\UserController',
         ),
     ),
-    'controller_plugins' => array(
-        'invokables' => array(
-            'zfcuserauthentication' => 'ZfcUser\Controller\Plugin\ZfcUserAuthentication',
-        ),
-    ),
     'service_manager' => array(
         'aliases' => array(
             'zfcuser_zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
@@ -83,12 +78,6 @@ return array(
                                 'action'     => 'changepassword',
                             ),
                         ),
-                        'may_terminate' => true,
-                        'child_routes' => array(
-                            'query' => array(
-                                'type' => 'Query',
-                            ),
-                        ),
                     ),
                     'changeemail' => array(
                         'type' => 'Literal',
@@ -99,45 +88,6 @@ return array(
                                 'action' => 'changeemail',
                             ),
                         ),
-                        'may_terminate' => true,
-                        'child_routes' => array(
-                            'query' => array(
-                                'type' => 'Query',
-                            ),
-                        ),
-                    ),
-					'recovery' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/recovery',
-                            'defaults' => array(
-                                'controller' => 'zfcuser',
-                                'action'     => 'recovery',
-                            ),
-                        ),
-						'may_terminate' => true,
-		                'child_routes' => array(
-		                    'done' => array(
-		                        'type' => 'Literal',
-		                        'options' => array(
-		                            'route' => '/done',
-		                            'defaults' => array(
-		                                'controller' => 'zfcuser',
-		                                'action'     => 'recoverydone',
-		                            ),
-		                        ),
-		                    ),
-							'hash' => array(
-		                        'type' => 'Segment',
-		                        'options' => array(
-		                            'route' => '/hash[/:hash][/]',
-		                            'defaults' => array(
-		                                'controller' => 'zfcuser',
-		                                'action'     => 'recoveryhash',
-		                            ),
-		                        ),
-		                    ),
-						),
                     ),
                 ),
             ),

@@ -20,11 +20,17 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-master"
+        "zendframework/zend-db": "~2.1",
+        "zendframework/zend-eventmanager": "~2.1",
+        "zendframework/zend-loader": "~2.1",
+        "zendframework/zend-modulemanager": "~2.1",
+        "zendframework/zend-mvc": "~2.1",
+        "zendframework/zend-servicemanager": "~2.1",
+        "zendframework/zend-stdlib": "~2.1"
     },
     "autoload": {
         "psr-0": {
-            "ZfcUser": "src/"
+            "ZfcBase": "src/"
         },
         "classmap": [
             "./Module.php"

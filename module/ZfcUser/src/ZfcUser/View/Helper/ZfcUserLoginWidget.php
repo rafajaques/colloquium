@@ -15,6 +15,10 @@ class ZfcUserLoginWidget extends AbstractHelper
     protected $loginForm;
 
     /**
+     * $var string template used for view
+     */
+    protected $viewTemplate;
+    /**
      * __invoke
      *
      * @access public
@@ -38,7 +42,7 @@ class ZfcUserLoginWidget extends AbstractHelper
             'loginForm' => $this->getLoginForm(),
             'redirect'  => $redirect,
         ));
-        $vm->setTemplate('zfc-user/user/login');
+        $vm->setTemplate($this->viewTemplate);
         if ($render) {
             return $this->getView()->render($vm);
         } else {
@@ -63,6 +67,16 @@ class ZfcUserLoginWidget extends AbstractHelper
     public function setLoginForm(LoginForm $loginForm)
     {
         $this->loginForm = $loginForm;
+        return $this;
+    }
+
+    /**
+     * @param string $viewTemplate
+     * @return ZfcUserLoginWidget
+     */
+    public function setViewTemplate($viewTemplate)
+    {
+        $this->viewTemplate = $viewTemplate;
         return $this;
     }
 }
