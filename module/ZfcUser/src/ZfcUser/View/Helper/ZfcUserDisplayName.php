@@ -17,6 +17,8 @@ class ZfcUserDisplayName extends AbstractHelper
      * __invoke
      *
      * @access public
+     * @param \ZfcUser\Entity\UserInterface $user
+     * @throws \ZfcUser\Exception\DomainException
      * @return String
      */
     public function __invoke(User $user = null)
@@ -24,6 +26,12 @@ class ZfcUserDisplayName extends AbstractHelper
         if (null === $user) {
             if ($this->getAuthService()->hasIdentity()) {
                 $user = $this->getAuthService()->getIdentity();
+                if (!$user instanceof User) {
+                    throw new \ZfcUser\Exception\DomainException(
+                        '$user is not an instance of User',
+                        500
+                    );
+                }
             } else {
                 return false;
             }
@@ -33,6 +41,7 @@ class ZfcUserDisplayName extends AbstractHelper
         if (null === $displayName) {
             $displayName = $user->getUsername();
         }
+        // User will always have an email, so we do not have to throw error
         if (null === $displayName) {
             $displayName = $user->getEmail();
             $displayName = substr($displayName, 0, strpos($displayName, '@'));
@@ -55,6 +64,7 @@ class ZfcUserDisplayName extends AbstractHelper
      * Set authService.
      *
      * @param AuthenticationService $authService
+     * @return \ZfcUser\View\Helper\ZfcUserDisplayName
      */
     public function setAuthService(AuthenticationService $authService)
     {

@@ -7,25 +7,14 @@
 
 // Prepare HeadLink
 $headLink = $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-				->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.css')
 				->prependStylesheet($this->basePath() . '/css/colloquium.css')
 				->prependStylesheet($this->basePath() . '/css/bootstrap.css');
 	
 $headScript = $this->headScript()
-					->prependFile($this->basePath() . '/js/bootstrap-typeahead.js')
-					->prependFile($this->basePath() . '/js/bootstrap-carousel.js')
-					->prependFile($this->basePath() . '/js/bootstrap-collapse.js')
-					->prependFile($this->basePath() . '/js/bootstrap-button.js')
-					->prependFile($this->basePath() . '/js/bootstrap-popover.js')
-					->prependFile($this->basePath() . '/js/bootstrap-tooltip.js')
-					->prependFile($this->basePath() . '/js/bootstrap-tab.js')
-					->prependFile($this->basePath() . '/js/bootstrap-scrollspy.js')
-					->prependFile($this->basePath() . '/js/bootstrap-dropdown.js')
-					->prependFile($this->basePath() . '/js/bootstrap-modal.js')
-					->prependFile($this->basePath() . '/js/bootstrap-alert.js')
-					->prependFile($this->basePath() . '/js/bootstrap-transition.js')
+					->prependFile($this->basePath() . '/js/bootstrap.min.js')
 					->prependFile($this->basePath() . '/js/jquery.js')
-					->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',));
+					->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+					->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',));
 				
 // Get user credentials
 $user = $this->zfcUserIdentity();
@@ -46,30 +35,24 @@ echo $this->doctype();
 
   <body>
 	
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="<?php echo $this->url('home'); ?>">Colloquium <span class="beta">alpha</span></a>
-				<div class="btn-group pull-right">
+	
+	 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+	  <div class="container-fluid">
+		<ul class="nav navbar-nav navbar-right">
 					<?php if ($user): ?>
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i> <?php echo $user->getUsername(); ?>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-user"></span> <?php echo $user->getUsername(); ?>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo $this->url('zfcuser'); ?>"><i class="icon-user"></i> <?php echo $this->translate('My profile') ?></a></li>
-						<li><a href="<?php echo $this->url('my-conferences'); ?>"><i class="icon-list-alt"></i> <?php echo $this->translate('My conferences') ?></a></li>
-						<li><a href="<?php echo $this->url('my-submissions'); ?>"><i class="icon-file"></i> <?php echo $this->translate('My submissions') ?></a></li>
+						<li><a href="<?php echo $this->url('zfcuser'); ?>"><span class="glyphicon glyphicon-user"></span> <?php echo $this->translate('My profile') ?></a></li>
+						<li><a href="<?php echo $this->url('my-conferences'); ?>"><span class="glyphicon glyphicon-list-alt"></span> <?php echo $this->translate('My conferences') ?></a></li>
+						<li><a href="<?php echo $this->url('my-submissions'); ?>"><span class="glyphicon glyphicon-file"></span> <?php echo $this->translate('My submissions') ?></a></li>
 						<li class="divider"></li>
 						<?php
 							if ($this->isAllowed('staff')):
 							?>
-						<li><a href="#"><i class="icon-wrench"></i> <?php echo $this->translate('Conference tools') ?></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> <?php echo $this->translate('Conference tools') ?></a></li>
 						<li class="divider"></li>
 							<?php
 							endif;
@@ -77,41 +60,51 @@ echo $this->doctype();
 						<?php
 							if ($this->isAllowed('admin')):
 							?>
-						<li><a href="<?php echo $this->url('admin'); ?>"><i class="icon-briefcase"></i> <?php echo $this->translate('Administration panel') ?></a></li>
-						<li><a href="<?php echo $this->url('admin/conferences'); ?>"><i class="icon-bullhorn"></i> <?php echo $this->translate('Conferences management') ?></a></li>
-						<li><a href="#"><i class="icon-book"></i> <?php echo $this->translate('Users management') ?></a></li>
-						<li><a href="#"><i class="icon-download-alt"></i> <?php echo $this->translate('Import/export data') ?></a></li>
-						<li><a href="#"><i class="icon-print"></i> <?php echo $this->translate('Reports') ?></a></li>
-						<li><a href="#"><i class="icon-cog"></i> <?php echo $this->translate('System settings') ?></a></li>
+						<li><a href="<?php echo $this->url('admin'); ?>"><span class="glyphicon glyphicon-briefcase"></span> <?php echo $this->translate('Administration panel') ?></a></li>
+						<li><a href="<?php echo $this->url('admin/conferences'); ?>"><span class="glyphicon glyphicon-bullhorn"></span> <?php echo $this->translate('Conferences management') ?></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-book"></span> <?php echo $this->translate('Users management') ?></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-download-alt"></span> <?php echo $this->translate('Import/export data') ?></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-print"></span> <?php echo $this->translate('Reports') ?></a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-cog"></span> <?php echo $this->translate('System settings') ?></a></li>
 						<li class="divider"></li>
 							<?php
 							endif;
 						?>
-						<li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><i class="icon-remove"></i> <?php echo $this->translate('Logoff') ?></a></li>
-					</ul>
+						<li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><span class="glyphicon glyphicon-remove"></span> <?php echo $this->translate('Logoff') ?></a></li>
+					</ul></li>
 					<?php /* is auth */ else: ?>
-						<a href="<?php echo $this->url('zfcuser/login'); ?>" class="btn btn-inverse span1"><?php echo $this->translate('Login'); ?></a>
+						<li><a href="<?php echo $this->url('zfcuser/login'); ?>" class="btn btn-inverse col-sm-1"><?php echo $this->translate('Login'); ?></a></li>
 					<?php endif; ?>
-				</div>
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li<?php if ($this->url() == $this->url('home')) echo ' class="active"'; ?>>
-							<a href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('Home') ?></a>
-						</li>
-						<li<?php if ($this->url() == $this->url('conferences')) echo ' class="active"'; ?>>
-							<a href="<?php echo $this->url('conferences'); ?>"><?php echo $this->translate('Conferences') ?></a>
-						</li>
-						<li<?php if ($this->url() == $this->url('cfp')) echo ' class="active"'; ?>>
-							<a href="<?php echo $this->url('cfp'); ?>"><?php echo $this->translate('Call for Papers') ?></a>
-						</li>
-						<li<?php if ($this->url() != $this->url()) echo ' class="active"'; ?>>
-							<a href="#"><?php echo $this->translate('Help') ?></a>
-						</li>
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
+				</ul>
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menutopo">
+	        <span class="sr-only">Menu</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="<?php echo $this->url('home'); ?>">Colloquium <span class="beta">alpha</span></a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="menutopo">
+	    	<ul class="nav navbar-nav">
+				<li<?php if ($this->url() == $this->url('home')) echo ' class="active"'; ?>>
+					<a href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('Home') ?></a>
+				</li>
+				<li<?php if ($this->url() == $this->url('conferences')) echo ' class="active"'; ?>>
+					<a href="<?php echo $this->url('conferences'); ?>"><?php echo $this->translate('Conferences') ?></a>
+				</li>
+				<li<?php if ($this->url() == $this->url('cfp')) echo ' class="active"'; ?>>
+					<a href="<?php echo $this->url('cfp'); ?>"><?php echo $this->translate('Call for Papers') ?></a>
+				</li>
+				<li<?php if ($this->url() != $this->url()) echo ' class="active"'; ?>>
+					<a href="#"><?php echo $this->translate('Help') ?></a>
+				</li>
+			</ul>
+	    </div>
+	  </div>
+	</nav>
+
 
 	<!--div class="alert alert-info span12">
 	<?php echo sprintf($this->translate('<strong>%s</strong> is running. Check the programming '), 'TcheLinux Bento Gon&ccedil;alves') . ' &raquo;' ?>

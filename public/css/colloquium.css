@@ -21,6 +21,11 @@ h1,h2,h3,h4,h4{
 	text-shadow: 1px 1px 2px #ccc;
 }
 
+.form-control {
+	margin-top:3px;
+	margin-bottom:5px;
+}
+
 p.byline{	
 	font-size:18px;
 	font-weight:300;
@@ -33,6 +38,10 @@ p.byline{
 .logo{
 	max-width:150px;
 	margin-right:10px;
+}
+
+.alinhacenter {
+	text-align:center;
 }
 
 @media (max-width: 979px) {

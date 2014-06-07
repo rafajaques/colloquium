@@ -4,3 +4,4 @@
 *.swp
 *.out
 config/autoload/local.php
+vendor/zf2/*

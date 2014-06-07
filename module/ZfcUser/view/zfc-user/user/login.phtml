@@ -1,18 +1,21 @@
+<h1><?php echo $this->translate('Sign In'); ?></h1>
+
 <?php
 
 if (!$this->redirect && isset($_SERVER['HTTP_REFERER']))
 {
-	/**
-	 * Check if needs auto-redirect
-	 */
-	$http_referer = parse_url($_SERVER['HTTP_REFERER']);
-	$referer = $http_referer['host'];
-	if (isset($http_referer['port']))
-		$referer .= ':' . $http_referer['port'];
-		
-	if ($referer == $_SERVER['HTTP_HOST'])
-		$this->redirect = $_SERVER['HTTP_REFERER'];
+    /**
+     * Check if needs auto-redirect
+     */
+    $http_referer = parse_url($_SERVER['HTTP_REFERER']);
+    $referer = $http_referer['host'];
+    if (isset($http_referer['port']))
+        $referer .= ':' . $http_referer['port'];
+        
+    if ($referer == $_SERVER['HTTP_HOST'])
+        $this->redirect = $_SERVER['HTTP_REFERER'];
 }
+
 
 $form = $this->loginForm;
 $form->prepare();
@@ -22,44 +25,45 @@ $form->setAttribute('method', 'post');
 // Workaround for POedit extractor
 _('Username or Email');
 _('Password');
+
 ?>
+
 <div class="container">
-	<div class="content">
-	
-		<div class="page-header">
-			<h1 class="catch"><?php echo $this->translate('Sign In'); ?></h1>
-		</div>
+    <div class="content">
+    
+        <div class="page-header">
+            <h1 class="catch"><?php echo $this->translate('Sign In'); ?></h1>
+        </div>
 
-		<div class="row-fluid">
-			<?php echo $this->form()->openTag($form) ?>
+        <div class="row-fluid">
 
-			    <dl class="zend_form">
-			        <?php echo $this->formElementErrors($form->get('identity')) ?>
+            <?php echo $this->form()->openTag($form) ?>
 
-			        <dt><?php echo $this->formLabel($form->get('identity')) ?></dt>
-			        <dd><?php echo $this->formInput($form->get('identity')) ?></dd>
+                <dl class="zend_form">
+                    <?php echo $this->formElementErrors($form->get('identity')) ?>
 
-			        <dt><?php echo $this->formLabel($form->get('credential')) ?></dt>
-			        <dd><?php echo $this->formInput($form->get('credential')) ?></dd>
+                    <dt><?php echo $this->formLabel($form->get('identity')) ?></dt>
+                    <dd><?php echo $this->formInput($form->get('identity')->setAttribute('class','form-control')) ?></dd>
 
-			        <?php if ($this->redirect): ?>
-			            <input type="hidden" name="redirect" value="<?php echo $this->redirect ?>" />
-			        <?php endif ?>
+                    <dt><?php echo $this->formLabel($form->get('credential')) ?></dt>
+                    <dd><?php echo $this->formInput($form->get('credential')->setAttribute('class','form-control')) ?></dd>
 
-			        <dd><?php echo $this->formButton($form->get('submit')->setAttribute('class','btn btn-primary')) ?></dd>
-			    </dl>
+                    <?php if ($this->redirect): ?>
+                        <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+                    <?php endif ?>
 
-			<?php echo $this->form()->closeTag() ?>
+                    <dd><?php echo $this->formButton($form->get('submit')->setAttribute('class','btn btn-primary')) ?></dd>
+                </dl>
 
-			<?php
-				/**
-				 * @TODO make this work!
-				 */
-				/*echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!');*/
-			?></a>
-			<p><?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register'); ?>"><?php echo $this->translate('Sign up!'); ?></a></p>
-			<p><a href="<?php echo $this->url('zfcuser/recovery'); ?>"><?php echo $this->translate('Forgot your password?'); ?></a></p>
-		</div>
-	
-	</div>
+            <?php echo $this->form()->closeTag() ?>
+
+
+ 
+<?php if ($this->enableRegistration) : ?>
+<o><?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!'); ?></a></p>
+<?php endif; ?>
+
+        </div>
+    
+    </div>
 </div>

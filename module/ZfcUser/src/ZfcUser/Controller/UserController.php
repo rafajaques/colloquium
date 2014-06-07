@@ -9,11 +9,16 @@ use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
 use ZfcUser\Service\User as UserService;
 use ZfcUser\Options\UserControllerOptionsInterface;
-use ZfcUser\Form\Recovery as RecoveryForm;
-use ZfcUser\Form\SetNewPassword as NewPasswordForm;
 
 class UserController extends AbstractActionController
 {
+    const ROUTE_CHANGEPASSWD = 'zfcuser/changepassword';
+    const ROUTE_LOGIN        = 'zfcuser/login';
+    const ROUTE_REGISTER     = 'zfcuser/register';
+    const ROUTE_CHANGEEMAIL  = 'zfcuser/changeemail';
+
+    const CONTROLLER_NAME    = 'zfcuser';
+
     /**
      * @var UserService
      */
@@ -56,7 +61,7 @@ class UserController extends AbstractActionController
     public function indexAction()
     {
         if (!$this->zfcUserAuthentication()->hasIdentity()) {
-            return $this->redirect()->toRoute('zfcuser/login');
+            return $this->redirect()->toRoute(static::ROUTE_LOGIN);
         }
         return new ViewModel();
     }
@@ -66,12 +71,16 @@ class UserController extends AbstractActionController
      */
     public function loginAction()
     {
-        $this->getServiceLocator()->get('zfcuser_user_mapper');
+        if ($this->zfcUserAuthentication()->hasIdentity()) {
+            return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
+        }
+
         $request = $this->getRequest();
         $form    = $this->getLoginForm();
+        $post    = $request->getPost();
 
-        if ($this->getOptions()->getUseRedirectParameterIfPresent() && $request->getQuery()->get('redirect')) {
-            $redirect = $request->getQuery()->get('redirect');
+        if ($this->getOptions()->getUseRedirectParameterIfPresent()) {
+            $redirect = $request->getQuery()->get('redirect', (!empty($post['redirect'])) ? $post['redirect'] : false);
         } else {
             $redirect = false;
         }
@@ -80,18 +89,22 @@ class UserController extends AbstractActionController
             return array(
                 'loginForm' => $form,
                 'redirect'  => $redirect,
+                'enableRegistration' => $this->getOptions()->getEnableRegistration(),
             );
         }
 
-        $form->setData($request->getPost());
+        $form->setData($post);
 
         if (!$form->isValid()) {
             $this->flashMessenger()->setNamespace('zfcuser-login-form')->addMessage($this->failedLoginMessage);
-            return $this->redirect()->toUrl($this->url('zfcuser')->fromRoute('zfcuser/login').($redirect ? '?redirect='.$redirect : ''));
+            return $this->redirect()->toUrl($this->url()->fromRoute(static::ROUTE_LOGIN).($redirect ? '?redirect='. rawurlencode($redirect) : ''));
         }
-        // clear adapters
 
-        return $this->forward()->dispatch('zfcuser', array('action' => 'authenticate'));
+        // clear adapters
+        $this->zfcUserAuthentication()->getAuthAdapter()->resetAdapters();
+        $this->zfcUserAuthentication()->getAuthService()->clearIdentity();
+
+        return $this->forward()->dispatch(static::CONTROLLER_NAME, array('action' => 'authenticate'));
     }
 
     /**
@@ -100,11 +113,12 @@ class UserController extends AbstractActionController
     public function logoutAction()
     {
         $this->zfcUserAuthentication()->getAuthAdapter()->resetAdapters();
+        $this->zfcUserAuthentication()->getAuthAdapter()->logoutAdapters();
         $this->zfcUserAuthentication()->getAuthService()->clearIdentity();
 
-        $redirect = ($this->getRequest()->getPost()->get('redirect')) ? $this->getRequest()->getPost()->get('redirect') : false;
+        $redirect = $this->params()->fromPost('redirect', $this->params()->fromQuery('redirect', false));
 
-        if($this->getOptions()->getUseRedirectParameterIfPresent() && $redirect) {
+        if ($this->getOptions()->getUseRedirectParameterIfPresent() && $redirect) {
             return $this->redirect()->toUrl($redirect);
         }
 
@@ -116,14 +130,14 @@ class UserController extends AbstractActionController
      */
     public function authenticateAction()
     {
-        if ($this->zfcUserAuthentication()->getAuthService()->hasIdentity()) {
+        if ($this->zfcUserAuthentication()->hasIdentity()) {
             return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
         }
-        $request = $this->getRequest();
-        $adapter = $this->zfcUserAuthentication()->getAuthAdapter();
-        $redirect = $request->getPost()->get('redirect') ? $request->getPost()->get('redirect') : false;
 
-        $result = $adapter->prepareForAuthentication($request);
+        $adapter = $this->zfcUserAuthentication()->getAuthAdapter();
+        $redirect = $this->params()->fromPost('redirect', $this->params()->fromQuery('redirect', false));
+
+        $result = $adapter->prepareForAuthentication($this->getRequest());
 
         // Return early if an adapter returned a response
         if ($result instanceof Response) {
@@ -135,14 +149,23 @@ class UserController extends AbstractActionController
         if (!$auth->isValid()) {
             $this->flashMessenger()->setNamespace('zfcuser-login-form')->addMessage($this->failedLoginMessage);
             $adapter->resetAdapters();
-            return $this->redirect()->toUrl($this->url()->fromRoute('zfcuser/login').($redirect ? '?redirect='.$redirect : ''));
+            return $this->redirect()->toUrl(
+                $this->url()->fromRoute(static::ROUTE_LOGIN) .
+                ($redirect ? '?redirect='. rawurlencode($redirect) : '')
+            );
         }
 
         if ($this->getOptions()->getUseRedirectParameterIfPresent() && $redirect) {
             return $this->redirect()->toUrl($redirect);
         }
 
-        return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
+        $route = $this->getOptions()->getLoginRedirectRoute();
+
+        if (is_callable($route)) {
+            $route = $route($this->zfcUserAuthentication()->getIdentity());
+        }
+
+        return $this->redirect()->toRoute($route);
     }
 
     /**
@@ -151,9 +174,13 @@ class UserController extends AbstractActionController
     public function registerAction()
     {
         // if the user is logged in, we don't need to register
-        if ($this->zfcUserAuthentication()->getAuthService()->hasIdentity()) {
+        if ($this->zfcUserAuthentication()->hasIdentity()) {
             // redirect to the login redirect route
             return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
+        }
+        // if registration is disabled
+        if (!$this->getOptions()->getEnableRegistration()) {
+            return array('enableRegistration' => false);
         }
 
         $request = $this->getRequest();
@@ -166,12 +193,13 @@ class UserController extends AbstractActionController
             $redirect = false;
         }
 
-        $redirectUrl = $this->url()->fromRoute('zfcuser/register') . ($redirect ? '?redirect=' . $redirect : '');
+        $redirectUrl = $this->url()->fromRoute(static::ROUTE_REGISTER)
+            . ($redirect ? '?redirect=' . rawurlencode($redirect) : '');
         $prg = $this->prg($redirectUrl, true);
 
         if ($prg instanceof Response) {
             return $prg;
-        } else if ($prg === false) {
+        } elseif ($prg === false) {
             return array(
                 'registerForm' => $form,
                 'enableRegistration' => $this->getOptions()->getEnableRegistration(),
@@ -181,6 +209,8 @@ class UserController extends AbstractActionController
 
         $post = $prg;
         $user = $service->register($post);
+
+        $redirect = isset($prg['redirect']) ? $prg['redirect'] : null;
 
         if (!$user) {
             return array(
@@ -194,24 +224,31 @@ class UserController extends AbstractActionController
             $identityFields = $service->getOptions()->getAuthIdentityFields();
             if (in_array('email', $identityFields)) {
                 $post['identity'] = $user->getEmail();
-            } elseif(in_array('username', $identityFields)) {
+            } elseif (in_array('username', $identityFields)) {
                 $post['identity'] = $user->getUsername();
             }
             $post['credential'] = $post['password'];
             $request->setPost(new Parameters($post));
-            return $this->forward()->dispatch('zfcuser', array('action' => 'authenticate'));
+            return $this->forward()->dispatch(static::CONTROLLER_NAME, array('action' => 'authenticate'));
         }
 
         // TODO: Add the redirect parameter here...
-        return $this->redirect()->toUrl($this->url()->fromRoute('zfcuser/login') . ($redirect ? '?redirect='.$redirect : ''));
+        return $this->redirect()->toUrl($this->url()->fromRoute(static::ROUTE_LOGIN) . ($redirect ? '?redirect='. rawurlencode($redirect) : ''));
     }
 
     /**
      * Change the users password
      */
-    public function changepasswordAction() {
+    public function changepasswordAction()
+    {
+        // if the user isn't logged in, we can't change password
+        if (!$this->zfcUserAuthentication()->hasIdentity()) {
+            // redirect to the login redirect route
+            return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
+        }
+
         $form = $this->getChangePasswordForm();
-        $prg = $this->prg('zfcuser/changepassword');
+        $prg = $this->prg(static::ROUTE_CHANGEPASSWD);
 
         $fm = $this->flashMessenger()->setNamespace('change-password')->getMessages();
         if (isset($fm[0])) {
@@ -222,7 +259,7 @@ class UserController extends AbstractActionController
 
         if ($prg instanceof Response) {
             return $prg;
-        } else if ($prg === false) {
+        } elseif ($prg === false) {
             return array(
                 'status' => $status,
                 'changePasswordForm' => $form,
@@ -246,11 +283,17 @@ class UserController extends AbstractActionController
         }
 
         $this->flashMessenger()->setNamespace('change-password')->addMessage(true);
-        return $this->redirect()->toRoute('zfcuser/changepassword');
+        return $this->redirect()->toRoute(static::ROUTE_CHANGEPASSWD);
     }
 
     public function changeEmailAction()
     {
+        // if the user isn't logged in, we can't change email
+        if (!$this->zfcUserAuthentication()->hasIdentity()) {
+            // redirect to the login redirect route
+            return $this->redirect()->toRoute($this->getOptions()->getLoginRedirectRoute());
+        }
+
         $form = $this->getChangeEmailForm();
         $request = $this->getRequest();
         $request->getPost()->set('identity', $this->getUserService()->getAuthService()->getIdentity()->getEmail());
@@ -262,10 +305,10 @@ class UserController extends AbstractActionController
             $status = null;
         }
 
-        $prg = $this->prg('zfcuser/changeemail');
+        $prg = $this->prg(static::ROUTE_CHANGEEMAIL);
         if ($prg instanceof Response) {
             return $prg;
-        } else if ($prg === false) {
+        } elseif ($prg === false) {
             return array(
                 'status' => $status,
                 'changeEmailForm' => $form,
@@ -292,106 +335,8 @@ class UserController extends AbstractActionController
         }
 
         $this->flashMessenger()->setNamespace('change-email')->addMessage(true);
-        return $this->redirect()->toRoute('zfcuser/changeemail');
+        return $this->redirect()->toRoute(static::ROUTE_CHANGEEMAIL);
     }
-
-	/**
-	 * @author Colloquium - rafajaques
-	 * @todo this is SO UGLY! just some workarounds to put system in production! sorry about that! 
-	 */
-	public function recoveryAction()
-	{
-		$request = $this->getRequest();
-
-		// Time for changing :)
-		if ($request->isPost()) {
-			// My little workaround :)
-			$userTbl = $this->getServiceLocator()->get('Admin\Model\UserTable');
-
-			// Get credential
-			$credential = $request->getPost('identity');
-			if (!$credential)
-				$this->redirect()->toRoute('zfcuser');
-			
-			// Check if exists
-			$email = $userTbl->getEmailByCredential($credential);
-			if (!$email)
-				return $this->redirect()->toRoute('zfcuser/recovery');
-			
-			// Set recovery hash
-			$hash = $userTbl->setRecoveryHash($email);
-			
-			// Send mail
-			$url = $_SERVER['HTTP_ORIGIN'];
-			
-			$mail = new \Zend\Mail\Message();
-			$mail->setFrom('rafael@phpit.com.br', 'Colloquium');
-			$mail->addTo($email);
-			$mail->setEncoding('UTF-8');
-			
-			
-			// English message
-			//$mail->setSubject('Password recovery');
-			/*$msg = '<p>Hello,</p><p>It seems that you want to reset your password. To do so, click the link below. This link will send you to a place where you can create a new password.</p>';
-			$msg.= sprintf('<p><a href="%s">Reset your password</a>', $url . '/user/recovery/hash/' . $hash);
-			$msg.= '<p>If you weren\'t trying to do that, just ignore this email. Your account will not be changed.</p><p>Thanks,<br />Colloquium</p>';*/
-
-			$mail->setSubject('Recuperação de senha');
-			$msg = '<p>Olá,</p><p>Parece que você deseja redefinir sua senha. Para fazer isso, clique no link abaixo. Este link vai mandar você para um lugar onde pode criar uma nova senha.</p>';
-			$msg.= sprintf('<p><a href="%s">Redefina sua senha</a>', $url . '/user/recovery/hash/' . $hash);
-			$msg.= '<p>Se você não estava tentando fazer isso, apenas ignore este e-mail. Sua conta não será alterada.</p><p>Obrigado,<br />Colloquium</p>';
-
-			$html = new \Zend\Mime\Part($msg);
-			$html->type = "text/html";
-
-			$body = new \Zend\Mime\Message();
-			$body->addPart($html);
-			
-			$mail->setBody($body);
-
-			$transport = new \Zend\Mail\Transport\Sendmail();
-			$transport->send($mail);
-			
-			return $this->redirect()->toRoute('zfcuser/recovery/done');
-		}
-		
-		return array('form' => new RecoveryForm());
-	}
-	
-	public function recoveryDoneAction()
-	{
-		return array();
-	}
-	
-	public function recoveryHashAction()
-	{
-		$hash = $this->params()->fromRoute('hash');
-		$userTbl = $this->getServiceLocator()->get('Admin\Model\UserTable');
-		
-		if (!$hash || !$userTbl->hashExists($hash))
-			return $this->redirect()->toRoute('home');
-	
-		$request = $this->getRequest();
-
-		// Time for changing :)
-		if ($request->isPost()) {
-			//$this->getServiceManager()->get('zfcuser_module_options');
-			
-			$newPass = $request->getPost('pass');
-			if (!$newPass || empty($newPass))
-				return $this->redirect()->toRoute('zfcuser/recovery/hash', array('hash' => $hash));
-			
-			$bcrypt = new \Zend\Crypt\Password\Bcrypt;
-			$bcrypt->setCost($this->getOptions()->getPasswordCost());
-			$pass = $bcrypt->create($newPass);
-			
-			$userTbl->hardChangePassword($pass, $hash);
-			
-			return $this->redirect()->toRoute('zfcuser');
-		}
-		
-		return array('form' => new NewPasswordForm(), 'hash' => $hash);
-	}
 
     /**
      * Getters/setters for DI stuff
@@ -444,14 +389,16 @@ class UserController extends AbstractActionController
         return $this;
     }
 
-    public function getChangePasswordForm() {
+    public function getChangePasswordForm()
+    {
         if (!$this->changePasswordForm) {
             $this->setChangePasswordForm($this->getServiceLocator()->get('zfcuser_change_password_form'));
         }
         return $this->changePasswordForm;
     }
 
-    public function setChangePasswordForm(Form $changePasswordForm) {
+    public function setChangePasswordForm(Form $changePasswordForm)
+    {
         $this->changePasswordForm = $changePasswordForm;
         return $this;
     }
@@ -488,7 +435,7 @@ class UserController extends AbstractActionController
      */
     public function getChangeEmailForm()
     {
-        if (!$this->changePasswordForm) {
+        if (!$this->changeEmailForm) {
             $this->setChangeEmailForm($this->getServiceLocator()->get('zfcuser_change_email_form'));
         }
         return $this->changeEmailForm;

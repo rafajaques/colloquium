@@ -8,6 +8,7 @@ use Zend\EventManager\Event;
 use Zend\Stdlib\RequestInterface as Request;
 use Zend\Stdlib\ResponseInterface as Response;
 use ZfcBase\EventManager\EventProvider;
+use ZfcUser\Exception;
 
 class AdapterChain extends EventProvider implements AdapterInterface
 {
@@ -36,29 +37,43 @@ class AdapterChain extends EventProvider implements AdapterInterface
         return $result;
     }
 
+    /**
+     * prepareForAuthentication
+     *
+     * @param  Request $request
+     * @return Response|bool
+     * @throws Exception\AuthenticationEventException
+     */
     public function prepareForAuthentication(Request $request)
     {
-        $e = $this->getEvent()
-                  ->setRequest($request);
+        $e = $this->getEvent();
+        $e->setRequest($request);
 
         $this->getEventManager()->trigger('authenticate.pre', $e);
 
-        $result = $this->getEventManager()->trigger('authenticate', $e, function($test) {
+        $result = $this->getEventManager()->trigger('authenticate', $e, function ($test) {
             return ($test instanceof Response);
         });
 
         if ($result->stopped()) {
-            if($result->last() instanceof Response) {
+            if ($result->last() instanceof Response) {
                 return $result->last();
-            } else {
-                // throw new Exception('Auth event was stopped without a response.');
             }
+
+            throw new Exception\AuthenticationEventException(
+                sprintf(
+                    'Auth event was stopped without a response. Got "%s" instead',
+                    is_object($result->last()) ? get_class($result->last()) : gettype($result->last())
+                )
+            );
         }
 
         if ($e->getIdentity()) {
+            $this->getEventManager()->trigger('authenticate.success', $e);
             return true;
         }
 
+        $this->getEventManager()->trigger('authenticate.fail', $e);
         return false;
     }
 
@@ -76,7 +91,18 @@ class AdapterChain extends EventProvider implements AdapterInterface
                 $listener[0]->getStorage()->clear();
             }
         }
-        $this;
+        return $this;
+    }
+
+    /**
+     * logoutAdapters
+     *
+     * @return AdapterChain
+     */
+    public function logoutAdapters()
+    {
+        //Adapters might need to perform additional cleanup after logout
+        $this->getEventManager()->trigger('logout', $this->getEvent());
     }
 
     /**
@@ -103,11 +129,10 @@ class AdapterChain extends EventProvider implements AdapterInterface
      */
     public function setEvent(Event $e)
     {
-        if ($e instanceof Event && !$e instanceof AdapterChainEvent) {
+        if (!$e instanceof AdapterChainEvent) {
             $eventParams = $e->getParams();
             $e = new AdapterChainEvent();
             $e->setParams($eventParams);
-            unset($eventParams);
         }
         $this->event = $e;
         return $this;

@@ -1,12 +1,12 @@
 <div class="container-fluid">
-	<div class="row-fluid">
+	<div class="row">
 		<!-- Content -->
-		<div class="span9 content down-space">
+		<div class="col-sm-9 content down-space">
 			<div class="page-header">
 				<h1>&nbsp;<i class="big-icon-announcement"></i> <?php echo $conference->name; ?></h1>
 			</div>
 			
-			<div class="row-fluid">
+			<div class="row">
 				<?php if ($this->registered): ?>
 				<div class="alert alert-info">
 					<?php
@@ -19,7 +19,7 @@
 					?>
 				</div>
 				<?php elseif ($this->zfcUserIdentity()): ?>
-				<a href="#myModal" role="button" data-toggle="modal" class="btn down-space btn-primary btn-largest offset1 span10"><?php echo $this->translate('Register me at this event!'); ?></a>
+				<a href="#myModal" role="button" data-toggle="modal" class="btn down-space btn-primary btn-largest offset1 col-sm-10"><?php echo $this->translate('Register me at this event!'); ?></a>
 				<?php else: ?>
 				<div class="alert">
 					<button type="button" class="close" data-dismiss="alert">×</button>
@@ -29,8 +29,8 @@
 				<?php endif; ?>
 			</div>
 			
-			<div class="row-fluid">
-				<div class="span6 well">
+			<div class="row">
+				<div class="col-sm-6 well">
 					<h3><?php echo $this->translate('About the conference'); ?></h3>
 					<p><?php
 						/**
@@ -48,7 +48,7 @@
 					?></p>
 				</div>
 				
-				<div class="span6">
+				<div class="col-sm-6">
 					<h3><?php echo $this->translate('Information'); ?></h3>
 					<p><?php
 						// Tons of things to do here!
@@ -127,7 +127,7 @@
 			</div-->
 		</div>
 		<!-- Sidebar -->
-		<div class="span3">
+		<div class="col-sm-3">
 			<div class="well well-small">
 			<h4><?php echo $this->translate('Upcoming events'); ?></h4>
 			
@@ -203,8 +203,8 @@
 				<strong><?php echo $this->translate('I accept that my email address may be passed on to third parties.'); ?></strong>
 			</label>
 		</p>
-		<div class="row-fluid">
-			<button type="submit" class="btn btn-large btn-success offset3 span6"><i class="icon-check icon-white"></i> <?php echo $this->translate('Join this conference'); ?></button>
+		<div class="row">
+			<button type="submit" class="btn btn-large btn-success offset3 col-sm-6"><i class="icon-check icon-white"></i> <?php echo $this->translate('Join this conference'); ?></button>
 		</div>
 	</form>
   </div>
